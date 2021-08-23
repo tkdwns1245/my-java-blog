@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="side-container">
-	
+	<div class="profile-img-container">
+		<img class="rounded-circle profile-img mx-auto align-middle" src="/resources/img/blog-profile.jpg">
+	</div>
 	<div class="menu-container">
 		<ul class="menu-list">
 			<li class="menu-item"><a href="/">HOME</a></li>

@@ -13,10 +13,20 @@
     background-color:black;
     color:#ffffff;
 }
+.profile-img-container {
+    width: 260px;
+    height: 300px; 
+    display: table-cell;
+    vertical-align: middle;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    display: block;
+}
 .menu-container .menu-list .menu-item{
 	text-align:center;
 	margin-top:25px;
-	
 }
 .menu-container{
 	z-index: 1;
@@ -91,3 +101,6 @@
     color: #7a7b7d;
     background-color: #ffffff;
 }
+
+<!-- common style-->
+.mx-auto{margin-right:auto !important;margin-left:auto !important}
