@@ -1,5 +1,14 @@
 @charset "UTF-8";
+@font-face {
+  font-family: ubuntu-title;
+  src: url('/resources/fonts/Ubuntu-Title.ttf');
+}
 
+.menu-a{
+  font-family : ubuntu-title;
+  font-size : 25px;
+  color : #ffffff;
+}
 .side-container{
 	padding-left: 0;
     padding-right: 0;
@@ -10,8 +19,7 @@
     overflow-y: auto;
     width: 260px;
     z-index: 99;
-    background-color:black;
-    color:#ffffff;
+    background-color:#3b444b;
 }
 .profile-img-container {
     width: 260px;
@@ -101,6 +109,3 @@
     color: #7a7b7d;
     background-color: #ffffff;
 }
-
-<!-- common style-->
-.mx-auto{margin-right:auto !important;margin-left:auto !important}
