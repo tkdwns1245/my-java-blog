@@ -11,11 +11,11 @@
 <tiles:insertAttribute name="js" />
 </head>
 <body>
-<tiles:insertAttribute name="header" />
 <tiles:insertAttribute name="left" />
 <div class="content">
 	<div class="main-wrapper">
 		<div class="main">
+			<tiles:insertAttribute name="header" />
 			<tiles:insertAttribute name="body" />
 		</div>
 		<div class="footer">
