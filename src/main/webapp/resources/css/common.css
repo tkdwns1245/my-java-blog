@@ -22,14 +22,23 @@
     background-color:#3b444b;
 }
 .profile-img-container {
-    width: 260px;
-    height: 300px; 
-    display: table-cell;
-    vertical-align: middle;
-}
-.profile-img {
     width: 150px;
     height: 150px;
+    display: table-cell;
+    overflow: hidden;
+    border-radius: 70%;
+    vertical-align: middle;
+    float:right;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100px;
+    margin: auto;
+}
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 .menu-container .menu-list .menu-item{
@@ -71,14 +80,12 @@
 	z-index:1;
 }
 .main-wrapper .main{
-	margin-top: 3rem;
+    padding: 30px;
 }
 
 .top-bar-wrapper{
-    height: 3rem;
-    position: fixed;
+    height: 12rem;
     top: 0;
-    left: 260px;
     right: 0;
     transition: top 0.2s ease-in-out;
     z-index: 50;
@@ -87,9 +94,10 @@
     background-color: #ffffff;
     margin-left: 0;
     margin-right: 0;
+    position: relative;
+    padding:10px;
 }
 .main-wrapper{
-	position: relative;
     min-height: 100vh;
     padding-bottom: 5rem;
     padding-left: 0;
@@ -97,15 +105,15 @@
 	margin-left: 260px;
 	
 	}
-.main-wrapper .main{
-	margin-top: 3rem;
-}
 .footer{
-	position: absolute;
     bottom: 0;
     padding: 0 1rem;
     height: 5rem;
     font-size: 0.8rem;
     color: #7a7b7d;
     background-color: #ffffff;
+    position: absolute;
+}
+.profile_area{
+    
 }
