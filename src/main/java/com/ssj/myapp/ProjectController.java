@@ -30,4 +30,11 @@ public class ProjectController {
 		categoriesMav.addObject("title","project");
 		return categoriesMav;
 	}
+	@RequestMapping(value = "/project/write", method = RequestMethod.GET)
+	public ModelAndView projectWrite(Locale locale, Model model) {
+		logger.info("This is Project.", locale);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("project/write.page");
+		return mav;
+	}
 }

@@ -3,6 +3,10 @@
 <script src="/resources/js/jquery-3.5.1.min.js"></script>
 <script src="/resources/js/jquery-ui-1.12.1.min.js"></script>
 <script src="/resources/js/bootstrap/bootstrap.min.js"></script>
+<script src="/resources/js/summernote/summernote-lite.js"></script>
+<script src="/resources/js/summernote/lang/summernote-ko-KR.js"></script>
+<script src="/resources/js/jquery.tmpl.min.js"></script>
+<script src="https://kit.fontawesome.com/adf1f846d3.js" crossorigin="anonymous"></script>
 <script>
 var ajaxfunction = function(url,type,data,success,error){
 	 $.ajax({

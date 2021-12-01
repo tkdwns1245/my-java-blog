@@ -15,15 +15,24 @@
         <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
         <put-attribute name="script" value="" />
     </definition>
+    
+    <definition name="no_header_base" template="/WEB-INF/tiles/no_header_template.jsp">
+    	<put-attribute name="css"   value="/WEB-INF/tiles/css-tiles/common-css.jsp" />
+    	<put-attribute name="js"   value="/WEB-INF/tiles/js-tiles/common-js.jsp" />
+        <put-attribute name="left"   value="/WEB-INF/tiles/left.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+        <put-attribute name="script" value="" />
+    </definition>
  
     <definition name="*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
     </definition>
- 
-     <definition name="*/*.page" extends="base">
-         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
-     </definition>
-    
+ 	<definition name="project/write.page" extends="no_header_base">
+         <put-attribute name="body" value="/WEB-INF/views/project/write.jsp" />
+    </definition>
+    <definition name="*/*.page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
     <definition name="*/*/*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
     </definition>
