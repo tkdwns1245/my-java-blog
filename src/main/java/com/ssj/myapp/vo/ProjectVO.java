@@ -10,6 +10,7 @@ public class ProjectVO {
 	private int members;
 	private Date fromDate;
 	private Date toDate;
+	private long period;
 	private String skills;
 	private String projectImg;
 	private String contents;
@@ -74,6 +75,12 @@ public class ProjectVO {
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public long getPeriod() {
+		return period;
+	}
+	public void setPeriod(long period) {
+		this.period = period;
 	}
 	@Override
 	public String toString() {

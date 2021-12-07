@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,12 +23,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.ProjectService;
+import com.ssj.myapp.vo.Pagination;
 import com.ssj.myapp.vo.ProjectVO;
 
 /**
@@ -45,11 +48,32 @@ public class ProjectController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
-	public ModelAndView project(Locale locale, Model model) {
+	public ModelAndView project(Locale locale, Model model
+			,@RequestParam(required = false, defaultValue = "1") int page
+			, @RequestParam(required = false, defaultValue = "1") int range) {
+		
+		int listCnt;
+		List<ProjectVO> projectList = new ArrayList<ProjectVO>();
+		Pagination pagination = new Pagination();
+		try {
+			listCnt= projectService.getProjectListCnt();
+			//Pagination 객체생성
+			pagination.pageInfo(page, range, listCnt);
+			projectList = projectService.selectProjectList(pagination);
+			for(ProjectVO project : projectList) {
+				long diff;
+				diff = project.getToDate().getTime() - project.getFromDate().getTime();
+				project.setPeriod(diff / 1000 / 60 / 60 / 24);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		logger.info("This is Project.", locale);
 		ModelAndView categoriesMav = new ModelAndView();
 		categoriesMav.setViewName("project/project.page");
 		categoriesMav.addObject("title","project");
+		categoriesMav.addObject("projectList", projectList);
+		categoriesMav.addObject("pagination", pagination);
 		return categoriesMav;
 	}
 	@RequestMapping(value = "/project/write", method = RequestMethod.GET)
@@ -57,6 +81,26 @@ public class ProjectController {
 		logger.info("This is Project.", locale);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("project/write.page");
+		return mav;
+	}
+	@RequestMapping(value = "/projectDetail", method = RequestMethod.GET)
+	public ModelAndView projectDetail(Locale locale, Model model,
+			@RequestParam(required = false, defaultValue = "1") int num) {
+		ProjectVO pvo = new ProjectVO();
+		ProjectVO project = new ProjectVO();
+		pvo.setNum(num);
+		try {
+			project = projectService.getProjectDetail(pvo);
+			long diff;
+			diff = project.getToDate().getTime() - project.getFromDate().getTime();
+			project.setPeriod(diff / 1000 / 60 / 60 / 24);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("project",project);
+		logger.info("This is Project.", locale);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("project/projectDetail.page");
 		return mav;
 	}
 	@RequestMapping(value = "/project/write", method = RequestMethod.POST)

@@ -27,7 +27,19 @@
     SELECT LAST_INSERT_ID()
   	</selectKey>
   </insert>
-  <select id="project_list" resultType="projectVO">
-		SELECT * FROM primary_category;
+	<select id="project_list" resultType="projectVO">
+		SELECT * FROM PROJECT
+		ORDER BY num DESC
+		LIMIT #{startList}, #{listSize}
 	</select>
+	<select id="getProjectListCnt" resultType="int">
+	 	SELECT count(*) as listCnt
+	 	FROM PROJECT
+	</select>
+	<select id="getProjectDetail" resultType="projectVO">
+		SELECT *
+		FROM PROJECT
+		WHERE num = #{num}
+	</select>
+	
 </mapper>
