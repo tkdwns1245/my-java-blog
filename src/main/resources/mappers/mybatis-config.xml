@@ -10,5 +10,6 @@
 	</settings>
 	<typeAliases>
 		<typeAlias alias="categoryVO" type="com.ssj.myapp.vo.CategoryVO"/>
+		<typeAlias alias="projectVO" type="com.ssj.myapp.vo.ProjectVO" />
 	</typeAliases>
 </configuration>
