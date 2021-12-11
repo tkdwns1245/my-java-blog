@@ -3,6 +3,7 @@ package com.ssj.myapp;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -104,7 +105,7 @@ public class ProjectController {
 		return mav;
 	}
 	@RequestMapping(value = "/project/write", method = RequestMethod.POST)
-	public @ResponseBody HashMap<String, Object> projectWritePost(HttpSession session, MultipartHttpServletRequest mtfRequest) {
+	public @ResponseBody HashMap<String, Object> projectWritePost(HttpSession session, MultipartHttpServletRequest mtfRequest) throws UnsupportedEncodingException {
 		SimpleDateFormat sdf = new SimpleDateFormat ("yyyyMMddHHmmss");
 		Date date = new Date();
 		
@@ -113,14 +114,17 @@ public class ProjectController {
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
+		String contents = mtfRequest.getParameter("contents");
+		String projectName = mtfRequest.getParameter("project_name");
+		String introduce = mtfRequest.getParameter("introduce");
 		ProjectVO pvo = new ProjectVO();
-		pvo.setProjectName(mtfRequest.getParameter("project_name"));
-		pvo.setIntroduce(mtfRequest.getParameter("introduce"));
+		pvo.setProjectName(new String(projectName.getBytes("8859_1"), "utf-8"));
+		pvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
 		pvo.setToDate(java.sql.Date.valueOf(mtfRequest.getParameter("to")));
-		pvo.setContents(mtfRequest.getParameter("contents"));
+		pvo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("project_img");

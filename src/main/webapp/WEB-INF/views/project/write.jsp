@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <div class="body-contents-wrapper">
-	<form id="frm" enctype="multipart/form-data" method="POST">
+	<form id="frm" enctype="multipart/form-data" method="POST" accept-charset="UTF-8">
 	<div class="input-area row">
 		<div class="col-2">project name</div>
 		<div class="col-10">
