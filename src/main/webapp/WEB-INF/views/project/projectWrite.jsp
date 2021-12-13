@@ -154,10 +154,32 @@ $(document).ready(function () {
     $("#submit-btn").on("click",function(){
     	$('#skillsList').val(skillList);
     	var formData = new FormData(document.getElementById("frm"));
+    	if($("input[name=project_name]").val() == ""){
+    		alert("insert project name");
+    		return;
+    	}else if($("input[name=introduce]").val() == ""){
+    		alert("insert introduce");
+    		return;
+    	}else if($("input[name=members]").val() == ""){
+    		alert("insert members");
+    		return;
+    	}else if(isNaN($("input[name=members]").val())){
+    		alert("members item is can only insert number");
+    		return;
+    	}else if($("input[name=from]").val() == ""){
+    		alert("insert from date");
+    		return;
+    	}else if($("input[name=to]").val() == ""){
+    		alert("insert to date");
+    		return;
+    	}else if($("input[name=contents]").val() == ""){
+    		alert("insert contents");
+    		return;
+    	}
     	$.ajax({
     		type: "POST",
     		enctype: '/multipart/form-data',
-    		url: '/project/write',
+    		url: '/project/writeProject',
     		data: formData,
     		processData: false,
     		contentType: false,
@@ -166,7 +188,7 @@ $(document).ready(function () {
     			console.log(result);
     			if(result.result == "SUCCESS"){
     				alert("success upload project!");
-    				window.location.href = "/project";
+    				window.location.href = "/project/projectList";
     			}
     		},
     		error: function(e){

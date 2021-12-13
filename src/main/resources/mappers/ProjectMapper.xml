@@ -41,5 +41,25 @@
 		FROM PROJECT
 		WHERE num = #{num}
 	</select>
+	<update id="updateProject" parameterType="projectVO">
+		UPDATE PROJECT 
+	  	SET
+	    	projectName = #{projectName},
+	    	introduce = #{introduce},
+	    	members = #{members},
+	    	fromDate = #{fromDate},
+	    	toDate = #{toDate},
+	    	skills = #{skills},
+	    	<if test="projectImg != null">
+	    		projectImg = #{projectImg},
+	    	</if>
+	    	contents = #{contents}
+		WHERE num = #{num}
+	</update>
+	<delete id="deleteProject" parameterType="Integer">
+		DELETE
+		FROM PROJECT
+		WHERE num = #{num}
+	</delete>
 	
 </mapper>

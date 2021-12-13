@@ -10,7 +10,7 @@
 			<div class="project-card">
 				<div class="row">
 				<div class=" col-12 col-xl-5 card-img-holder">
-					<img src="resources/project/${project.projectImg}" class="card-img" alt="image">
+					<img src="/resources/project/${project.projectImg}" class="card-img" alt="image">
 				</div>
 				<div class="col-xl-7">
 					<div class="card-body">
@@ -34,14 +34,14 @@
 						<i class="fas fa-wrench"></i>  skills : ${project.skills}
 					</div>
 					<div class="link-mask-text" style="text-align:center;">
-						<a class="btn btn-primary" href="/projectDetail?num=${project.num}">View Posts</a>
+						<a class="btn btn-primary" href="/project/projectDetail?num=${project.num}">View Posts</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		</c:forEach>
 	</div>
-	<div id="paginationBox">
+	<div id="paginationBox" style="text-align:center;">
 		<ul class="pagination">
 			<c:if test="${pagination.prev}">
 				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">이전</a></li>
@@ -55,20 +55,20 @@
 		</ul>
 	</div>
 	<div style="margin-top:50px;">
-		<a class="btn btn-primary" style="float:right;" href="/project/write">write</a>
+		<a class="btn btn-primary" style="float:right;" href="/project/writeProject">write</a>
 	</div>
 	<script>
 	function fn_next(page, range, rangeSize) {
 		var page = parseInt((range * rangeSize)) + 1;
 		var range = parseInt(range) + 1;
-		var url = "${pageContext.request.contextPath}/project";
+		var url = "${pageContext.request.contextPath}/project/projectList";
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		location.href = url;
 	}
 	function fn_pagination(page, range, rangeSize) {
 		
-		var url = "${pageContext.request.contextPath}/project";
+		var url = "${pageContext.request.contextPath}/project/projectList";
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		

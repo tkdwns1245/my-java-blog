@@ -4,7 +4,7 @@
 	<div class="project-detail-card">
 		<div class="row">
 			<div class=" col-3 col-xl-3 card-img-holder" style="margin:2rem">
-				<img src="resources/project/${project.projectImg}" class="card-img" alt="image">
+				<img src="/resources/project/${project.projectImg}" class="card-img" alt="image">
 			</div>
 			<div class="col-xl-5">
 				<div class="card-body">
@@ -33,6 +33,33 @@
 					${project.contents}
 				</div>
 			</div>
+			<div class="col-12" style="margin-top:100px;">
+				<a class="btn btn-danger" style="float:right; margin-left:10px;" id="cancel-btn" href="/project/projectList" >list</a>
+				<a class="btn btn-danger" style="float:right; margin-left:10px;" id="cancel-btn" onClick="deleteFunction(${project.num})">delete</a>
+				<a class="btn btn-primary" style="float:right;" href="/project/editProject?num=${project.num}">edit</a>
+			</div>
 		</div>
 	</div>
 </div>
+<script>
+	var deleteFunction = function(num){
+		var result = confirm('Are you sure you want to delete?');
+		if(result){
+			$.ajax({
+				type: "POST",
+				url: '/project/deleteProject',
+				data: {"num" : num},
+				success: function (result){
+					console.log(result);
+					if(result.result == "SUCCESS"){
+						alert("success delete project!");
+						window.location.href = "/project/projectList";
+					}
+				},
+				error: function(e){
+					console.log(e);
+				}
+			})
+		}
+	}
+</script>

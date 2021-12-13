@@ -33,5 +33,15 @@ public class ProjectDAOImpl implements ProjectDAO {
 	public ProjectVO getProjectDetail(ProjectVO vo) {
 		return sqlSession.selectOne("project.getProjectDetail",vo);
 	}
+
+	@Override
+	public void updateProject(ProjectVO vo) {
+		sqlSession.update("project.updateProject",vo);
+	}
+
+	@Override
+	public void deleteProject(int num) {
+		sqlSession.delete("project.deleteProject",num);
+	}
 	
 }

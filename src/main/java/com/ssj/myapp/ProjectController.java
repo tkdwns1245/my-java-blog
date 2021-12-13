@@ -13,6 +13,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -48,7 +49,7 @@ public class ProjectController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/project", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/projectList", method = RequestMethod.GET)
 	public ModelAndView project(Locale locale, Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
 			, @RequestParam(required = false, defaultValue = "1") int range) {
@@ -71,20 +72,20 @@ public class ProjectController {
 		}
 		logger.info("This is Project.", locale);
 		ModelAndView categoriesMav = new ModelAndView();
-		categoriesMav.setViewName("project/project.page");
+		categoriesMav.setViewName("project/projectList.page");
 		categoriesMav.addObject("title","project");
 		categoriesMav.addObject("projectList", projectList);
 		categoriesMav.addObject("pagination", pagination);
 		return categoriesMav;
 	}
-	@RequestMapping(value = "/project/write", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/writeProject", method = RequestMethod.GET)
 	public ModelAndView projectWriteGet(Locale locale, Model model) {
 		logger.info("This is Project.", locale);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("project/write.page");
+		mav.setViewName("project/projectWrite.page");
 		return mav;
 	}
-	@RequestMapping(value = "/projectDetail", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/projectDetail", method = RequestMethod.GET)
 	public ModelAndView projectDetail(Locale locale, Model model,
 			@RequestParam(required = false, defaultValue = "1") int num) {
 		ProjectVO pvo = new ProjectVO();
@@ -104,7 +105,29 @@ public class ProjectController {
 		mav.setViewName("project/projectDetail.page");
 		return mav;
 	}
-	@RequestMapping(value = "/project/write", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/project/editProject", method = RequestMethod.GET)
+	public ModelAndView projectEdit(Locale locale, Model model,
+			@RequestParam(required = false, defaultValue = "1") int num) {
+		ProjectVO pvo = new ProjectVO();
+		ProjectVO project = new ProjectVO();
+		pvo.setNum(num);
+		try {
+			project = projectService.getProjectDetail(pvo);
+			long diff;
+			diff = project.getToDate().getTime() - project.getFromDate().getTime();
+			project.setPeriod(diff / 1000 / 60 / 60 / 24);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("project",project);
+		logger.info("This is ProjectEdit.", locale);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("project/projectEdit.page");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/project/writeProject", method = RequestMethod.POST)
 	public @ResponseBody HashMap<String, Object> projectWritePost(HttpSession session, MultipartHttpServletRequest mtfRequest) throws UnsupportedEncodingException {
 		SimpleDateFormat sdf = new SimpleDateFormat ("yyyyMMddHHmmss");
 		Date date = new Date();
@@ -151,6 +174,76 @@ public class ProjectController {
 			}
 			
 			return result;
+	}
+	
+	@RequestMapping(value = "/project/editProject", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> projectEditPost(HttpSession session, MultipartHttpServletRequest mtfRequest) throws UnsupportedEncodingException {
+		SimpleDateFormat sdf = new SimpleDateFormat ("yyyyMMddHHmmss");
+		Date date = new Date();
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		String PATH = resourcesPath+"\\project\\";
+		String fileName = "";
+		String fileFullName = "";
+		String fileType = "";
+		String contents = mtfRequest.getParameter("contents");
+		String projectName = mtfRequest.getParameter("project_name");
+		String introduce = mtfRequest.getParameter("introduce");
+		ProjectVO pvo = new ProjectVO();
+		pvo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
+		pvo.setProjectName(new String(projectName.getBytes("8859_1"), "utf-8"));
+		pvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
+		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
+		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
+		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
+		pvo.setToDate(java.sql.Date.valueOf(mtfRequest.getParameter("to")));
+		pvo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		String fileUploadTime = sdf.format(date);
+		try {
+			List<MultipartFile> mpf = mtfRequest.getFiles("project_img");
+			for(int i = 0; i < mpf.size(); i++) {
+				File file = new File(PATH + mpf.get(i).getOriginalFilename());
+				fileFullName = mpf.get(i).getOriginalFilename();
+				fileName = FilenameUtils.getBaseName(mpf.get(i).getOriginalFilename());
+				if(!fileName.equals("")) {
+					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
+					file = new File(PATH + fileName + "_" + fileUploadTime + "." + fileType);
+					pvo.setProjectImg(fileName + "_" + fileUploadTime + "." + fileType);
+					logger.info("---------------File Upload Start -------------");
+					logger.info("FILE : " + file.getAbsolutePath());
+					logger.info("SIZE : " + mpf.get(i).getSize() + "bytes");
+					logger.info("---------------File Upload End ---------------");
+					mpf.get(i).transferTo(file);
+				}
+			}
+			System.out.println(pvo);
+			projectService.editProject(pvo);
+			result.put("result", "SUCCESS");
+			} catch(Exception e) {
+				e.printStackTrace();
+				result.put("result", "ERROR");
+			}
+			
+			return result;
+	}
+	@RequestMapping(value = "/project/deleteProject", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> deleteProjectPost(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		int num;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		num = Integer.parseInt(request.getParameter("num"));
+		if(!request.getParameter("num").equals("")) {
+			try {
+				projectService.deleteProject(num);
+				result.put("result", "SUCCESS");
+			} catch(Exception e) {
+				e.printStackTrace();
+				result.put("result", "ERROR");
+			}
+		}else {
+			result.put("result", "ERROR");
+		}
+		
+		return result;
 	}
 	@RequestMapping(value = "/uploadSummernoteImageFile", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody

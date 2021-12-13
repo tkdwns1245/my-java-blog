@@ -37,6 +37,16 @@ public class ProjectServiceImpl implements ProjectService {
 	public ProjectVO getProjectDetail(ProjectVO vo) throws Exception {
 		return projectDao.getProjectDetail(vo);
 	}
+
+	@Override
+	public void editProject(ProjectVO vo) throws Exception {
+		projectDao.updateProject(vo);
+	}
+
+	@Override
+	public void deleteProject(int num) throws Exception {
+		projectDao.deleteProject(num);
+	}
 	
 	
 }

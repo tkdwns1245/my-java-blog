@@ -27,8 +27,11 @@
     <definition name="*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
     </definition>
- 	<definition name="project/write.page" extends="no_header_base">
-         <put-attribute name="body" value="/WEB-INF/views/project/write.jsp" />
+ 	<definition name="project/writeProject.page" extends="no_header_base">
+         <put-attribute name="body" value="/WEB-INF/views/project/projectWrite.jsp" />
+    </definition>
+    <definition name="project/editProject.page" extends="no_header_base">
+         <put-attribute name="body" value="/WEB-INF/views/project/projectEdit.jsp" />
     </definition>
     <definition name="*/*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />

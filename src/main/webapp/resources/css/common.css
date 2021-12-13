@@ -230,3 +230,25 @@ padding: 1rem 1rem;
 .project-detail-contents-title:hover{
 	color:#666f77
 }
+
+.pagination{
+	display:inline-flex;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color:#666f77;
+	border-color:#666f77;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #666f77;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
