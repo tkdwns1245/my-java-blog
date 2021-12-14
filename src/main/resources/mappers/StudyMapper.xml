@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study">
+  <insert id="insert" >
+    INSERT INTO STUDY (
+    	title,
+    	introduce,
+    	category,
+    	titleImg,
+    	contents,
+    	createDate
+    ) VALUES (
+    	#{title},
+    	#{introduce},
+    	#{category},
+    	#{titleImg},
+    	#{contents},
+    	now()
+    )
+    <selectKey keyProperty="num" resultType="Integer">
+    SELECT LAST_INSERT_ID()
+  	</selectKey>
+  </insert>
+	<select id="getStudyList" resultType="studyVO">
+		SELECT * FROM STUDY
+		ORDER BY num DESC
+		LIMIT #{startList}, #{listSize}
+	</select>
+	<select id="getStudyListCnt" resultType="int">
+	 	SELECT count(*) as listCnt
+	 	FROM STUDY
+	</select>
+	<select id="getStudyDetail" resultType="studyVO">
+		SELECT *
+		FROM STUDY
+		WHERE num = #{num}
+	</select>
+	<update id="updateStudy" parameterType="studyVO">
+		UPDATE STUDY 
+	  	SET
+	    	title = #{title},
+	    	introduce = #{introduce},
+	    	category = #{category},
+	    	<if test="titleImg != null">
+	    		titleImg = #{titleImg},
+	    	</if>
+	    	contents = #{contents}
+		WHERE num = #{num}
+	</update>
+	<delete id="deleteStudy" parameterType="Integer">
+		DELETE
+		FROM STUDY
+		WHERE num = #{num}
+	</delete>
+	
+</mapper>

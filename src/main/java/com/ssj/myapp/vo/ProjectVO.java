@@ -15,6 +15,14 @@ public class ProjectVO {
 	private String projectImg;
 	private String contents;
 	private String forderName;
+	private Date createDate;
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 	public String getProjectName() {
 		return projectName;
 	}

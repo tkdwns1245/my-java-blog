@@ -1,34 +1,35 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <div class="body-contents-wrapper">
 	<form id="frm" enctype="multipart/form-data" method="POST" accept-charset="UTF-8">
+	<input type="hidden" name="num" value="${project.num}"/>
 	<div class="input-area row">
 		<div class="col-2">project name</div>
 		<div class="col-10">
-			 <input type="text" name="project_name" class="form-control">
+			 <input type="text" name="project_name" class="form-control" value="${project.projectName}">
 		</div>
 	</div>
 	<div class="input-area row">
 		<div class="col-2">introduce</div>
 		<div class="col-10">
-			 <input type="text" name="introduce" class="form-control">
+			 <input type="text" name="introduce" class="form-control" value="${project.introduce}">
 		</div>
 	</div>
 	<div class="input-area row">
 		<div class="col-2">members</div>
 		<div class="col-10">
-			 <input type="number" name="members" class="form-control">
+			 <input type="number" name="members" class="form-control" value="${project.num}">
 		</div>
 	</div>
 	<div class="input-area row">
 		<div class="col-2">period</div>
 		<div class="col-2">
-			 <input type="text" name="from" class="form-control datepicker">
+			 <input type="text" name="from" class="form-control datepicker" value="${project.fromDate}">
 		</div>
 		<div class="col-1" style="text-align:center">
 			 <span> ~ </span>
 		</div>
 		<div class="col-2">
-			 <input type="text" name="to" class="form-control datepicker">
+			 <input type="text" name="to" class="form-control datepicker" value="${project.toDate}">
 		</div>
 	</div>
 	<div class="input-area row">
@@ -56,14 +57,14 @@
 	<div class="input-area row">
 		<div class="col-2">project img</div>
 		<div class="col-3 custom-file" style="margin-left:15px;">
-			 <input type="file" class="custom-file-input" name="project_img" id="project_img" multiple="multiple">
+			 <input type="file" class="custom-file-input" name="project_img" id="project_img" multiple="multiple" value="${project.projectImg}">
 			 <label class="custom-file-label" for="project_img">Choose file</label>
 		</div>
 	</div>
 	<div class="input-area row">
 		<div class="col-2">contents</div>
 		<div class="col-10">
-			 <textarea id="summernote" name="contents"></textarea>
+			 <textarea id="summernote" name="contents">${project.contents}</textarea>
 		</div>
 	</div>
 	</form>
@@ -73,14 +74,25 @@
 	</div>
 </div>
 <script type="text/x-jquery-tmpl" id="skill-item">
-	<li class="skill-item" style="margin-right:20px; float:left;">
+	<li class="skill-item" style="margin-right:20px; float:left";>
 		<span>\${name}</span>
 		<a class="select-cancel" data-name="\${name}"><i class="fas fa-window-close"></i></a>
 	</li>
 </script>
 <script>
 $(document).ready(function () {
+	var skillsStr = "${project.skills}"
 	var skillList=[];
+	
+	var init = function(){
+		skillList = skillsStr.split(',');
+		
+		for(var i =0; i < skillList.length; i++){
+			skill = [{ name : skillList[i]}];
+			$("#skill-item").tmpl(skill).appendTo($("#skills-area"));
+		}
+	}
+	init();
 	$(".custom-file-input").on("change", function() {
 		  var fileName = $(this).val().split("\\").pop();
 		  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
@@ -117,7 +129,7 @@ $(document).ready(function () {
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/project/uploadSummernoteImageFile",
+			url : "/uploadSummernoteImageFile",
 			contentType : false,
 			enctype: 'multipart/form-data',
 			processData : false,
@@ -179,7 +191,7 @@ $(document).ready(function () {
     	$.ajax({
     		type: "POST",
     		enctype: '/multipart/form-data',
-    		url: '/project/writeProject',
+    		url: '/project/editProject',
     		data: formData,
     		processData: false,
     		contentType: false,
@@ -187,7 +199,7 @@ $(document).ready(function () {
     		success: function (result){
     			console.log(result);
     			if(result.result == "SUCCESS"){
-    				alert("success upload project!");
+    				alert("success edit project!");
     				window.location.href = "/project/projectList";
     			}
     		},

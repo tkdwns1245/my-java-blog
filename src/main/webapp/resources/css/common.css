@@ -134,11 +134,14 @@
 }
 .title-wrapper{
 	margin-top:100px;
-	margin-bottom: 150px;
+	margin-bottom: 100px;
 	text-align:center;
 }
 .title-wrapper:hover{
 	color:#666f77
+}
+.category-wrapper{
+	margin-bottom:50px;
 }
 .project-card .card-img-holder {
     height: 200px;
@@ -146,6 +149,21 @@
     vertical-align: middle;
 }
 .project-card {
+    border-radius: 0;
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,0.025);
+    position: relative;
+    height: 100%;
+}
+.card-item{
+	float: none; margin:0 auto;
+}
+.study-card .card-img-holder {
+    height: 200px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.study-card {
     border-radius: 0;
     background: #fafafa;
     border: 1px solid rgba(0,0,0,0.025);
@@ -172,6 +190,7 @@ padding: 1rem 1rem;
 	background-color:rgba(21,29,35,0.5);
 }
 .link-mask-text{
+	display: table;
 	margin-bottom:0.5rem;
 	color:#ffffff;
 }
@@ -209,6 +228,13 @@ padding: 1rem 1rem;
 	margin-bottom:2rem;
 }
 #skills-area{
+	list-style:none;
+}
+.category-item{
+	margin-right:20px;
+	float:left;
+}
+#category-area{
 	list-style:none;
 }
 .select-cancel:hover{

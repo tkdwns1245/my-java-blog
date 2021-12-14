@@ -82,7 +82,7 @@ public class ProjectController {
 	public ModelAndView projectWriteGet(Locale locale, Model model) {
 		logger.info("This is Project.", locale);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("project/projectWrite.page");
+		mav.setViewName("project/writeProject.page");
 		return mav;
 	}
 	@RequestMapping(value = "/project/projectDetail", method = RequestMethod.GET)
@@ -123,7 +123,7 @@ public class ProjectController {
 		model.addAttribute("project",project);
 		logger.info("This is ProjectEdit.", locale);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("project/projectEdit.page");
+		mav.setViewName("project/editProject.page");
 		return mav;
 	}
 	
@@ -245,7 +245,7 @@ public class ProjectController {
 		
 		return result;
 	}
-	@RequestMapping(value = "/uploadSummernoteImageFile", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/project/uploadSummernoteImageFile", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public HashMap<String, Object> uploadSummernoteImageFile(MultipartHttpServletRequest mtfRequest) {
 		

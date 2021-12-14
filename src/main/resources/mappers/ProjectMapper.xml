@@ -12,7 +12,8 @@
     	toDate,
     	skills,
     	projectImg,
-    	contents
+    	contents,
+    	createDate
     ) VALUES (
     	#{projectName},
     	#{introduce},
@@ -21,7 +22,8 @@
     	#{toDate},
     	#{skills},
     	#{projectImg},
-    	#{contents}
+    	#{contents},
+    	now()
     )
     <selectKey keyProperty="num" resultType="Integer">
     SELECT LAST_INSERT_ID()

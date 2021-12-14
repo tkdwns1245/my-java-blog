@@ -33,6 +33,12 @@
     <definition name="project/editProject.page" extends="no_header_base">
          <put-attribute name="body" value="/WEB-INF/views/project/projectEdit.jsp" />
     </definition>
+    <definition name="study/writeStudy.page" extends="no_header_base">
+         <put-attribute name="body" value="/WEB-INF/views/study/studyWrite.jsp" />
+    </definition>
+    <definition name="study/editStudy.page" extends="no_header_base">
+         <put-attribute name="body" value="/WEB-INF/views/study/studyEdit.jsp" />
+    </definition>
     <definition name="*/*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
