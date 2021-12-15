@@ -140,7 +140,7 @@
 .title-wrapper:hover{
 	color:#666f77
 }
-.category-wrapper{
+.content-wrapper{
 	margin-bottom:50px;
 }
 .project-card .card-img-holder {
@@ -234,8 +234,11 @@ padding: 1rem 1rem;
 	margin-right:20px;
 	float:left;
 }
-#category-area{
+#category-list{
 	list-style:none;
+}
+.search-area{
+	float:right;
 }
 .select-cancel:hover{
 	cursor:pointer;

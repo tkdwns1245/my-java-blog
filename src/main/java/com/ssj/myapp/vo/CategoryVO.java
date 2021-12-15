@@ -3,30 +3,37 @@ package com.ssj.myapp.vo;
 import java.util.Date;
 
 public class CategoryVO {
-	private int categoryId;
-	private String categoryName;
-	private Date regDate;
-	public int getCategoryId() {
-		return categoryId;
+	int num;
+	String type;
+	String name;
+	Date createDate;
+	public int getNum() {
+		return num;
 	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setNum(int num) {
+		this.num = num;
 	}
-	public String getCategoryName() {
-		return categoryName;
+	public String getType() {
+		return type;
 	}
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+	public void setType(String type) {
+		this.type = type;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public String getName() {
+		return name;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	@Override
 	public String toString() {
-		return "CategoryVO [categoryId=" + categoryId + ", categoryName=" + categoryName + ", regDate=" + regDate + "]";
+		return "CategoryVO [num=" + num + ", type=" + type + ", name=" + name + ", createDate=" + createDate + "]";
 	}
 	
 }

@@ -32,8 +32,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.StudyService;
+import com.ssj.myapp.vo.CategoryVO;
 import com.ssj.myapp.vo.Pagination;
-import com.ssj.myapp.vo.ProjectVO;
+import com.ssj.myapp.vo.SearchFilter;
 import com.ssj.myapp.vo.StudyVO;
 
 /**
@@ -74,6 +75,42 @@ public class StudyController {
 		categoriesMav.addObject("studyList", studyList);
 		categoriesMav.addObject("pagination", pagination);
 		return categoriesMav;
+	}
+	
+	@RequestMapping(value = "/study/filterStudyList", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> filterStudyListPOST(HttpSession session, HttpServletRequest request) {
+		
+		int listCnt;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		List<StudyVO> studyList = new ArrayList<StudyVO>();
+		Pagination pagination = new Pagination();
+		int page;
+		int range;
+		String keyword;
+		CategoryVO cvo = new CategoryVO();
+		SearchFilter sf = new SearchFilter();
+		
+		page = Integer.parseInt(request.getParameter("page"));
+		range = Integer.parseInt(request.getParameter("range"));
+		cvo.setName(request.getParameter("category"));
+		keyword = request.getParameter("keyword");
+		
+		sf.setCategory(cvo);
+		sf.setKeyword(keyword);
+		try {
+			listCnt = studyService.getStudyListCntByFilter(sf);
+			//Pagination 객체생성
+			pagination.pageInfo(page, range, listCnt);
+			studyList = studyService.selectStudyListByFilter(pagination,sf);
+			result.put("responseCode", "success");
+			result.put("data", studyList);
+			result.put("pagination",pagination);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result.put("responseCode", "error");
+		}
+		return result;
 	}
 	@RequestMapping(value = "/study/writeStudy", method = RequestMethod.GET)
 	public ModelAndView studyWriteGet(Locale locale, Model model) {

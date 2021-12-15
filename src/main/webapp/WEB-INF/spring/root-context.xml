@@ -20,7 +20,7 @@
 			value="classpath:mappers/*Mapper.xml"></property>
 	</bean>
 	<mybatis-spring:scan base-package="com.ssj.myapp.dao"/>
-	<bean name="dataSource"
+	<bean name="dataSourceSpied"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
@@ -28,6 +28,15 @@
 			value="jdbc:mysql://ssjdatabase.ceqqrjstuth3.ap-northeast-2.rds.amazonaws.com:3306/ssjHompage?useSSL=false&amp;serverTimezone=UTC"/>
 		<property name="username" value="ssjdbadmin"/>
 		<property name="password" value="tkdwnsDBAdmin"/>
+	</bean>
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource"> 
+	    <constructor-arg ref="dataSourceSpied" /> 
+	    <property name="logFormatter"> 
+	        <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter"> 
+	            <property name="loggingType" value="MULTI_LINE" /> 
+	            <property name="sqlPrefix" value="SQL : "/> 
+	        </bean> 
+	    </property> 
 	</bean>
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate">

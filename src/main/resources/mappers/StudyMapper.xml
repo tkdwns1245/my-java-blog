@@ -28,9 +28,50 @@
 		ORDER BY num DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
+	<select id="getStudyListByFilter" resultType="studyVO" parameterType="hashMap">
+		SELECT * FROM STUDY
+		<if test="category != 'All' or keyword != null">
+		WHERE
+		</if>
+		<if test="category != 'All'">
+		category = #{category}  
+		</if>
+		<if test="category == 'All' and keyword != null">
+		title like CONCAT('%',#{keyword},'%')
+		OR contents like CONCAT('%',#{keyword},'%')
+		OR introduce like CONCAT('%',#{keyword},'%')
+		</if>
+		<if test="category != 'All' and keyword != null">
+		AND title like CONCAT('%',#{keyword},'%')
+		OR contents like CONCAT('%',#{keyword},'%')
+		OR introduce like CONCAT('%',#{keyword},'%')
+		</if>
+		ORDER BY num DESC
+		LIMIT #{startList}, #{listSize}
+	</select>
 	<select id="getStudyListCnt" resultType="int">
 	 	SELECT count(*) as listCnt
 	 	FROM STUDY
+	</select>
+	<select id="getStudyListCntByFilter" parameterType="hashMap" resultType="int">
+	 	SELECT count(*) as listCnt
+	 	FROM STUDY
+	 	<if test="category != 'All' or keyword != null">
+	 	WHERE
+	 	</if>
+	 	<if test="category != 'All'">
+	 	category = #{category}
+	 	</if>
+	 	<if test="category == 'All' and keyword != null">
+		title like CONCAT('%',#{keyword},'%')
+		OR contents like CONCAT('%',#{keyword},'%')
+		OR introduce like CONCAT('%',#{keyword},'%')
+		</if>
+		<if test="category != 'All' and keyword != null">
+		AND title like CONCAT('%',#{keyword},'%')
+		OR contents like CONCAT('%',#{keyword},'%')
+		OR introduce like CONCAT('%',#{keyword},'%')
+		</if>
 	</select>
 	<select id="getStudyDetail" resultType="studyVO">
 		SELECT *

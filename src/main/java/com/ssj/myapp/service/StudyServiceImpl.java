@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ssj.myapp.dao.StudyDAO;
 import com.ssj.myapp.vo.Pagination;
+import com.ssj.myapp.vo.SearchFilter;
 import com.ssj.myapp.vo.StudyVO;
 
 @Service("studyService")
@@ -27,10 +28,19 @@ public class StudyServiceImpl implements StudyService {
 	public List<StudyVO> selectStudyList(Pagination p) throws Exception {
 		return studyDao.selectStudyList(p);
 	}
-
+	
+	@Override
+	public List<StudyVO> selectStudyListByFilter(Pagination p,SearchFilter filter) throws Exception{
+		return studyDao.selectStudyListByFilter(p,filter);
+	}
+	
 	@Override
 	public int getStudyListCnt() throws Exception {
 		return studyDao.getStudyListCnt();
+	}
+	@Override
+	public int getStudyListCntByFilter(SearchFilter filter) throws Exception {
+		return studyDao.getStudyListCntByFilter(filter);
 	}
 
 	@Override
