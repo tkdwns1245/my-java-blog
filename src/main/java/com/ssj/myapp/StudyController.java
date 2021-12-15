@@ -13,6 +13,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -156,5 +157,108 @@ public class StudyController {
 			}
 			
 			return result;
+	}
+	
+	@RequestMapping(value = "/study/studyDetail", method = RequestMethod.GET)
+	public ModelAndView studyDetail(Locale locale, Model model,
+			@RequestParam(required = false, defaultValue = "1") int num) {
+		StudyVO svo = new StudyVO();
+		StudyVO study = new StudyVO();
+		svo.setNum(num);
+		try {
+			study = studyService.getStudyDetail(svo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("study",study);
+		logger.info("This is Study.", locale);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("study/studyDetail.page");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/study/editStudy", method = RequestMethod.GET)
+	public ModelAndView studyEdit(Locale locale, Model model,
+			@RequestParam(required = false, defaultValue = "1") int num) {
+		StudyVO pvo = new StudyVO();
+		StudyVO study = new StudyVO();
+		pvo.setNum(num);
+		try {
+			study = studyService.getStudyDetail(pvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("study",study);
+		logger.info("This is StudyEdit.", locale);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("study/editStudy.page");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/study/editStudy", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> studyEditPost(HttpSession session, MultipartHttpServletRequest mtfRequest) throws UnsupportedEncodingException {
+		SimpleDateFormat sdf = new SimpleDateFormat ("yyyyMMddHHmmss");
+		Date date = new Date();
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		String PATH = resourcesPath+"\\study\\";
+		String fileName = "";
+		String fileFullName = "";
+		String fileType = "";
+		String contents = mtfRequest.getParameter("contents");
+		String title = mtfRequest.getParameter("title");
+		String introduce = mtfRequest.getParameter("introduce");
+		String category = mtfRequest.getParameter("category");
+		StudyVO svo = new StudyVO();
+		svo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
+		svo.setTitle(new String(title.getBytes("8859_1"), "utf-8"));
+		svo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
+		svo.setCategory(new String(category.getBytes("8859_1"), "utf-8"));
+		svo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		String fileUploadTime = sdf.format(date);
+		try {
+			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");
+			for(int i = 0; i < mpf.size(); i++) {
+				File file = new File(PATH + mpf.get(i).getOriginalFilename());
+				fileFullName = mpf.get(i).getOriginalFilename();
+				fileName = FilenameUtils.getBaseName(mpf.get(i).getOriginalFilename());
+				if(!fileName.equals("")) {
+					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
+					file = new File(PATH + fileName + "_" + fileUploadTime + "." + fileType);
+					svo.setTitleImg(fileName + "_" + fileUploadTime + "." + fileType);
+					logger.info("---------------File Upload Start -------------");
+					logger.info("FILE : " + file.getAbsolutePath());
+					logger.info("SIZE : " + mpf.get(i).getSize() + "bytes");
+					logger.info("---------------File Upload End ---------------");
+					mpf.get(i).transferTo(file);
+				}
+			}
+			studyService.editStudy(svo);
+			result.put("result", "SUCCESS");
+			} catch(Exception e) {
+				e.printStackTrace();
+				result.put("result", "ERROR");
+			}
+			
+			return result;
+	}
+	@RequestMapping(value = "/study/deleteStudy", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> deleteStudyPost(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		int num;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		num = Integer.parseInt(request.getParameter("num"));
+		if(!request.getParameter("num").equals("")) {
+			try {
+				studyService.deleteStudy(num);
+				result.put("result", "SUCCESS");
+			} catch(Exception e) {
+				e.printStackTrace();
+				result.put("result", "ERROR");
+			}
+		}else {
+			result.put("result", "ERROR");
+		}
+		
+		return result;
 	}
 }

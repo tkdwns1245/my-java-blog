@@ -104,7 +104,7 @@ $(document).ready(function () {
     $("#submit-btn").on("click",function(){
     	var formData = new FormData(document.getElementById("frm"));
     	if($("input[name=title]").val() == ""){
-    		alert("insert project name");
+    		alert("insert title");
     		return;
     	}else if($("input[name=introduce]").val() == ""){
     		alert("insert introduce");
