@@ -170,6 +170,18 @@
     position: relative;
     height: 100%;
 }
+.life-card .card-img-holder {
+    height: 200px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.life-card {
+    border-radius: 0;
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,0.025);
+    position: relative;
+    height: 100%;
+}
 .card-img{
 	height:100%;
 }

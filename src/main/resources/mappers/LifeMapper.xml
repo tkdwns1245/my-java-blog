@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="study">
+<mapper namespace="life">
   <insert id="insert" >
-    INSERT INTO STUDY (
+    INSERT INTO LIFE (
     	title,
     	introduce,
     	category,
@@ -23,13 +23,13 @@
     SELECT LAST_INSERT_ID()
   	</selectKey>
   </insert>
-	<select id="getStudyList" resultType="studyVO">
-		SELECT * FROM STUDY
+	<select id="getLifeList" resultType="lifeVO">
+		SELECT * FROM LIFE
 		ORDER BY num DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
-	<select id="getStudyListByFilter" resultType="studyVO" parameterType="hashMap">
-		SELECT * FROM STUDY
+	<select id="getLifeListByFilter" resultType="lifeVO" parameterType="hashMap">
+		SELECT * FROM LIFE
 		<if test="category != 'All' or keyword != null">
 		WHERE
 		</if>
@@ -49,13 +49,13 @@
 		ORDER BY num DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
-	<select id="getStudyListCnt" resultType="int">
+	<select id="getLifeListCnt" resultType="int">
 	 	SELECT count(*) as listCnt
-	 	FROM STUDY
+	 	FROM LIFE
 	</select>
-	<select id="getStudyListCntByFilter" parameterType="hashMap" resultType="int">
+	<select id="getLifeListCntByFilter" parameterType="hashMap" resultType="int">
 	 	SELECT count(*) as listCnt
-	 	FROM STUDY
+	 	FROM LIFE
 	 	<if test="category != 'All' or keyword != null">
 	 	WHERE
 	 	</if>
@@ -73,13 +73,13 @@
 		OR introduce like CONCAT('%',#{keyword},'%'))
 		</if>
 	</select>
-	<select id="getStudyDetail" resultType="studyVO">
+	<select id="getLifeDetail" resultType="lifeVO">
 		SELECT *
-		FROM STUDY
+		FROM LIFE
 		WHERE num = #{num}
 	</select>
-	<update id="updateStudy" parameterType="studyVO">
-		UPDATE STUDY 
+	<update id="updateLife" parameterType="lifeVO">
+		UPDATE LIFE 
 	  	SET
 	    	title = #{title},
 	    	introduce = #{introduce},
@@ -90,9 +90,9 @@
 	    	contents = #{contents}
 		WHERE num = #{num}
 	</update>
-	<delete id="deleteStudy" parameterType="Integer">
+	<delete id="deleteLife" parameterType="Integer">
 		DELETE
-		FROM STUDY
+		FROM LIFE
 		WHERE num = #{num}
 	</delete>
 	

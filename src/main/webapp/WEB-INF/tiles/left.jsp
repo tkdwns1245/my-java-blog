@@ -7,10 +7,11 @@
 	<div class="menu-container">
 		<ul class="menu-list">
 			<li class="menu-item"><a class="menu-a" href="/">Home</a></li>
+			<li class="menu-item"><a class="menu-a" href="/resume">Resume</a></li>
 			<li class="menu-item"><a class="menu-a" href="/study/studyList">Study</a></li>
 			<!-- <li class="menu-item"><a href="/archives">ARCHIVES</a></li> -->
 			<li class="menu-item"><a class="menu-a" href="/project/projectList">Project</a></li>
-			<li class="menu-item"><a class="menu-a" href="/culture">Culture</a></li>
+			<li class="menu-item"><a class="menu-a" href="/life/lifeList">Life</a></li>
 			<!-- <li class="menu-item"><a href="/about">ABOUT</a></li> -->
 			<li class="menu-item"><a class="menu-a" href="/manage">Manage</a></li>
 		</ul>

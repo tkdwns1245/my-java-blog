@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <div class="body-contents-wrapper">
 	<div class="title-wrapper">
-		<h1>Study</h2>
+		<h1>Life</h2>
 	</div>
 	<div class="content-wrapper row">
 		<div class="category-area col-8">
@@ -10,20 +10,14 @@
 				<li class="category-item" data-category="All">
 					All
 				</li>
-				<li class="category-item" data-category="Java">
-					Java
+				<li class="category-item" data-category="Book">
+					Book
 				</li>
-				<li class="category-item" data-category="Php">
-					Php
+				<li class="category-item" data-category="Movie">
+					Movie
 				</li>
-				<li class="category-item" data-category="Python">
-					Python
-				</li>
-				<li class="category-item" data-category="Javascript">
-					Javascript
-				</li>
-				<li class="category-item" data-category="Node.js">
-					Node.js
+				<li class="category-item" data-category="Life">
+					Life
 				</li>
 			</ul>
 		</div>
@@ -38,28 +32,28 @@
 			</div>
 		</div>
 	</div>
-	<div class="study-wrapper row" style="float: none; margin:100 auto;" id="studyList">
-		<c:forEach var="study" items="${studyList}" varStatus="status">
+	<div class="life-wrapper row" style="float: none; margin:100 auto;" id="lifeList">
+		<c:forEach var="life" items="${lifeList}" varStatus="status">
 		<div class="card-item col-md-10 mb-5">
-			<div class="study-card">
+			<div class="life-card">
 				<div class="row">
 					<div class=" col-12 col-xl-3 card-img-holder">
-						<img src="/resources/study/${study.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+						<img src="/resources/life/${life.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
 					</div>
 					<div class="col-xl-9">
 						<div class="card-body">
 							<div class="card-title">
-								<span>${study.title}</span>
+								<span>${life.title}</span>
 							</div>
 							<div class="card-summary">
-								${study.introduce}
+								${life.introduce}
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="link-mask row">
 					<div class="link-mask-text" style="float: none; margin:auto auto;">
-						<a class="btn btn-primary" href="/study/studyDetail?num=${study.num}">View Posts</a>
+						<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
 					</div>
 				</div>
 			</div>
@@ -80,15 +74,15 @@
 		</ul>
 	</div>
 	<div style="margin-top:50px;">
-		<a class="btn btn-primary" style="float:right;" href="/study/writeStudy">write</a>
+		<a class="btn btn-primary" style="float:right;" href="/life/writeLife">write</a>
 	</div>
 </div>
-<script type="text/x-jquery-tmpl" id="study-item">
+<script type="text/x-jquery-tmpl" id="life-item">
 		<div class="card-item col-md-10 mb-5">
-			<div class="study-card">
+			<div class="life-card">
 				<div class="row">
 					<div class=" col-12 col-xl-3 card-img-holder">
-						<img src="/resources/study/\${titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+						<img src="/resources/life/\${titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
 					</div>
 					<div class="col-xl-9">
 						<div class="card-body">
@@ -103,7 +97,7 @@
 				</div>
 				<div class="link-mask row">
 					<div class="link-mask-text" style="float: none; margin:auto auto;">
-						<a class="btn btn-primary" href="/study/studyDetail?num=\${num}">View Posts</a>
+						<a class="btn btn-primary" href="/life/lifeDetail?num=\${num}">View Posts</a>
 					</div>
 				</div>
 			</div>
@@ -123,21 +117,21 @@ $(document).on("mouseout",".card-item",function () {
 })
 
 $(".category-item").on( "click", function() {
-	var studyListHtml ="";
+	var lifeListHtml ="";
 	category = $(this).data("category");
-	setStudyList(category,keyword,1,1);
+	setLifeList(category,keyword,1,1);
 });
 
 /*
-1. load study list by category and page and range
-2. append studyList at studyList tag
+1. load life list by category and page and range
+2. append lifeList at lifeList tag
 3. append pagination Items at paginationBox tag
 */
-var setStudyList = function(category,keyword,page,range){
+var setLifeList = function(category,keyword,page,range){
 	var paginationItem = "";
 	$.ajax({
 		type: "POST",
-		url: '/study/filterStudyList',
+		url: '/life/filterLifeList',
 		data: {
 			"category": category,
 			"keyword" : keyword,
@@ -147,9 +141,9 @@ var setStudyList = function(category,keyword,page,range){
 		success: function (result){
 			if(result.responseCode == "success"){
 				var pagination;
-				$("#studyList").empty();
+				$("#lifeList").empty();
 				for(var i =0; i <result.data.length; i++){
-					$("#studyList").append($("#study-item").tmpl(result.data[i]));
+					$("#lifeList").append($("#life-item").tmpl(result.data[i]));
 				}
 				
 				/*
@@ -181,16 +175,16 @@ var setStudyList = function(category,keyword,page,range){
 function fn_next(page, range, rangeSize) {
 	var page = parseInt((range * rangeSize)) + 1;
 	var range = parseInt(range) + 1;
-	setStudyList(category,keyword,page,range);
+	setLifeList(category,keyword,page,range);
 }
 function fn_pagination(page, range, rangeSize) {
-	setStudyList(category,keyword,page,range);
+	setLifeList(category,keyword,page,range);
 }
 
 $("#searchInput").on("change keyup paste",function(){
 	var searchKeyword = $(this).val();
 	keyword = searchKeyword;
-	setStudyList(category,searchKeyword,1,1)
+	setLifeList(category,searchKeyword,1,1)
 })
 
 </script>
