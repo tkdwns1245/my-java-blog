@@ -88,7 +88,7 @@
 }
 
 .top-bar-wrapper{
-    height: 12rem;
+    height: 100%;
     top: 0;
     right: 0;
     transition: top 0.2s ease-in-out;
@@ -123,14 +123,27 @@
 
 .header-word{
 	position:relative;
-	top:50px;
-	left:150px;
+	left:50px;
+}
+.header-motto{
 	font-size:3rem;
 	font-family : ubuntu-title;
 	width:400px;
 }
-.header-word:hover{
+.header-motto:hover{
 	color:#666f77;	
+}
+.header-introduce{
+	white-space:pre;
+	text-align:left;
+	margin-top:-20px;
+}
+.home-btn-area{
+	margin-left:30px;
+}
+.home-btn-area .btn{
+	font-size:0.7rem;
+	margin-right:10px;
 }
 .title-wrapper{
 	margin-top:100px;
@@ -138,6 +151,16 @@
 	text-align:center;
 }
 .title-wrapper:hover{
+	color:#666f77
+}
+.title-area{
+	margin-top:100px;
+	margin-bottom: 100px;
+}
+.skills-area{
+	margin-bottom: 100px;
+}
+.title-area:hover{
 	color:#666f77
 }
 .content-wrapper{
@@ -157,6 +180,10 @@
 }
 .card-item{
 	float: none; margin:0 auto;
+	display:inline-block;
+}
+.card-wrapper{
+	text-align:center;
 }
 .study-card .card-img-holder {
     height: 200px;
