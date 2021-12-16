@@ -33,32 +33,62 @@
 		</div>
 	</div>
 	<div class="life-wrapper row" style="float: none; margin:100 auto;" id="lifeList">
-		<c:forEach var="life" items="${lifeList}" varStatus="status">
-		<div class="card-item col-md-10 mb-5">
-			<div class="life-card">
-				<div class="row">
-					<div class=" col-12 col-xl-3 card-img-holder">
-						<img src="/resources/life/${life.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
-					</div>
-					<div class="col-xl-9">
-						<div class="card-body">
-							<div class="card-title">
-								<span>${life.title}</span>
+		<div class="card-wrapper row" style="float: left; margin:100 auto;">
+			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="1" end="4">
+			<div class="life-card-item col-md-3 mb-5 col-3">
+				<div class="life-card">
+					<div class="row">
+						<div class=" col-12 col-xl-12 card-img-holder">
+							<img src="/resources/life/${life.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+						</div>
+						<div class="col-xl-12">
+							<div class="card-body">
+								<div class="card-title">
+									<span>${life.title}</span>
+								</div>
+								<div class="card-summary">
+									${life.introduce}
+								</div>
 							</div>
-							<div class="card-summary">
-								${life.introduce}
+						</div>
+					</div>
+					<div class="link-mask row">
+						<div class="link-mask-text" style="float: none; margin:auto auto;">
+							<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			</c:forEach>
+		</div>
+		<div class="card-wrapper row" style="float: left; margin:100 auto;">
+			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="5" end="8">
+				<div class="life-card-item col-md-3 mb-5 col-3">
+					<div class="life-card">
+						<div class="row">
+							<div class=" col-12 col-xl-12 card-img-holder">
+								<img src="/resources/life/${life.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+							</div>
+							<div class="col-xl-12">
+								<div class="card-body">
+									<div class="card-title">
+										<span>${life.title}</span>
+									</div>
+									<div class="card-summary">
+										${life.introduce}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="link-mask row">
+							<div class="link-mask-text" style="float: none; margin:auto auto;">
+								<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="link-mask row">
-					<div class="link-mask-text" style="float: none; margin:auto auto;">
-						<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
-					</div>
-				</div>
-			</div>
+				</c:forEach>
 		</div>
-		</c:forEach>
 	</div>
 	<div id="paginationBox" style="text-align:center;">
 		<ul class="pagination">
@@ -106,12 +136,12 @@
 <script>
 var category = "All";	
 var keyword = "";
-$(document).on("mouseover",".card-item",function () {
+$(document).on("mouseover",".life-card-item",function () {
     $(this).find('.link-mask').css("visibility","visible");
     $(this).find('.link-mask-text').css("display","block");
 })
 
-$(document).on("mouseout",".card-item",function () {
+$(document).on("mouseout",".life-card-item",function () {
 	$(this).find('.link-mask').css("visibility","hidden");
 	$(this).find('.link-mask-text').css("display","none");
 })

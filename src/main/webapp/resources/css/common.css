@@ -183,6 +183,7 @@
 	display:inline-block;
 }
 .card-wrapper{
+	width:100%;
 	text-align:center;
 }
 .study-card .card-img-holder {
@@ -208,6 +209,9 @@
     border: 1px solid rgba(0,0,0,0.025);
     position: relative;
     height: 100%;
+}
+.life-card-item{
+	display:inline-block;
 }
 .card-img{
 	height:100%;
