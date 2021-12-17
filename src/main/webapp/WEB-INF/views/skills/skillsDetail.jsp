@@ -14,6 +14,16 @@
 					<div>
 						${skill.summary}
 					</div>
+					<div>
+						<div style="float:left">
+							project link : 
+						</div>
+						<div style="display:inline-block; margin-left:10px;">
+							<c:forEach var="project" items="${skill.projectList}" varStatus="status">
+							<div><a href="/project/projectDetail?=${project.num}">${project.projectName}</a></div>
+							</c:forEach>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-12">
