@@ -1,6 +1,6 @@
 package com.ssj.myapp.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class StudyVO {
 	private int num;
@@ -9,7 +9,7 @@ public class StudyVO {
 	private String category;
 	private String titleImg;
 	private String contents;
-	private Date createDate;
+	private Timestamp createDate;
 	
 	public int getNum() {
 		return num;
@@ -47,10 +47,10 @@ public class StudyVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Date getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 	@Override

@@ -29,6 +29,11 @@ public class StudyDAOImpl implements StudyDAO {
 	}
 	
 	@Override
+	public List<StudyVO> selectRecentStudyList(){
+		return sqlSession.selectList("study.getRecentStudyList");
+	}
+	
+	@Override
 	public List<StudyVO> selectStudyListByFilter(Pagination p,SearchFilter filter) {
 		Map map = new HashMap();
 		map.put("startList", p.getStartList());

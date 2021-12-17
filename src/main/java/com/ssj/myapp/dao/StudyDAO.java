@@ -12,6 +12,7 @@ public interface StudyDAO {
 	public void updateStudy(StudyVO vo);
 	public void deleteStudy(int num);
 	public List<StudyVO> selectStudyList(Pagination p);
+	public List<StudyVO> selectRecentStudyList();
 	public List<StudyVO> selectStudyListByFilter(Pagination p,SearchFilter filter);
 	public int getStudyListCnt();
 	public int getStudyListCntByFilter(SearchFilter filter);

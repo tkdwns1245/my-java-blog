@@ -1,6 +1,6 @@
 package com.ssj.myapp.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class SkillVO {
@@ -9,7 +9,7 @@ public class SkillVO {
 	String summary;
 	String skillIcon;
 	String contents;
-	Date createDate;
+	Timestamp createDate;
 	List<ProjectVO> projectList;
 	
 	public List<ProjectVO> getProjectList() {
@@ -48,10 +48,10 @@ public class SkillVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Date getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 	

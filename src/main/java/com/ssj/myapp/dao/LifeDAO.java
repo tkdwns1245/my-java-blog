@@ -11,6 +11,7 @@ public interface LifeDAO {
 	public void updateLife(LifeVO vo);
 	public void deleteLife(int num);
 	public List<LifeVO> selectLifeList(Pagination p);
+	public List<LifeVO> selectRecentLifeList();
 	public List<LifeVO> selectLifeListByFilter(Pagination p,SearchFilter filter);
 	public int getLifeListCnt();
 	public int getLifeListCntByFilter(SearchFilter filter);

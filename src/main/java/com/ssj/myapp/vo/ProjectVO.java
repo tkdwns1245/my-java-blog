@@ -15,12 +15,12 @@ public class ProjectVO {
 	private String projectImg;
 	private String contents;
 	private String forderName;
-	private Date createDate;
+	private Timestamp createDate;
 	
-	public Date getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 	public String getProjectName() {

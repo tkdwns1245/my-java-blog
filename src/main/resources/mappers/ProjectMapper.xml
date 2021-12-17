@@ -34,6 +34,11 @@
 		ORDER BY num DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
+	<select id="recent_project_list" resultType="projectVO">
+		SELECT * FROM PROJECT
+		ORDER BY createDate DESC
+		LIMIT 4
+	</select>
 	<select id="getProjectListAll" resultType="projectVO">
 		SELECT * FROM PROJECT
 		ORDER BY num DESC

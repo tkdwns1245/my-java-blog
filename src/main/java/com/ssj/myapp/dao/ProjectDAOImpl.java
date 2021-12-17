@@ -26,6 +26,11 @@ public class ProjectDAOImpl implements ProjectDAO {
 	}
 	
 	@Override
+	public List<ProjectVO> selectRecentProjectList() {
+		return sqlSession.selectList("project.recent_project_list");
+	}
+	
+	@Override
 	public List<ProjectVO> getProjectListAll(){
 		return sqlSession.selectList("project.getProjectListAll");
 	}

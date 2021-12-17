@@ -27,7 +27,10 @@ public class LifeDAOImpl implements LifeDAO {
 	public List<LifeVO> selectLifeList(Pagination p) {
 		return sqlSession.selectList("life.getLifeList",p);
 	}
-	
+	@Override
+	public List<LifeVO> selectRecentLifeList() {
+		return sqlSession.selectList("life.getRecentLifeList");
+	}
 	@Override
 	public List<LifeVO> selectLifeListByFilter(Pagination p,SearchFilter filter) {
 		Map map = new HashMap();

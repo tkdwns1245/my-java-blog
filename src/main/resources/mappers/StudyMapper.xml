@@ -28,6 +28,11 @@
 		ORDER BY num DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
+	<select id="getRecentStudyList" resultType="studyVO">
+		SELECT * FROM STUDY
+		ORDER BY createDate DESC
+		LIMIT 4
+	</select>
 	<select id="getStudyListByFilter" resultType="studyVO" parameterType="hashMap">
 		SELECT * FROM STUDY
 		<if test="category != 'All' or keyword != null">

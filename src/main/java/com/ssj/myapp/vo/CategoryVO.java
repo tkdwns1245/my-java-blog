@@ -1,12 +1,13 @@
 package com.ssj.myapp.vo;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class CategoryVO {
 	int num;
 	String type;
 	String name;
-	Date createDate;
+	Timestamp createDate;
 	public int getNum() {
 		return num;
 	}
@@ -25,10 +26,10 @@ public class CategoryVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 	@Override

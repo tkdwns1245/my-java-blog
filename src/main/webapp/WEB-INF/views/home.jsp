@@ -83,32 +83,32 @@ opensource 모듈을 활용 차트 그리기
 			</div>
 			<div class="life-wrapper row" style="float: none; margin:100 auto;" id="lifeList">
 		<div class="card-wrapper row" style="float: left; margin:100 auto;">
-		<%for(int i =0; i <3; i++){ %>
+		<c:forEach var="recentPost" items="${recentPostList}" begin="0" end="3" varStatus="status">
 		<div class="life-card-item col-md-3 mb-5 col-3">
 			<div class="life-card">
 				<div class="row">
 					<div class=" col-12 col-xl-12 card-img-holder">
-						<img src="/resources/life/20211122_181636_20211216161833.png" class="card-img" alt="image" style="position: relative;left: -20px;">
+						<img src="/resources/${recentPost.type}/${recentPost.postImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
 					</div>
 					<div class="col-xl-12">
 						<div class="card-body">
 							<div class="card-title">
-								<span>asdfvvv</span>
+								<span>${recentPost.postName}</span>
 							</div>
 							<div class="card-summary">
-								ggdfgdfgdfgertw345wergsfgw456yerthstghdfgh
+								${recentPost.introduce}
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="link-mask row">
 					<div class="link-mask-text" style="float: none; margin:auto auto;">
-						<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
+						<a class="btn btn-primary" href="/${recentPost.type}/${recentPost.type}Detail?num=${recentPost.num}">View Posts</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		<%} %>
+		</c:forEach>
 		</div>
 		</div>
 	</div>

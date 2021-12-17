@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +34,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.LifeService;
 import com.ssj.myapp.service.ProjectService;
+import com.ssj.myapp.service.RecentPostService;
 import com.ssj.myapp.service.SkillsService;
 import com.ssj.myapp.service.StudyService;
+import com.ssj.myapp.vo.Pagination;
+import com.ssj.myapp.vo.RecentPostVO;
 import com.ssj.myapp.vo.SkillVO;
 
 /**
@@ -50,6 +54,9 @@ public class HomeController {
 	SkillsService skillsService;
 	@Inject
 	LifeService lifeService;
+	@Inject
+	RecentPostService recentPostService;
+	
 	@Value("${resourcesPath}")
 	private String resourcesPath;
 	
@@ -59,13 +66,31 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model
+			,@RequestParam(required = false, defaultValue = "1") int skillsPage
+			, @RequestParam(required = false, defaultValue = "1") int skillsRange) {
 		logger.info("This is Home.", locale);
+		int skillsListCnt;
+		List<SkillVO> skillsList = new ArrayList<SkillVO>();
+		List<RecentPostVO> recentPostList = new ArrayList<RecentPostVO>();
+		Pagination pagination = new Pagination();
+		try {
+			skillsListCnt= skillsService.getSkillsListCnt();
+			//Pagination 객체생성
+			pagination.pageInfo(skillsPage, skillsRange, skillsListCnt);
+			pagination.setListSize(8);
+			skillsList = skillsService.selectSkillsList(pagination);
+			recentPostList = recentPostService.selectRecentPostList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
 		
+		model.addAttribute("skillsList", skillsList );
+		model.addAttribute("recentPostList", recentPostList );
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home.page";
