@@ -10,6 +10,7 @@ public interface ProjectDAO {
 	public void updateProject(ProjectVO vo);
 	public void deleteProject(int num);
 	public List<ProjectVO> selectProjectList(Pagination p);
+	public List<ProjectVO> getProjectListAll();
 	public int getProjectListCnt();
 	public ProjectVO getProjectDetail(ProjectVO vo);
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="skills">
+  <insert id="insert" >
+    INSERT INTO SKILLS (
+    	skillName,
+    	summary,
+    	skillIcon,
+    	contents,
+    	createDate
+    ) VALUES (
+    	#{skillName},
+    	#{summary},
+    	#{skillIcon},
+    	#{contents},
+    	now()
+    )
+    <selectKey keyProperty="num" resultType="Integer">
+    SELECT LAST_INSERT_ID()
+  	</selectKey>
+  </insert>
+	<select id="getSkillsList" resultType="skillVO">
+		SELECT * FROM SKILLS
+		ORDER BY num DESC
+		LIMIT #{startList}, #{listSize}
+	</select>
+	<select id="getSkillsListCnt" resultType="int">
+	 	SELECT count(*) as listCnt
+	 	FROM SKILLS
+	</select>
+	<select id="getSkillsDetail" resultType="skillVO">
+		SELECT *
+		FROM SKILLS
+		WHERE num = #{num}
+	</select>
+	<update id="updateSkills" parameterType="skillVO">
+		UPDATE SKILLS 
+	  	SET
+	    	skillName = #{skillName},
+	    	summary = #{summary},
+	    	<if test="skillIcon != null">
+	    		skillIcon = #{skillIcon},
+	    	</if>
+	    	contents = #{contents}
+		WHERE num = #{num}
+	</update>
+	<delete id="deleteSkills" parameterType="Integer">
+		DELETE
+		FROM SKILLS
+		WHERE num = #{num}
+	</delete>
+	
+</mapper>

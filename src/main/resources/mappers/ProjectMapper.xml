@@ -34,6 +34,10 @@
 		ORDER BY num DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
+	<select id="getProjectListAll" resultType="projectVO">
+		SELECT * FROM PROJECT
+		ORDER BY num DESC
+	</select>
 	<select id="getProjectListCnt" resultType="int">
 	 	SELECT count(*) as listCnt
 	 	FROM PROJECT

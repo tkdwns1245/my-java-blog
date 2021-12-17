@@ -24,6 +24,12 @@ public class ProjectDAOImpl implements ProjectDAO {
 	public List<ProjectVO> selectProjectList(Pagination p) {
 		return sqlSession.selectList("project.project_list",p);
 	}
+	
+	@Override
+	public List<ProjectVO> getProjectListAll(){
+		return sqlSession.selectList("project.getProjectListAll");
+	}
+	
 	@Override
 	public int getProjectListCnt() {
 		return sqlSession.selectOne("project.getProjectListCnt");
