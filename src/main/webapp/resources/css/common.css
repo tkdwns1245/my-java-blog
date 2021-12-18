@@ -39,9 +39,26 @@
     right: 100px;
     margin: auto;
 }
+.resume-profile-img-container{
+	width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 70%;
+    vertical-align: middle;
+    float:left;
+    right: 100px;
+    margin: auto;
+}
+
 .profile-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.resume-profile-img {
+    width: 100%;
+    position: relative;
     object-fit: cover;
     display: block;
 }
@@ -165,6 +182,12 @@
 }
 .content-wrapper{
 	margin-bottom:50px;
+}
+.resume-wrapper{
+	border: 1px solid rgba(0,0,0,0.025);
+	box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+	max-width:1140px;
+	padding:3rem;
 }
 .project-card .card-img-holder {
     height: 200px;

@@ -88,7 +88,7 @@ opensource 모듈을 활용 차트 그리기
 			<div class="life-card">
 				<div class="row">
 					<div class=" col-12 col-xl-12 card-img-holder">
-						<img src="/resources/${recentPost.type}/${recentPost.postImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+						<img src="/resources/${recentPost.type}/${recentPost.postImg}" class="card-img" alt="image" >
 					</div>
 					<div class="col-xl-12">
 						<div class="card-body">
@@ -101,7 +101,7 @@ opensource 모듈을 활용 차트 그리기
 						</div>
 					</div>
 				</div>
-				<div class="link-mask row">
+				<div class="link-mask row" style="margin-left:0px; margin-right:0px;">
 					<div class="link-mask-text" style="float: none; margin:auto auto;">
 						<a class="btn btn-primary" href="/${recentPost.type}/${recentPost.type}Detail?num=${recentPost.num}">View Posts</a>
 					</div>
