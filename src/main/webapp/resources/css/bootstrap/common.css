@@ -104,7 +104,10 @@
     padding-right: 0;
 	margin-left: 260px;
 	
-	}
+}
+.manage-container{
+	width:100%;
+}
 .footer{
     bottom: 0;
     padding: 0 1rem;

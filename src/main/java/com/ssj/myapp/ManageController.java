@@ -29,18 +29,31 @@ public class ManageController {
 	 */
 	@RequestMapping(value = "/manage", method = RequestMethod.GET)
 	public ModelAndView manage(Locale locale, Model model) {
-		logger.info("This is Mange.", locale);
+		logger.info("This is Manage.", locale);
 		ModelAndView categoriesMav = new ModelAndView();
 		categoriesMav.setViewName("manage/manage.page");
 		categoriesMav.addObject("title","manage");
 		return categoriesMav;
 	}
-	@RequestMapping(value = "/manage/register/{manageType}", method = RequestMethod.GET)
-	public ModelAndView boardReg(@PathVariable("manageType") String manageType,Locale locale, Model model) {
-		logger.info("This is register "+ manageType, locale);
+	@RequestMapping(value = "/manage/category/study", method = RequestMethod.GET)
+	public ModelAndView manageStudyCategoryGET(Locale locale, Model model) {
+		logger.info("This is manage study category page.", locale);
 		ModelAndView categoriesMav = new ModelAndView();
-		categoriesMav.setViewName("manage/"+ manageType +"/"+manageType+"_reg.page");
-		categoriesMav.addObject("title",manageType + " register");
+		categoriesMav.setViewName("manage/studyCategory.page");
+		return categoriesMav;
+	}
+	@RequestMapping(value = "/manage/category/life", method = RequestMethod.GET)
+	public ModelAndView manageLifeCategoryGET(Locale locale, Model model) {
+		logger.info("This is manage life category page.", locale);
+		ModelAndView categoriesMav = new ModelAndView();
+		categoriesMav.setViewName("manage/lifeCategory.page");
+		return categoriesMav;
+	}
+	@RequestMapping(value = "/manage/record/visit", method = RequestMethod.GET)
+	public ModelAndView manageVisitRecordGET(Locale locale, Model model) {
+		logger.info("This is visit record page.", locale);
+		ModelAndView categoriesMav = new ModelAndView();
+		categoriesMav.setViewName("manage/visitRecord.page");
 		return categoriesMav;
 	}
 }

@@ -13,7 +13,7 @@
 			<!-- <li class="menu-item"><a href="/archives">ARCHIVES</a></li> -->
 			<li class="menu-item"><a class="menu-a" href="/life/lifeList">Life</a></li>
 			<!-- <li class="menu-item"><a href="/about">ABOUT</a></li> -->
-			<li class="menu-item"><a class="menu-a" href="/manage">Manage</a></li>
+			<li class="menu-item"><a class="menu-a" href="/manage/category/study">Manage</a></li>
 		</ul>
 	</div>
 	<!-- <div class="img-container">		
