@@ -32,7 +32,12 @@
         <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
         <put-attribute name="script" value="" />
     </definition>
- 
+    <definition name="login_base" template="/WEB-INF/tiles/login_template.jsp">
+    	<put-attribute name="css"   value="/WEB-INF/tiles/css-tiles/common-css.jsp" />
+    	<put-attribute name="js"   value="/WEB-INF/tiles/js-tiles/common-js.jsp" />
+    </definition>
+ 	<definition name="login.page" extends="login_base">
+    </definition>
     <definition name="*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
     </definition>

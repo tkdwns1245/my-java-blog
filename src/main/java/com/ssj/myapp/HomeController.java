@@ -37,15 +37,19 @@ import com.ssj.myapp.service.ProjectService;
 import com.ssj.myapp.service.RecentPostService;
 import com.ssj.myapp.service.SkillsService;
 import com.ssj.myapp.service.StudyService;
+import com.ssj.myapp.service.UserService;
 import com.ssj.myapp.vo.Pagination;
 import com.ssj.myapp.vo.RecentPostVO;
 import com.ssj.myapp.vo.SkillVO;
+import com.ssj.myapp.vo.UserVO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+	@Inject
+	UserService userService;
 	@Inject
 	StudyService studyService;
 	@Inject
@@ -94,6 +98,40 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home.page";
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "login.page";
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPost(Locale locale,UserVO vo, Model model,HttpSession session) {
+		UserVO loginUser = new UserVO();
+		try {
+			loginUser = userService.selectUser(vo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		if(loginUser != null) {
+			session.setAttribute("user_id", loginUser.getId());
+			session.setAttribute("user_lvl", loginUser.getLvl());
+			return "redirect:/home";
+		}else {
+			model.addAttribute("loginCheck", "false");
+			return "login.page";
+		}
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutPost(UserVO vo, Model model,HttpSession session) {
+		session.invalidate();
+		return "redirect:/home";
 	}
 	
 	@RequestMapping(value = "/skills/writeSkills", method = RequestMethod.GET)

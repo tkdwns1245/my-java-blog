@@ -14,5 +14,6 @@
 		<typeAlias alias="studyVO" type="com.ssj.myapp.vo.StudyVO" />
 		<typeAlias alias="lifeVO" type="com.ssj.myapp.vo.LifeVO" />
 		<typeAlias alias="skillVO" type="com.ssj.myapp.vo.SkillVO" />
+		<typeAlias alias="userVO" type="com.ssj.myapp.vo.UserVO" />
 	</typeAliases>
 </configuration>
