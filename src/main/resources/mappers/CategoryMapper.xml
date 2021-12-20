@@ -3,19 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="category">
-  <insert id="pinsert" >
-    INSERT INTO primary_category (
-    	pcategory_name,
-    	reg_date
+  <insert id="insert" >
+    INSERT INTO CATEGORY (
+    	type,
+    	name,
+    	seq,
+    	createDate
     ) VALUES (
-    	#{categoryName},
+    	#{type},
+    	#{name},
+    	#{seq},
     	 NOW()
     )
-    <selectKey keyProperty="categoryId" resultType="Integer">
+    <selectKey keyProperty="num" resultType="Integer">
     SELECT LAST_INSERT_ID()
   	</selectKey>
   </insert>
-  <select id="pcategory_list" resultType="categoryVO">
-		SELECT * FROM primary_category;
+  <select id="getCategoryList" resultType="categoryVO">
+		SELECT * FROM CATEGORY;
 	</select>
+	<select id="getCategoryListByType" parameterType="String" resultType="categoryVO">
+		SELECT * FROM CATEGORY
+		WHERE type = #{type};
+	</select>
+	<select id="getCategoryByNum" parameterType="Integer" resultType="categoryVO">
+		SELECT * FROM CATEGORY
+		WHERE num = #{num};
+	</select>
+	<update id="updateCategory" parameterType="categoryVO">
+		UPDATE CATEGORY 
+	  	SET
+	    	name = #{name},
+	    	seq = #{seq}
+		WHERE num = #{num}
+	</update>
+	<delete id="deleteCategory" parameterType="Integer">
+		DELETE
+		FROM CATEGORY
+		WHERE num = #{num}
+	</delete>
 </mapper>

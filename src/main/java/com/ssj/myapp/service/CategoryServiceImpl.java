@@ -15,12 +15,34 @@ public class CategoryServiceImpl implements CategoryService{
 	@Inject
 	@Named("categoryDao")
 	CategoryDAO categoryDao;
+
 	@Override
-	public int createPCategory(CategoryVO vo) throws Exception {
-		return categoryDao.createPCategory(vo);
+	public int createCategory(CategoryVO vo) throws Exception {
+		return categoryDao.createCategory(vo);
 	}
+
 	@Override
-	public List<CategoryVO> pcategoryList() throws Exception {
-		return categoryDao.pcategoryList();
+	public List<CategoryVO> selectCategoryList() throws Exception {
+		return categoryDao.selectCategoryList();
+	}
+
+	@Override
+	public List<CategoryVO> selectCategoryListByType(String type) throws Exception{
+		return categoryDao.selectCategoryListByType(type);
+	}
+	
+	@Override
+	public CategoryVO selectCategoryByNum(int num) throws Exception{
+		return categoryDao.selectCategoryByNum(num);
+	}
+
+	@Override
+	public void deleteCategory(int num) throws Exception {
+		categoryDao.deleteCategory(num);
+	}
+
+	@Override
+	public void updateCategory(CategoryVO vo) throws Exception {
+		categoryDao.updateCategory(vo);
 	}
 }
