@@ -212,9 +212,6 @@
 			</div>
 		</div>
 	</div>
-	<div style="margin-top:50px;">
-		<a class="btn btn-primary" style="float:right;" href="/study/writeStudy">write</a>
-	</div>
 </div>
 <script>
 $(document).on("mouseover",".skills-card-item",function () {

@@ -72,9 +72,11 @@ opensource 모듈을 활용 차트 그리기
 			</div>
 			<%} %>
 			</div>
+			<c:if test="${user_lvl eq  0}">
 			<div style="margin-top:50px;">
 				<a class="btn btn-primary" style="float:right;" href="/skills/writeSkills">write</a>
 			</div>
+			</c:if>
 		</div>
 		<hr>
 		<div class="recent-post-area">

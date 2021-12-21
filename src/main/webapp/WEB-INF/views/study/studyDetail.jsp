@@ -27,11 +27,13 @@
 					${study.contents}
 				</div>
 			</div>
+			<c:if test="${user_lvl eq  0}">
 			<div class="col-12" style="margin-top:100px;">
 				<a class="btn btn-danger" style="float:right; margin-left:10px;" id="cancel-btn" href="/study/studyList" >list</a>
 				<a class="btn btn-danger" style="float:right; margin-left:10px;" id="cancel-btn" onClick="deleteFunction(${study.num})">delete</a>
 				<a class="btn btn-primary" style="float:right;" href="/study/editStudy?num=${study.num}">edit</a>
 			</div>
+			</c:if>
 		</div>
 	</div>
 </div>

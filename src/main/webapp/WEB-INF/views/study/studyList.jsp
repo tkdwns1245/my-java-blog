@@ -79,9 +79,11 @@
 			</c:if>
 		</ul>
 	</div>
+	<c:if test="${user_lvl eq  0}">
 	<div style="margin-top:50px;">
 		<a class="btn btn-primary" style="float:right;" href="/study/writeStudy">write</a>
 	</div>
+	</c:if>
 </div>
 <script type="text/x-jquery-tmpl" id="study-item">
 		<div class="card-item col-md-10 mb-5">

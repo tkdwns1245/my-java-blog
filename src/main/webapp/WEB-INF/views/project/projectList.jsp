@@ -54,9 +54,11 @@
 			</c:if>
 		</ul>
 	</div>
+	<c:if test="${user_lvl eq  0}">
 	<div style="margin-top:50px;">
 		<a class="btn btn-primary" style="float:right;" href="/project/writeProject">write</a>
 	</div>
+	</c:if>
 	<script>
 	function fn_next(page, range, rangeSize) {
 		var page = parseInt((range * rangeSize)) + 1;
