@@ -3,9 +3,21 @@
   font-family: ubuntu-title;
   src: url('/resources/fonts/Ubuntu-Title.ttf');
 }
+@font-face {
+	font-family : ubuntu-Bold;
+	src:url('/resources/fonts/Ubuntu-Bold.ttf');
+}
+@font-face {
+	font-family : ubuntu-regular;
+	src:url('/resources/fonts/Ubuntu-Regular.ttf');
+}
+@font-face {
+	font-family : nunito;
+	src:url('/resources/fonts/Nunito-VariableFont_wght.ttf');
+}
 
 .menu-a{
-  font-family : ubuntu-title;
+  font-family : ubuntu-regular;
   font-size : 25px;
   color : #ffffff;
 }
@@ -72,19 +84,25 @@
 }
 .menu-img-wrapper{
 	margin-top:80px;
-	margin-bottom:30px;
+	margin-bottom:50px;
 }
 .menu-container .menu-list .menu-item{
-	text-align:center;
 	margin-top:25px;
 }
 .menu-container{
+	align-items: center;
+    display: flex;
+    flex-direction: column;
 	z-index: 1;
 }
 .menu-container .menu-list{
 	list-style:none;
 	padding-left:0px;
-	
+	display: flex;
+    flex-direction: column;
+}
+.menu-txt{
+	display: inline-block;
 }
 .img-container{
 	z-index: -1;
@@ -158,13 +176,14 @@
 }
 .header-motto{
 	font-size:3rem;
-	font-family : ubuntu-title;
+	font-family : ubuntu-Bold;
 	width:400px;
 }
 .header-motto:hover{
 	color:#666f77;	
 }
 .header-introduce{
+	font-family : nunito;
 	white-space:pre;
 	text-align:left;
 	margin-top:-20px;

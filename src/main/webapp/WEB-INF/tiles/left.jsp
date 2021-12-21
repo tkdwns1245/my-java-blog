@@ -8,17 +8,17 @@
 	<div class="menu-container">
 		<div class="menu-img-wrapper">
 			<div class="menu-profile-img-container">
-				<img class="profile-img" src="/resources/img/ssj_character.png">
+				<a href="/home"><img class="profile-img" src="/resources/img/ssj_character.png"></a>
 			</div>
 		</div>
 		<div class="menu-wrapper">
 			<ul class="menu-list">
-				<li class="menu-item"><a class="menu-a" href="/home">Home</a></li>
-				<li class="menu-item"><a class="menu-a" href="/resume">Resume</a></li>
-				<li class="menu-item"><a class="menu-a" href="/project/projectList">Project</a></li>
-				<li class="menu-item"><a class="menu-a" href="/study/studyList">Study</a></li>
+				<li class="menu-item"><a class="menu-a" href="/home"><i class="fas fa-home fa-xs"></i>  <span class="menu-txt" style="margin-left: 2.5px;">Home</span></a></li>
+				<li class="menu-item"><a class="menu-a" href="/resume"><i class="fas fa-user-tie fa-xs"></i>  <span class="menu-txt" style="margin-left: 7px;">Resume</span></a></li>
+				<li class="menu-item"><a class="menu-a" href="/project/projectList"><i class="fas fa-users fa-xs"></i>  <span class="menu-txt">Project</span></a></li>
+				<li class="menu-item"><a class="menu-a" href="/study/studyList"><i class="fas fa-book-open fa-xs"></i>  <span class="menu-txt" style="margin-left:3px;">Study</span></a></li>
 				<!-- <li class="menu-item"><a href="/archives">ARCHIVES</a></li> -->
-				<li class="menu-item"><a class="menu-a" href="/life/lifeList">Life</a></li>
+				<li class="menu-item"><a class="menu-a" href="/life/lifeList"><i class="fas fa-glass-cheers fa-xs"></i>  <span class="menu-txt">Life</span></a></li>
 				<!-- <li class="menu-item"><a href="/about">ABOUT</a></li> -->
 				<c:if test="${user_lvl eq  0}">
 				<li class="menu-item"><a class="menu-a" href="/manage/category/study">Manage</a></li>
