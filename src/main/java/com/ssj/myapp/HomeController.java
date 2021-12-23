@@ -112,8 +112,9 @@ public class HomeController {
 		try {
 			skillsListCnt= skillsService.getSkillsListCnt();
 			//Pagination 객체생성
-			pagination.pageInfo(skillsPage, skillsRange, skillsListCnt);
 			pagination.setListSize(8);
+			pagination.setRangeSize(8);
+			pagination.pageInfo(skillsPage, skillsRange, skillsListCnt);
 			skillsList = skillsService.selectSkillsList(pagination);
 			result.put("responseCode", "success");
 			result.put("data", skillsList );

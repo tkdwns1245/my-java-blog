@@ -80,7 +80,7 @@
 				</ul>
 			</div>
 			<c:if test="${user_lvl eq  0}">
-			<div style="margin-top:50px;">
+			<div>
 				<a class="btn btn-primary" style="float:right;" href="/skills/writeSkills">write</a>
 			</div>
 			</c:if>
@@ -184,6 +184,7 @@ var setSkillsList = function(page,range){
 			},
 		success: function (result){
 			if(result.responseCode == "success"){
+				console.log(result.data);
 				var pagination;
 				$("#upper_card_wrapper").empty();
 				$("#lowwer_card_wrapper").empty();

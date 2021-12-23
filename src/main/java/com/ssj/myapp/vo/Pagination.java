@@ -33,6 +33,10 @@ public class Pagination {
 		return rangeSize;
 
 	}
+	
+	public void setRangeSize(int rangeSize) {
+		this.rangeSize = rangeSize;
+	}
 
 
 
