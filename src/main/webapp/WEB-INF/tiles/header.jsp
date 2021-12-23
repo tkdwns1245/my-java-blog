@@ -7,14 +7,14 @@
 		<span class="header-motto">Thinking and Do!</span>
 		<div class="header-introduce">
 	Hi, I'm Sang Jun Son
-	I'm Web Developer and I'm dreamming to be a good frontend Engineer
+	I'm Web Developer and I'm dreamming to be a good frontend engineer
 	This is my development blog
 	Please check my post and portfolio
 	Thank you!
 		</div>
 		<div class="home-btn-area">
-			<a class="btn btn-primary" href="/resume">View Resume</a>
-			<a class="btn btn-primary" href="/project/projectList">View Project</a>
+			<a class="btn btn-primary" href="/resume"><i class="fas fa-user-tie fa-xs"></i> View Resume</a>
+			<a class="btn btn-primary" href="/project/projectList"><i class="fas fa-users fa-xs"></i> View Project</a>
 		</div>
 	</div>
 	<div class="profile-img-container">

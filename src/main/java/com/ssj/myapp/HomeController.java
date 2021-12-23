@@ -95,9 +95,35 @@ public class HomeController {
 		
 		model.addAttribute("skillsList", skillsList );
 		model.addAttribute("recentPostList", recentPostList );
+		model.addAttribute("pagination",pagination);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home.page";
+	}
+	@RequestMapping(value = "/home/skillsList", method = RequestMethod.POST)
+	public  @ResponseBody HashMap<String, Object> skillsListPOST(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		int skillsPage = Integer.parseInt(request.getParameter("page"));
+		int skillsRange = Integer.parseInt(request.getParameter("range"));
+		int skillsListCnt;
+		List<SkillVO> skillsList = new ArrayList<SkillVO>();
+		Pagination pagination = new Pagination();
+		try {
+			skillsListCnt= skillsService.getSkillsListCnt();
+			//Pagination 객체생성
+			pagination.pageInfo(skillsPage, skillsRange, skillsListCnt);
+			pagination.setListSize(8);
+			skillsList = skillsService.selectSkillsList(pagination);
+			result.put("responseCode", "success");
+			result.put("data", skillsList );
+			result.put("pagination",pagination);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result.put("responseCode", "error");
+		}
+		
+		return result;
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {

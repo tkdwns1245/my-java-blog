@@ -8,15 +8,15 @@
 			</div>
 			<div class="col-xl-5">
 				<div class="card-body">
-					<div class="card-title">
-						<span>${skill.skillName}</span>
+					<div class="card-title" style="margin-bottom:30px; text-align:center;">
+						<h1><span>${skill.skillName}</span></h1>
 					</div>
-					<div>
+					<div style="margin-bottom:30px;">
 						${skill.summary}
 					</div>
 					<div>
 						<div style="float:left">
-							project link : 
+							<h3>project link : </h3>
 						</div>
 						<div style="display:inline-block; margin-left:10px;">
 							<c:forEach var="project" items="${skill.projectList}" varStatus="status">
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12">
+			<div class="col-12" style="margin-top:100px;">
 				<div class="project-detail-contents-title">
 					<h1>Contents</h2>
 				</div>

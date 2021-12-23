@@ -23,7 +23,7 @@
   </insert>
 	<select id="getSkillsList" resultType="skillVO">
 		SELECT * FROM SKILLS
-		ORDER BY num DESC
+		ORDER BY num
 		LIMIT #{startList}, #{listSize}
 	</select>
 	<select id="getSkillsListCnt" resultType="int">

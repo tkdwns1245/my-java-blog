@@ -20,6 +20,7 @@
   font-family : ubuntu-regular;
   font-size : 25px;
   color : #ffffff;
+  transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out;
 }
 .menu-a:hover{
 	text-decoration:none;
@@ -144,7 +145,7 @@
     z-index: 50;
     border-bottom: 1px solid rgba(0,0,0,0.07);
     box-shadow: 0 3px 5px 0 rgba(0,0,0,0.05);
-    background-color: #fafafa;
+    background-color: #F8F8F8;
     margin-left: 0;
     margin-right: 0;
     position: relative;
@@ -192,7 +193,7 @@
 	margin-left:30px;
 }
 .home-btn-area .btn{
-	font-size:0.7rem;
+	font-size:1rem;
 	margin-right:10px;
 }
 .title-wrapper{
@@ -205,10 +206,13 @@
 }
 .title-area{
 	margin-top:100px;
-	margin-bottom: 100px;
+	margin-bottom: 70px;
 }
 .skills-area{
-	margin-bottom: 100px;
+	margin-bottom: 70px;
+}
+.skill-icon{
+	width:80px;
 }
 .title-area:hover{
 	color:#666f77
@@ -225,6 +229,12 @@
 .project-card .card-img-holder {
     height: 200px;
     overflow: hidden;
+    vertical-align: middle;
+}
+.skills-card-img-holder{
+	height:80px;
+	width:100%;
+    line-height:80px;
     vertical-align: middle;
 }
 .project-card {
