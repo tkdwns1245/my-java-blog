@@ -12,6 +12,7 @@
     	toDate,
     	skills,
     	projectImg,
+    	projectFile,
     	contents,
     	createDate
     ) VALUES (
@@ -22,6 +23,7 @@
     	#{toDate},
     	#{skills},
     	#{projectImg},
+    	#{projectFile},
     	#{contents},
     	now()
     )
@@ -63,6 +65,9 @@
 	    	skills = #{skills},
 	    	<if test="projectImg != null">
 	    		projectImg = #{projectImg},
+	    	</if>
+	    	<if test="projectFile != null">
+	    		projectFile = #{projectFile},
 	    	</if>
 	    	contents = #{contents}
 		WHERE num = #{num}

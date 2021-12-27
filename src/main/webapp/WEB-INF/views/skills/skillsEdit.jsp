@@ -46,8 +46,6 @@ $(document).ready(function () {
       focus: true,                  
       lang: "ko-KR",					
       placeholder: '내용을 입력해주세요.',	
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', '굴림체',
-        '굴림', '돋음체', '바탕체'],
       fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36',
         '50', '72'],
       callbacks: {	//여기 부분이 이미지를 첨부하는 부분

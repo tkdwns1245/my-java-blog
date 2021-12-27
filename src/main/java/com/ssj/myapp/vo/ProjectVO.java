@@ -13,10 +13,18 @@ public class ProjectVO {
 	private long period;
 	private String skills;
 	private String projectImg;
+	private String projectFile;
 	private String contents;
 	private String forderName;
 	private Timestamp createDate;
 	
+	
+	public String getProjectFile() {
+		return projectFile;
+	}
+	public void setProjectFile(String projectFile) {
+		this.projectFile = projectFile;
+	}
 	public Timestamp getCreateDate() {
 		return createDate;
 	}

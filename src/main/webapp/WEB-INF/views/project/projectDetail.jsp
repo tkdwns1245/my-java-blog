@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="col-md-12 mb-5">
 	<div class="project-detail-card">
 		<div class="row">
@@ -22,6 +23,9 @@
 					</div>
 					<div>
 						<i class="fas fa-wrench"></i>  skills : ${project.skills}
+					</div>
+					<div>
+						<i class="fas fa-wrench"></i>  file : <a href="/project/fileDownload?fileName=${project.projectFile}">${fn:split(project.projectFile,'_')[0]}.${fn:split(project.projectFile,'.')[1]}</a>
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,11 @@
 package com.ssj.myapp;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +17,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -166,6 +170,22 @@ public class ProjectController {
 				}
 				mpf.get(i).transferTo(file);
 			}
+			List<MultipartFile> mpf2 = mtfRequest.getFiles("project_file");
+			for(int i = 0; i < mpf2.size(); i++) {
+				File file = new File(PATH + "file\\" + mpf2.get(i).getOriginalFilename());
+				fileFullName = mpf2.get(i).getOriginalFilename();
+				fileName = FilenameUtils.getBaseName(mpf2.get(i).getOriginalFilename());
+				if(!fileName.equals("")) {
+					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
+					file = new File(PATH + "file\\" + fileName + "_" + fileUploadTime + "." + fileType);
+					pvo.setProjectImg(fileName + "_" + fileUploadTime + "." + fileType);
+					logger.info("---------------File Upload Start -------------");
+					logger.info("FILE : " + file.getAbsolutePath());
+					logger.info("SIZE : " + mpf2.get(i).getSize() + "bytes");
+					logger.info("---------------File Upload End ---------------");
+				}
+				mpf2.get(i).transferTo(file);
+			}
 			projectService.createProject(pvo);
 			result.put("result", "SUCCESS");
 			} catch(Exception e) {
@@ -208,7 +228,7 @@ public class ProjectController {
 				if(!fileName.equals("")) {
 					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
 					file = new File(PATH + fileName + "_" + fileUploadTime + "." + fileType);
-					pvo.setProjectImg(fileName + "_" + fileUploadTime + "." + fileType);
+					pvo.setProjectFile(fileName + "_" + fileUploadTime + "." + fileType);
 					logger.info("---------------File Upload Start -------------");
 					logger.info("FILE : " + file.getAbsolutePath());
 					logger.info("SIZE : " + mpf.get(i).getSize() + "bytes");
@@ -216,7 +236,22 @@ public class ProjectController {
 					mpf.get(i).transferTo(file);
 				}
 			}
-			System.out.println(pvo);
+			List<MultipartFile> mpf2 = mtfRequest.getFiles("project_file");
+			for(int i = 0; i < mpf2.size(); i++) {
+				File file = new File(PATH + "file\\" + mpf2.get(i).getOriginalFilename());
+				fileFullName = mpf2.get(i).getOriginalFilename();
+				fileName = FilenameUtils.getBaseName(mpf2.get(i).getOriginalFilename());
+				if(!fileName.equals("")) {
+					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
+					file = new File(PATH + "file\\" + fileName + "_" + fileUploadTime + "." + fileType);
+					pvo.setProjectFile(fileName + "_" + fileUploadTime + "." + fileType);
+					logger.info("---------------File Upload Start -------------");
+					logger.info("FILE : " + file.getAbsolutePath());
+					logger.info("SIZE : " + mpf2.get(i).getSize() + "bytes");
+					logger.info("---------------File Upload End ---------------");
+				}
+				mpf2.get(i).transferTo(file);
+			}
 			projectService.editProject(pvo);
 			result.put("result", "SUCCESS");
 			} catch(Exception e) {
@@ -272,6 +307,39 @@ public class ProjectController {
 		}
 		
 		return result;
+	}
+	@RequestMapping(value = "/project/fileDownload", method = RequestMethod.GET)
+	public void fileDownloadGET(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
+		// 프로젝트 폴더의 temp.jpg 파일 로드
+		String fileName = request.getParameter("fileName");
+		File file = new File(resourcesPath+"\\project\\file\\" + fileName);
+		// 클라이언트에서 아래의 이름으로 파일이 받아진다.
+		String[] splitedFileName = fileName.split("\\_");
+		String[] splitedFileName2 = fileName.split("\\.");
+		String newFileName = splitedFileName[0] + "\\." + splitedFileName2[1];
+		String encodedNewFileName = new String(newFileName.getBytes("UTF-8"), "ISO-8859-1");
+
+	    try{
+	        FileInputStream fis = new FileInputStream(file);
+	        BufferedInputStream bis = new BufferedInputStream(fis);
+	        OutputStream out = response.getOutputStream();
+	    	// 응답이 파일 타입이라는 것을 명시
+	        response.addHeader("Content-Disposition", "attachment;filename=\""+encodedNewFileName+"\"");
+	        // 응답 크기 명시
+	        response.setContentLength((int)file.length());
+
+	        int read = 0;
+	        
+	        // 실제 데이터 전송
+	        // OutputStream 의 Deafult 버퍼 사이즈는 8192 Byte
+	        // 이 루프를 8000 번 정도 돌때마다 약 8KB 정도의 데이터가 전송 
+	        while((read = bis.read()) != -1) {
+	            out.write(read);
+	        }
+	        
+	    } catch(IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 	public String parsingSkillsList(String[] skills) {

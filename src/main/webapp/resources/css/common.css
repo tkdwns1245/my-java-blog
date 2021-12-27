@@ -384,6 +384,9 @@ padding: 1rem 1rem;
 .project-detail-contents-title:hover{
 	color:#666f77
 }
+.project-detail-contents-title{
+	margin-bottom:50px;
+}
 
 .pagination{
 	display:inline-flex;

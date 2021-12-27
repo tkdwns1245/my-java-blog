@@ -62,6 +62,13 @@
 		</div>
 	</div>
 	<div class="input-area row">
+		<div class="col-2">project file</div>
+		<div class="col-3 custom-file" style="margin-left:15px;">
+			 <input type="file" class="custom-file-input" name="project_file" id="project_file" multiple="multiple">
+			 <label class="custom-file-label" for="project_file">Choose file</label>
+		</div>
+	</div>
+	<div class="input-area row">
 		<div class="col-2">contents</div>
 		<div class="col-10">
 			 <textarea id="summernote" name="contents">${project.contents}</textarea>
