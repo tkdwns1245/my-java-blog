@@ -322,6 +322,7 @@ padding: 1rem 1rem;
 	max-height:110px;
 	color:#666f77;
 	overflow:hidden;
+	height:100px;
 }
 .skills-card-summary{
 	font-size:12px;

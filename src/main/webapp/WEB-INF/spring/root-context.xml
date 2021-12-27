@@ -25,7 +25,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://ssjdatabase.ceqqrjstuth3.ap-northeast-2.rds.amazonaws.com:3306/ssjHompage?useSSL=false&amp;serverTimezone=UTC"/>
+			value="jdbc:mysql://ssjdatabase.ceqqrjstuth3.ap-northeast-2.rds.amazonaws.com:3306/ssjHompage?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
 		<property name="username" value="ssjdbadmin"/>
 		<property name="password" value="tkdwnsDBAdmin"/>
 	</bean>

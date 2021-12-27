@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="body-contents-wrapper">
 	<div class="title-wrapper">
 		<h1>Life</h2>
@@ -49,6 +50,9 @@
 								<div class="card-summary">
 									${life.introduce}
 								</div>
+								<div class="post-date">
+									${fn:split(life.createDate,':')[0]}:${fn:split(life.createDate,':')[1]}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -76,6 +80,9 @@
 									</div>
 									<div class="card-summary">
 										${life.introduce}
+									</div>
+									<div class="post-date">
+										${fn:split(life.createDate,':')[0]}:${fn:split(life.createDate,':')[1]}
 									</div>
 								</div>
 							</div>

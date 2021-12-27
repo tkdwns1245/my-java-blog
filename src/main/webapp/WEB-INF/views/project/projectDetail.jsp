@@ -25,7 +25,7 @@
 						<i class="fas fa-wrench"></i>  skills : ${project.skills}
 					</div>
 					<div>
-						<i class="fas fa-wrench"></i>  file : <a href="/project/fileDownload?fileName=${project.projectFile}">${fn:split(project.projectFile,'_')[0]}.${fn:split(project.projectFile,'.')[1]}</a>
+						<i class="far fa-file"></i>  attachment: <a href="/project/fileDownload?fileName=${project.projectFile}">${fn:split(project.projectFile,'_')[0]}.${fn:split(project.projectFile,'.')[1]}</a>
 					</div>
 				</div>
 			</div>
