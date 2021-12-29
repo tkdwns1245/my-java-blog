@@ -40,7 +40,7 @@
 				<div class="life-card">
 					<div class="row">
 						<div class=" col-12 col-xl-12 card-img-holder">
-							<img src="/resources/life/${life.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+							<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 						</div>
 						<div class="col-xl-12">
 							<div class="card-body">
@@ -56,7 +56,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="link-mask row">
+					<div class="link-mask" style="display:flex">
 						<div class="link-mask-text" style="float: none; margin:auto auto;">
 							<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
 						</div>
@@ -71,7 +71,7 @@
 					<div class="life-card">
 						<div class="row">
 							<div class=" col-12 col-xl-12 card-img-holder">
-								<img src="/resources/life/${life.titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+								<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 							</div>
 							<div class="col-xl-12">
 								<div class="card-body">
@@ -87,26 +87,26 @@
 								</div>
 							</div>
 						</div>
-						<div class="link-mask row">
+						<div class="link-mask" style="display:flex">
 							<div class="link-mask-text" style="float: none; margin:auto auto;">
 								<a class="btn btn-primary" href="/life/lifeDetail?num=${life.num}">View Posts</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				</c:forEach>
+			</c:forEach>
 		</div>
 	</div>
 	<div id="paginationBox" style="text-align:center;">
 		<ul class="pagination">
 			<c:if test="${pagination.prev}">
-				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">이전</a></li>
+				<li class="page-item"><a class="page-link" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">이전</a></li>
 			</c:if>
 			<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-				<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> ${idx} </a></li>
+				<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a class="page-link" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> ${idx} </a></li>
 			</c:forEach>
 			<c:if test="${pagination.next}">
-				<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" >다음</a></li>
+				<li class="page-item"><a class="page-link" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" >다음</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -116,31 +116,35 @@
 	</div>
 	</c:if>
 </div>
+
 <script type="text/x-jquery-tmpl" id="life-item">
-		<div class="card-item col-md-10 mb-5">
-			<div class="life-card">
-				<div class="row">
-					<div class=" col-12 col-xl-3 card-img-holder">
-						<img src="/resources/life/\${titleImg}" class="card-img" alt="image" style="position: relative;left: -20px;">
+<div class="life-card-item col-md-3 mb-5 col-3" style="text-align:center;">
+	<div class="life-card">
+		<div class="row">
+			<div class=" col-12 col-xl-12 card-img-holder">
+				<img src="/resources/life/\${titleImg}" class="card-img" alt="image">
+			</div>
+			<div class="col-xl-12">
+				<div class="card-body">
+					<div class="card-title">
+						<span>\${title}</span>
 					</div>
-					<div class="col-xl-9">
-						<div class="card-body">
-							<div class="card-title">
-								<span>\${title}</span>
-							</div>
-							<div class="card-summary">
-								\${introduce}
-							</div>
-						</div>
+					<div class="card-summary">
+						\${introduce}
 					</div>
-				</div>
-				<div class="link-mask row">
-					<div class="link-mask-text" style="float: none; margin:auto auto;">
-						<a class="btn btn-primary" href="/life/lifeDetail?num=\${num}">View Posts</a>
+					<div class="post-date">
+						\${createDate}
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="link-mask" style="display:flex">
+			<div class="link-mask-text" style="float: none; margin:auto auto;">
+				<a class="btn btn-primary" href="/life/lifeDetail?num=\${num}">View Posts</a>
+			</div>
+		</div>
+	</div>
+</div>
 </script>
 <script>
 var category = "All";	
@@ -160,7 +164,22 @@ $(".category-item").on( "click", function() {
 	category = $(this).data("category");
 	setLifeList(category,keyword,1,1);
 });
+function dateFormat(timestamp) {
+	var date = new Date(timestamp)
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
 
+    month = month >= 10 ? month : '0' + month;
+    day = day >= 10 ? day : '0' + day;
+    hour = hour >= 10 ? hour : '0' + hour;
+    minute = minute >= 10 ? minute : '0' + minute;
+    second = second >= 10 ? second : '0' + second;
+
+    return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+}
 /*
 1. load life list by category and page and range
 2. append lifeList at lifeList tag
@@ -182,28 +201,30 @@ var setLifeList = function(category,keyword,page,range){
 				var pagination;
 				$("#lifeList").empty();
 				for(var i =0; i <result.data.length; i++){
+					var createDate = dateFormat(result.data[i].createDate);
+					result.data[i].createDate = createDate;
 					$("#lifeList").append($("#life-item").tmpl(result.data[i]));
 				}
 				
 				/*
 				set pagination
 				*/
-				$("#paginationBox pagination").empty();
+				$(".pagination").empty();
 				pagination = result.pagination;
 				if(pagination.prev) {
 					paginationItem += "<li class='page-item'><a class='page-link' href='#' onClick=\"fn_prev('"+pagination.page+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">이전</a></li>";
 				}
 				for(var i=pagination.startPage; i <= pagination.endPage; i++) {
-					if(pagination.page == i){
-						paginationItem += "<li class='page-item active'><a class='page-link' href='#' fn_pagination('"+i+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">"+ i +"</a></li>";
+					if(i == pagination.page){
+						paginationItem += "<li class='page-item active'><a class='page-link' onClick=\"fn_pagination('"+i+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">"+ i +"</a></li>";
 					}else{
-						paginationItem += "<li class='page-item'><a class='page-link' href='#' fn_pagination('"+i+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">"+ i +"</a></li>";
+						paginationItem += "<li class='page-item'><a class='page-link' onClick=\"fn_pagination('"+i+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">"+ i +"</a></li>";
 					}
 				}
 				if(pagination.next) {
-					paginationItem += "<li class='page-item'><a class='page-link' href='#' onClick=\"fn_next('"+pagination.page+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">다음</a></li>";
+					paginationItem += "<li class='page-item'><a class='page-link' onClick=\"fn_next('"+pagination.page+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">다음</a></li>";
 				}
-				$("#paginationBox pagination").append(paginationItem);
+				$(".pagination").append(paginationItem);
 			}
 		},
 		error: function(e){

@@ -306,6 +306,19 @@ padding: 1rem 1rem;
 .link-mask:hover{
 	background-color:rgba(21,29,35,0.5);
 }
+.link-mask{
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding:1.5rem;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+}
+.link-mask:hover{
+	background-color:rgba(21,29,35,0.5);
+}
 .link-mask-text{
 	display: table;
 	margin-bottom:0.5rem;

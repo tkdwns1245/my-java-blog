@@ -63,6 +63,8 @@ public class LifeController {
 		try {
 			listCnt= lifeService.getLifeListCnt();
 			//Pagination 객체생성
+			pagination.setListSize(8);
+			pagination.setRangeSize(8);
 			pagination.pageInfo(page, range, listCnt);
 			lifeList = lifeService.selectLifeList(pagination);
 		}catch(Exception e) {
@@ -101,6 +103,8 @@ public class LifeController {
 		try {
 			listCnt = lifeService.getLifeListCntByFilter(sf);
 			//Pagination 객체생성
+			pagination.setListSize(8);
+			pagination.setRangeSize(8);
 			pagination.pageInfo(page, range, listCnt);
 			lifeList = lifeService.selectLifeListByFilter(pagination,sf);
 			result.put("responseCode", "success");

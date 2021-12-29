@@ -63,6 +63,8 @@ public class StudyController {
 		try {
 			listCnt= studyService.getStudyListCnt();
 			//Pagination 객체생성
+			pagination.setListSize(8);
+			pagination.setRangeSize(8);
 			pagination.pageInfo(page, range, listCnt);
 			studyList = studyService.selectStudyList(pagination);
 		}catch(Exception e) {

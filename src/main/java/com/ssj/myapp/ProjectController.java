@@ -36,8 +36,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.ProjectService;
+import com.ssj.myapp.vo.CategoryVO;
 import com.ssj.myapp.vo.Pagination;
 import com.ssj.myapp.vo.ProjectVO;
+import com.ssj.myapp.vo.SearchFilter;
+import com.ssj.myapp.vo.StudyVO;
 
 /**
  * Handles requests for the application home page.
@@ -82,6 +85,36 @@ public class ProjectController {
 		categoriesMav.addObject("pagination", pagination);
 		return categoriesMav;
 	}
+	
+	@RequestMapping(value = "/project/projectList", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> projectListPOST(HttpSession session, HttpServletRequest request) {
+		
+		int listCnt;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		List<ProjectVO> projectList = new ArrayList<ProjectVO>();
+		Pagination pagination = new Pagination();
+		int page;
+		int range;
+		
+		page = Integer.parseInt(request.getParameter("page"));
+		range = Integer.parseInt(request.getParameter("range"));
+		
+		try {
+			listCnt = projectService.getProjectListCnt();
+			//Pagination 객체생성
+			pagination.pageInfo(page, range, listCnt);
+			projectList = projectService.selectProjectList(pagination);
+			result.put("responseCode", "success");
+			result.put("data", projectList);
+			result.put("pagination",pagination);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result.put("responseCode", "error");
+		}
+		return result;
+	}
+	
 	@RequestMapping(value = "/project/writeProject", method = RequestMethod.GET)
 	public ModelAndView projectWriteGet(Locale locale, Model model) {
 		logger.info("This is Project.", locale);

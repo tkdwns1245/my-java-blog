@@ -285,7 +285,6 @@ var setSkillsList = function(page,range){
 					paginationItem += "<li class='page-item'><a class='page-link' onClick=\"fn_prev('"+pagination.page+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">이전</a></li>";
 				}
 				for(var i=pagination.startPage; i <= pagination.endPage; i++) {
-					console.log(i);
 					if(i == pagination.page){
 						paginationItem += "<li class='page-item active'><a class='page-link' onClick=\"fn_pagination('"+i+"', '"+pagination.range+"', '"+pagination.rangeSize+"')\">"+ i +"</a></li>";
 					}else{
