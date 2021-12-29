@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ssj.myapp.service.CategoryService;
 import com.ssj.myapp.service.LifeService;
 import com.ssj.myapp.vo.CategoryVO;
 import com.ssj.myapp.vo.LifeVO;
@@ -44,6 +45,8 @@ import com.ssj.myapp.vo.SearchFilter;
 public class LifeController {
 	@Inject
 	LifeService lifeService;
+	@Inject
+	CategoryService categoryService;
 	@Value("${resourcesPath}")
 	private String resourcesPath;
 	
@@ -59,6 +62,7 @@ public class LifeController {
 		
 		int listCnt;
 		List<LifeVO> lifeList = new ArrayList<LifeVO>();
+		List<CategoryVO> categoryList = new ArrayList<CategoryVO>();
 		Pagination pagination = new Pagination();
 		try {
 			listCnt= lifeService.getLifeListCnt();
@@ -67,6 +71,7 @@ public class LifeController {
 			pagination.setRangeSize(8);
 			pagination.pageInfo(page, range, listCnt);
 			lifeList = lifeService.selectLifeList(pagination);
+			categoryList = categoryService.selectCategoryListByType("life");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -75,6 +80,7 @@ public class LifeController {
 		categoriesMav.setViewName("life/lifeList.page");
 		categoriesMav.addObject("title","life");
 		categoriesMav.addObject("lifeList", lifeList);
+		categoriesMav.addObject("categoryList",categoryList);
 		categoriesMav.addObject("pagination", pagination);
 		return categoriesMav;
 	}

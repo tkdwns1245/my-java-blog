@@ -7,25 +7,15 @@
 	</div>
 	<div class="content-wrapper row">
 		<div class="category-area col-8">
-			<ul id="category-list">
-				<li class="category-item" data-category="All">
-					All
+			<ul class="nav nav-pills" id="category-list">
+				<li class="category-item nav-item">
+					<a class="nav-link active btn" data-category="All">All</a>
 				</li>
-				<li class="category-item" data-category="Java">
-					Java
+				<c:forEach var="category" items="${categoryList}" varStatus="status">
+				<li class="category-item nav-item" >
+					<a class="nav-link btn" data-category="${category.name}">${category.name}</a>
 				</li>
-				<li class="category-item" data-category="Php">
-					Php
-				</li>
-				<li class="category-item" data-category="Python">
-					Python
-				</li>
-				<li class="category-item" data-category="Javascript">
-					Javascript
-				</li>
-				<li class="category-item" data-category="Node.js">
-					Node.js
-				</li>
+				</c:forEach>
 			</ul>
 		</div>
 		<div class="col-2"></div>
@@ -131,9 +121,11 @@ $(document).on("mouseout",".card-item",function () {
 	$(this).find('.link-mask-text').css("display","none");
 })
 
-$(".category-item").on( "click", function() {
+$(".nav-link").on( "click", function() {
 	var studyListHtml ="";
 	category = $(this).data("category");
+	$(".nav-link").removeClass("active");
+	$(this).addClass("active");
 	setStudyList(category,keyword,1,1);
 });
 

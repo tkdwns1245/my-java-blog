@@ -7,19 +7,15 @@
 	</div>
 	<div class="content-wrapper row">
 		<div class="category-area col-8">
-			<ul id="category-list">
-				<li class="category-item" data-category="All">
-					All
+			<ul class="nav nav-pills"  id="category-list">
+				<li class="category-item nav-item" data-category="All">
+					<a class="nav-link active btn" data-category="All">All</a>
 				</li>
-				<li class="category-item" data-category="Book">
-					Book
+				<c:forEach var="category" items="${categoryList}" varStatus="status">
+				<li class="category-item nav-item" >
+					<a class="nav-link btn" data-category="${category.name}">${category.name}</a>
 				</li>
-				<li class="category-item" data-category="Movie">
-					Movie
-				</li>
-				<li class="category-item" data-category="Life">
-					Life
-				</li>
+				</c:forEach>
 			</ul>
 		</div>
 		<div class="col-2"></div>
@@ -159,9 +155,11 @@ $(document).on("mouseout",".life-card-item",function () {
 	$(this).find('.link-mask-text').css("display","none");
 })
 
-$(".category-item").on( "click", function() {
+$(".nav-link").on( "click", function() {
 	var lifeListHtml ="";
 	category = $(this).data("category");
+	$(".nav-link").removeClass("active");
+	$(this).addClass("active");
 	setLifeList(category,keyword,1,1);
 });
 function dateFormat(timestamp) {

@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ssj.myapp.service.CategoryService;
 import com.ssj.myapp.service.StudyService;
 import com.ssj.myapp.vo.CategoryVO;
 import com.ssj.myapp.vo.Pagination;
@@ -44,6 +45,8 @@ import com.ssj.myapp.vo.StudyVO;
 public class StudyController {
 	@Inject
 	StudyService studyService;
+	@Inject
+	CategoryService categoryService;
 	@Value("${resourcesPath}")
 	private String resourcesPath;
 	
@@ -59,6 +62,7 @@ public class StudyController {
 		
 		int listCnt;
 		List<StudyVO> studyList = new ArrayList<StudyVO>();
+		List<CategoryVO> categoryList = new ArrayList<CategoryVO>();
 		Pagination pagination = new Pagination();
 		try {
 			listCnt= studyService.getStudyListCnt();
@@ -67,6 +71,7 @@ public class StudyController {
 			pagination.setRangeSize(8);
 			pagination.pageInfo(page, range, listCnt);
 			studyList = studyService.selectStudyList(pagination);
+			categoryList = categoryService.selectCategoryListByType("study");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -75,6 +80,7 @@ public class StudyController {
 		categoriesMav.setViewName("study/studyList.page");
 		categoriesMav.addObject("title","study");
 		categoriesMav.addObject("studyList", studyList);
+		categoriesMav.addObject("categoryList", categoryList);
 		categoriesMav.addObject("pagination", pagination);
 		return categoriesMav;
 	}

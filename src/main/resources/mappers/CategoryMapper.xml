@@ -24,7 +24,8 @@
 	</select>
 	<select id="getCategoryListByType" parameterType="String" resultType="categoryVO">
 		SELECT * FROM CATEGORY
-		WHERE type = #{type};
+		WHERE type = #{type}
+		ORDER BY seq
 	</select>
 	<select id="getCategoryByNum" parameterType="Integer" resultType="categoryVO">
 		SELECT * FROM CATEGORY
