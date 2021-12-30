@@ -31,7 +31,7 @@
 	</div>
 	<div class="life-wrapper row" style="float: none; margin:100 auto;" id="lifeList">
 		<div class="card-wrapper row" style="float: left; margin:100 auto;">
-			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="1" end="4">
+			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="0" end="3">
 			<div class="life-card-item col-md-3 mb-5 col-3">
 				<div class="life-card">
 					<div class="row">
@@ -62,7 +62,7 @@
 			</c:forEach>
 		</div>
 		<div class="card-wrapper row" style="float: left; margin:100 auto;">
-			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="5" end="8">
+			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="4" end="7">
 				<div class="life-card-item col-md-3 mb-5 col-3">
 					<div class="life-card">
 						<div class="row">

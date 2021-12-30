@@ -122,8 +122,15 @@ public class StudyController {
 	}
 	@RequestMapping(value = "/study/writeStudy", method = RequestMethod.GET)
 	public ModelAndView studyWriteGet(Locale locale, Model model) {
-		logger.info("This is writeStudy.", locale);
 		ModelAndView mav = new ModelAndView();
+		List<CategoryVO> categoryList = new ArrayList<CategoryVO>();
+		try {
+			categoryList = categoryService.selectCategoryListByType("study");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("This is Study.", locale);
+		mav.addObject("categoryList",categoryList);
 		mav.setViewName("study/writeStudy.page");
 		return mav;
 	}
@@ -228,7 +235,9 @@ public class StudyController {
 		StudyVO pvo = new StudyVO();
 		StudyVO study = new StudyVO();
 		pvo.setNum(num);
+		List<CategoryVO> categoryList = new ArrayList<CategoryVO>();
 		try {
+			categoryList = categoryService.selectCategoryListByType("study");
 			study = studyService.getStudyDetail(pvo);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -236,6 +245,7 @@ public class StudyController {
 		model.addAttribute("study",study);
 		logger.info("This is StudyEdit.", locale);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("categoryList",categoryList);
 		mav.setViewName("study/editStudy.page");
 		return mav;
 	}
@@ -250,16 +260,16 @@ public class StudyController {
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
-		String contents = mtfRequest.getParameter("contents");
-		String title = mtfRequest.getParameter("title");
-		String introduce = mtfRequest.getParameter("introduce");
-		String category = mtfRequest.getParameter("category");
+		String contents = new String(mtfRequest.getParameter("contents").getBytes("8859_1"), "utf-8");
+		String title = new String(mtfRequest.getParameter("title").getBytes("8859_1"), "utf-8");
+		String introduce = new String(mtfRequest.getParameter("introduce").getBytes("8859_1"), "utf-8");
+		String category = new String(mtfRequest.getParameter("category").getBytes("8859_1"), "utf-8");
 		StudyVO svo = new StudyVO();
 		svo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
-		svo.setTitle(new String(title.getBytes("8859_1"), "utf-8"));
-		svo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
-		svo.setCategory(new String(category.getBytes("8859_1"), "utf-8"));
-		svo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		svo.setTitle(title);
+		svo.setIntroduce(introduce);
+		svo.setCategory(category);
+		svo.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");

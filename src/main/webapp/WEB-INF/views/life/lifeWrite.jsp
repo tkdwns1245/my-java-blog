@@ -49,6 +49,8 @@ $(document).ready(function () {
 		  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 		});
     $('#summernote').summernote({
+      codeviewFilter: false,
+   	  codeviewIframeFilter: true,
       height: 500,                 
       minHeight: 500,            
       maxHeight: 500,            
@@ -126,8 +128,10 @@ $(document).ready(function () {
     				window.location.href = "/life/lifeList";
     			}
     		},
-    		error: function(e){
-    			console.log(e);
+    		error: function(response){
+    			if(response.status == 900){
+    	        	alert("finded illegal words!");
+    			}
     		}
     	})
     })

@@ -42,7 +42,7 @@
         <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
         <beans:property name="order" value="0" />
     </beans:bean>
-    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <beans:bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <beans:property name="maxUploadSize" value="1073741824" /> <!-- Max upload size : 100MB --> 
 	    <beans:property name="maxInMemorySize" value="1073741824" /> <!-- Max size of file in memory : 100MB --> 
     </beans:bean>

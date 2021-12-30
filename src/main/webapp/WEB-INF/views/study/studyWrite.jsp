@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <div class="body-contents-wrapper">
 	<form id="frm" enctype="multipart/form-data" method="POST" accept-charset="UTF-8">
 	<div class="input-area row">
@@ -17,11 +18,9 @@
 		<div class="col-2">category</div>
 		<div class="col-10">
 			 <select type="select"  class="selectpicker" name="category" id="category">
-			 <option>Java</option>
-			 <option>Php</option>
-			 <option>Python</option>
-			 <option>Node.js</option>
-			 <option>Javascript</option>
+			 <c:forEach var="category" items="${categoryList}" varStatus="status">
+			 	<option>${category.name}</option>
+			 </c:forEach>
 			 </select>
 		</div>
 	</div>
@@ -128,8 +127,10 @@ $(document).ready(function () {
     				window.location.href = "/study/studyList";
     			}
     		},
-    		error: function(e){
-    			console.log(e);
+    		error: function(response){
+    			if(response.status == 900){
+    	        	alert("finded illegal words!");
+    			}
     		}
     	})
     })
