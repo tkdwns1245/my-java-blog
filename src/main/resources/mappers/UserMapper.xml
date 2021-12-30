@@ -3,9 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
-  <select id="selectUser" parameterType="UserVO" resultType="userVO">
-	SELECT *
-	FROM USER
-	WHERE id = #{id} AND pass = #{pass}
-  </select>
+ 	<select id="selectUser" resultType="userDetailDto">
+		SELECT * FROM USER WHERE ID=#{param1}
+	</select>
+	
+	<select id="selectAuthList" resultType="String">
+		SELECT AUTHORITY FROM USERAUTH WHERE ID=#{param1}
+	</select>
 </mapper>

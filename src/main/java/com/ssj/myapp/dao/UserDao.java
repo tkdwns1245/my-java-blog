@@ -1,7 +1,10 @@
 package com.ssj.myapp.dao;
 
-import com.ssj.myapp.vo.UserVO;
+import java.util.List;
+
+import com.ssj.myapp.vo.UserDetailsDto;
 
 public interface UserDao {
-	public UserVO selectUser(UserVO vo);
+	public UserDetailsDto selectUser(String username);
+	public List<String> getAuthList(String username);
 }

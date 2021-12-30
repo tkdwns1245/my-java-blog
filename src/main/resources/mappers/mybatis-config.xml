@@ -15,5 +15,6 @@
 		<typeAlias alias="lifeVO" type="com.ssj.myapp.vo.LifeVO" />
 		<typeAlias alias="skillVO" type="com.ssj.myapp.vo.SkillVO" />
 		<typeAlias alias="userVO" type="com.ssj.myapp.vo.UserVO" />
+		<typeAlias alias="userDetailDto" type="com.ssj.myapp.vo.UserDetailsDto" />
 	</typeAliases>
 </configuration>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:security="http://www.springframework.org/schema/security"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	<security:http auto-config='true'  use-expressions="true">
+		<security:intercept-url pattern="/manage/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/manage" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/skills/writeSkills" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/skills/editSkills" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/skills/deleteSkills" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/project/writeProject" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/project/editProject" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/project/deleteProject" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/study/writeStudy" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/study/editStudy" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/study/deleteStudy" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/life/writeLife" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/life/editLife" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/life/deleteLife" access="hasRole('ROLE_ADMIN')" />
+		<security:access-denied-handler error-page="/home"/>
+			<security:form-login login-page="/login"
+				login-processing-url="/login_check"
+				default-target-url="/home"
+				username-parameter="id"
+				password-parameter="pass"
+				authentication-failure-url="/login?error"
+				always-use-default-target='true'
+			/>
+	 <security:logout invalidate-session="true" logout-url="/logout"   logout-success-url="/home" />
+		<!-- enable csrf protection -->
+	</security:http> 
+    <security:authentication-manager>
+	    <security:authentication-provider user-service-ref="userService"/>
+	</security:authentication-manager>	
+	
+	<beans:bean id="userService" class="com.ssj.myapp.service.UserServiceImpl">
+		<beans:property name="userDao" ref="userDao"/>
+   	</beans:bean>
+   	<beans:bean id="userDao" class="com.ssj.myapp.dao.UserDaoImpl"/>
+</beans:beans>
