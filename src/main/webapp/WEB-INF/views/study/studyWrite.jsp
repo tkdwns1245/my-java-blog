@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <div class="body-contents-wrapper">
 	<form id="frm" enctype="multipart/form-data" method="POST" accept-charset="UTF-8">
 	<div class="input-area row">

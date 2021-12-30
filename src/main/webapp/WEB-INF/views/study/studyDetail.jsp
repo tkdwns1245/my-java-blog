@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <div class="col-md-12 mb-5">
 	<div class="detail-card">
 		<div class="row">
@@ -27,13 +28,13 @@
 					${study.contents}
 				</div>
 			</div>
-			<c:if test="${user_lvl eq  0}">
+			<s:authorize access="isAuthenticated()">
 			<div class="col-12" style="margin-top:100px;">
 				<a class="btn btn-danger" style="float:right; margin-left:10px;" id="cancel-btn" href="/study/studyList" >list</a>
 				<a class="btn btn-danger" style="float:right; margin-left:10px;" id="cancel-btn" onClick="deleteFunction(${study.num})">delete</a>
 				<a class="btn btn-primary" style="float:right;" href="/study/editStudy?num=${study.num}">edit</a>
 			</div>
-			</c:if>
+			</s:authorize>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <div class="body-contents-wrapper">
 	<div class="content-wrapper" >
 		<div class="skills-area">
@@ -80,11 +81,11 @@
 					</c:if>
 				</ul>
 			</div>
-			<c:if test="${user_lvl eq  0}">
+			<s:authorize access="isAuthenticated()">
 			<div>
 				<a class="btn btn-primary" style="float:right;" href="/skills/writeSkills">write</a>
 			</div>
-			</c:if>
+			</s:authorize>
 		</div>
 		<hr>
 		<div class="recent-post-area">

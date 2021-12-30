@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <div class="side-container">
 	<!-- <div class="profile-img-container">
 		<img class="rounded-circle profile-img mx-auto align-middle" src="/resources/img/blog-profile.jpg">
@@ -20,9 +21,9 @@
 				<!-- <li class="menu-item"><a href="/archives">ARCHIVES</a></li> -->
 				<li class="menu-item"><a class="menu-a" href="/life/lifeList"><i class="fas fa-glass-cheers fa-xs"></i>  <span class="menu-txt">Life</span></a></li>
 				<!-- <li class="menu-item"><a href="/about">ABOUT</a></li> -->
-				<c:if test="${user_lvl eq  0}">
+				<s:authorize access="isAuthenticated()">
 				<li class="menu-item"><a class="menu-a" href="/manage/category/study">Manage</a></li>
-				</c:if>
+				</s:authorize>
 			</ul>
 		</div>
 	</div>

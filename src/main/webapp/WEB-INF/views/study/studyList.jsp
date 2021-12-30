@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="body-contents-wrapper">
 	<div class="title-wrapper">
@@ -73,11 +74,11 @@
 			</c:if>
 		</ul>
 	</div>
-	<c:if test="${user_lvl eq  0}">
+	<s:authorize access="isAuthenticated()">
 	<div style="margin-top:50px;">
 		<a class="btn btn-primary" style="float:right;" href="/study/writeStudy">write</a>
 	</div>
-	</c:if>
+	</s:authorize>
 </div>
 <script type="text/x-jquery-tmpl" id="study-item">
 <div class="card-item col-md-10 mb-5">
