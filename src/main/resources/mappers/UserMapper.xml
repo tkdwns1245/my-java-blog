@@ -10,4 +10,17 @@
 	<select id="selectAuthList" resultType="String">
 		SELECT AUTHORITY FROM USERAUTH WHERE ID=#{param1}
 	</select>
+	
+	<update id="failCntUpdate" parameterType="String" >
+		UPDATE USER
+		SET FAILCNT = FAILCNT+1 
+		WHERE ID = #{param1}
+	</update>
+	
+	<update id="changeEnabled" parameterType="String" >
+		UPDATE USER
+		SET ENABLED = (CASE ENABLED WHEN 0 THEN 1 ELSE 0 END) ,
+		FAILCNT = (CASE ENABLED WHEN 1 THEN 0 ELSE FAILCNT END)
+		WHERE ID = #{param1}
+	</update>
 </mapper>

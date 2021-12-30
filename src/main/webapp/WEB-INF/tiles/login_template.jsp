@@ -16,7 +16,7 @@
   <h1>Login</h1>
     <form action="/login_check" method="post">
    		<c:if test="${param.error!=null}">
-			<p> error : <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> </p>
+			<p> error : <c:out value="${errorMessage}"/> </p>
 		</c:if>
       <input type="text" name="id" placeholder="id" required="required" />
         <input type="password" name="pass" placeholder="password" required="required" />

@@ -30,17 +30,27 @@
 				username-parameter="id"
 				password-parameter="pass"
 				authentication-failure-url="/login?error"
+				authentication-failure-handler-ref="authenticationFailureHandler"
 				always-use-default-target='true'
 			/>
 	 <security:logout invalidate-session="true" logout-url="/logout"   logout-success-url="/home" />
 		<!-- enable csrf protection -->
 	</security:http> 
     <security:authentication-manager>
-	    <security:authentication-provider user-service-ref="userService"/>
+	    <security:authentication-provider ref="daoAuthenticationProvider"/>
 	</security:authentication-manager>	
-	
+	<beans:bean id="daoAuthenticationProvider"
+        class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="hideUserNotFoundExceptions" value="false" />
+        <beans:property name="userDetailsService" ref="userService" />
+    </beans:bean>
 	<beans:bean id="userService" class="com.ssj.myapp.service.UserServiceImpl">
 		<beans:property name="userDao" ref="userDao"/>
    	</beans:bean>
+   	<beans:bean id="authenticationFailureHandler" class="com.ssj.myapp.handler.CustomAuthenticationFailureHandler">
+   		<beans:property name="userDao" ref="userDao"/>
+   		<beans:property name="messageSource" ref="messageSource"/>
+   	</beans:bean>
    	<beans:bean id="userDao" class="com.ssj.myapp.dao.UserDaoImpl"/>
+   	
 </beans:beans>

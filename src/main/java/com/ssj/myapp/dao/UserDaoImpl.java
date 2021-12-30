@@ -23,5 +23,15 @@ public class UserDaoImpl implements UserDao{
 	public List<String> getAuthList(String username) {
 		return sqlSession.selectList("user.selectAuthList",username);
 	}
+
+	@Override
+	public void loginFailCnt(String username) {
+		sqlSession.update("user.failCntUpdate",username);
+	}
+
+	@Override
+	public void changeEnabled(String username) {
+		sqlSession.update("user.changeEnabled",username);
+	}
 	
 }

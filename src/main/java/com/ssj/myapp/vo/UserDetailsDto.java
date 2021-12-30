@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserDetailsDto implements UserDetails {
 	private String ID;
 	private String PASSWORD;
+	private int FAILCNT;
 	private boolean ENABLED;
 	private ArrayList<GrantedAuthority> authority;
 	
@@ -61,4 +62,15 @@ public class UserDetailsDto implements UserDetails {
 		// TODO Auto-generated method stub
 		return ENABLED;
 	}
+
+	public int getFAILCNT() {
+		return FAILCNT;
+	}
+
+	public void setFAILCNT(int fAILCNT) {
+		FAILCNT = fAILCNT;
+	}
+	
+	
+	
 }

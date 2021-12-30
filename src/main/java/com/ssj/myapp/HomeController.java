@@ -125,7 +125,7 @@ public class HomeController {
 		
 		return result;
 	}
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping("/login")
 	public String login(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -136,10 +136,6 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "login.page";
-	}
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Locale locale,UserVO vo, Model model,HttpSession session) {
-		return "/home";
 	}
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutPost(UserVO vo, Model model,HttpSession session) {
