@@ -4,15 +4,15 @@
 <div class="col-md-12 mb-5">
 	<div class="detail-card">
 		<div class="row">
-			<div class=" col-3 col-xl-3 card-img-holder" style="margin:2rem">
+			<div class=" col-3 col-xl-3 card-img-holder">
 				<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 			</div>
 			<div class="col-xl-5">
 				<div class="card-body">
 					<div class="card-title">
-						<span>${life.title}</span>
+						<h4>${life.title}</h4>
 					</div>
-					<div>
+					<div class="card-introduce">
 						${life.introduce}
 					</div>
 					<div>
@@ -20,6 +20,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="detail-card">
+		<div class="row">
 			<div class="col-12">
 				<div class="detail-contents-title">
 					<h1>Contents</h2>

@@ -245,7 +245,7 @@
 	padding:3rem;
 }
 .project-card .card-img-holder {
-    height: 200px;
+    height: 100%;
     overflow: hidden;
     vertical-align: middle;
 }
@@ -262,6 +262,9 @@
     position: relative;
     height: 100%;
 }
+.project-card-content{
+	height:100%;
+}
 .card-item{
 	float: none; margin:0 auto;
 	display:inline-block;
@@ -276,7 +279,7 @@
 	text-align:center;
 }
 .study-card .card-img-holder {
-    height: 200px;
+    height: 100%;
     overflow: hidden;
     vertical-align: middle;
 }
@@ -285,7 +288,16 @@
     background: #fafafa;
     border: 1px solid rgba(0,0,0,0.025);
     position: relative;
-    height: 100%;
+    height: 200px;
+}
+.study-card-content{
+	height:100%;
+}
+.life-card-item{
+	height:450px;
+}
+.life-card-content{
+	height:100%;
 }
 .life-card .card-img-holder {
     height: 200px;
@@ -344,7 +356,11 @@ padding: 1rem 1rem;
 	color:#ffffff;
 }
 .card-title{
+	margin-bottom:30px;
 	font-size:1rem;
+}
+.card-introduce{
+	margin-bottom:30px;
 }
 .skills-card-title{
 	font-size:15px;
@@ -410,9 +426,18 @@ padding: 1rem 1rem;
 	margin-top:200px;
 }
 .detail-card{
-1	margin-top:100px;
-	background:#fafafa;
+	margin-top:100px;
+	background:#F8F8F8;
+	padding:2rem;
 }
+.detail-card .card-img-holder {
+    overflow: hidden;
+    vertical-align: middle;
+}
+.detail-card-content{
+	height:100%;
+}
+
 .detail-contents-title{
 	margin-top:50px;
 	margin-bottom: 50px;

@@ -3,16 +3,16 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <div class="col-md-12 mb-5">
 	<div class="detail-card">
-		<div class="row">
-			<div class=" col-3 col-xl-3 card-img-holder" style="margin:2rem">
+		<div class="row detail-card-content">
+			<div class=" col-3 col-xl-3 card-img-holder">
 				<img src="/resources/study/${study.titleImg}" class="card-img" alt="image">
 			</div>
 			<div class="col-xl-5">
 				<div class="card-body">
 					<div class="card-title">
-						<span>${study.title}</span>
+						<h4>${study.title}</span>
 					</div>
-					<div>
+					<div class="card-introduce">
 						${study.introduce}
 					</div>
 					<div>
@@ -20,6 +20,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="detail-card">
+		<div class="row">
 			<div class="col-12">
 				<div class="detail-contents-title">
 					<h1>Contents</h2>

@@ -216,8 +216,8 @@ public class ProjectController {
 					logger.info("FILE : " + file.getAbsolutePath());
 					logger.info("SIZE : " + mpf2.get(i).getSize() + "bytes");
 					logger.info("---------------File Upload End ---------------");
+					mpf2.get(i).transferTo(file);
 				}
-				mpf2.get(i).transferTo(file);
 			}
 			projectService.createProject(pvo);
 			result.put("result", "SUCCESS");

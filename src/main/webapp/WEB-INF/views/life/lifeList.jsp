@@ -35,7 +35,7 @@
 			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="0" end="3">
 			<div class="life-card-item col-md-3 mb-5 col-3">
 				<div class="life-card">
-					<div class="row">
+					<div class="row life-card-content">
 						<div class=" col-12 col-xl-12 card-img-holder">
 							<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 						</div>
@@ -66,7 +66,7 @@
 			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="4" end="7">
 				<div class="life-card-item col-md-3 mb-5 col-3">
 					<div class="life-card">
-						<div class="row">
+						<div class="row life-card-content">
 							<div class=" col-12 col-xl-12 card-img-holder">
 								<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 							</div>
@@ -117,7 +117,7 @@
 <script type="text/x-jquery-tmpl" id="life-item">
 <div class="life-card-item col-md-3 mb-5 col-3" style="text-align:center;">
 	<div class="life-card">
-		<div class="row">
+		<div class="row life-card-content">
 			<div class=" col-12 col-xl-12 card-img-holder">
 				<img src="/resources/life/\${titleImg}" class="card-img" alt="image">
 			</div>

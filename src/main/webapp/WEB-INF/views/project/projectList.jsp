@@ -10,7 +10,7 @@
 		<c:forEach var="project" items="${projectList}" varStatus="status">
 		<div class="project-item col-md-6 mb-5">
 			<div class="project-card">
-				<div class="row">
+				<div class="row project-card-content">
 				<div class=" col-12 col-xl-5 card-img-holder">
 					<img src="/resources/project/${project.projectImg}" class="card-img" alt="image">
 				</div>
@@ -68,7 +68,7 @@
 <script type="text/x-jquery-tmpl" id="project-item">
 <div class="project-item col-md-6 mb-5">
 	<div class="project-card">
-		<div class="row">
+		<div class="row project-card-content">
 		<div class=" col-12 col-xl-5 card-img-holder">
 			<img src="/resources/project/\${projectImg}" class="card-img" alt="image">
 		</div>

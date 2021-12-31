@@ -3,15 +3,15 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="col-md-12 mb-5">
-	<div class="project-detail-card">
-		<div class="row">
-			<div class=" col-3 col-xl-3 card-img-holder" style="margin:2rem">
+	<div class="detail-card">
+		<div class="row detail-card-content">
+			<div class=" col-3 col-xl-3 card-img-holder">
 				<img src="/resources/project/${project.projectImg}" class="card-img" alt="image">
 			</div>
 			<div class="col-xl-5">
 				<div class="card-body">
 					<div class="card-title">
-						<span>${project.projectName}</span>
+						<h4>${project.projectName}</h4>
 					</div>
 					<div>
 						${project.introduce}
@@ -30,11 +30,15 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="detail-card">
+		<div class="row detail-card-content">
 			<div class="col-12">
-				<div class="project-detail-contents-title">
+				<div class="detail-contents-title">
 					<h1>Contents</h2>
 				</div>
-				<div class="proejct-contents">
+				<div class="detail-contents">
 					${project.contents}
 				</div>
 			</div>

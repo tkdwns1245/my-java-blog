@@ -34,7 +34,7 @@
 		<c:forEach var="study" items="${studyList}" varStatus="status">
 		<div class="card-item col-md-10 mb-5">
 			<div class="study-card">
-				<div class="row">
+				<div class="row study-card-content">
 					<div class=" col-12 col-xl-3 card-img-holder">
 						<img src="/resources/study/${study.titleImg}" class="card-img" alt="image">
 					</div>
@@ -83,7 +83,7 @@
 <script type="text/x-jquery-tmpl" id="study-item">
 <div class="card-item col-md-10 mb-5">
 	<div class="study-card">
-		<div class="row">
+		<div class="row study-card-content">
 			<div class=" col-12 col-xl-3 card-img-holder">
 				<img src="/resources/study/\${titleImg}" class="card-img" alt="image">
 			</div>
