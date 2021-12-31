@@ -15,7 +15,7 @@ public class ProjectVO {
 	private String projectImg;
 	private String projectFile;
 	private String contents;
-	private String forderName;
+	private String github;
 	private Timestamp createDate;
 	
 	
@@ -79,13 +79,6 @@ public class ProjectVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getForderName() {
-		return forderName;
-	}
-	public void setForderName(String forderName) {
-		this.forderName = forderName;
-	}
-	
 	public int getNum() {
 		return num;
 	}
@@ -98,11 +91,24 @@ public class ProjectVO {
 	public void setPeriod(long period) {
 		this.period = period;
 	}
+	public String getGithub() {
+		return github;
+	}
+	public void setGithub(String github) {
+		this.github = github;
+	}
 	@Override
 	public String toString() {
-		return "ProjectVO [projectName=" + projectName + ", introduce=" + introduce + ", members=" + members
-				+ ", fromDate=" + fromDate + ", toDate=" + toDate + ", skills=" + skills + ", projectImg=" + projectImg
-				+ ", contents=" + contents + ", forderName=" + forderName + "]";
+		return "ProjectVO [num=" + num + ", projectName=" + projectName + ", introduce=" + introduce + ", members="
+				+ members + ", fromDate=" + fromDate + ", toDate=" + toDate + ", period=" + period + ", skills="
+				+ skills + ", projectImg=" + projectImg + ", projectFile=" + projectFile + ", contents=" + contents
+				+ ", github=" + github + ", createDate=" + createDate + ", getProjectFile()=" + getProjectFile()
+				+ ", getCreateDate()=" + getCreateDate() + ", getProjectName()=" + getProjectName()
+				+ ", getIntroduce()=" + getIntroduce() + ", getMembers()=" + getMembers() + ", getFromDate()="
+				+ getFromDate() + ", getToDate()=" + getToDate() + ", getSkills()=" + getSkills() + ", getProjectImg()="
+				+ getProjectImg() + ", getContents()=" + getContents() + ", getNum()=" + getNum() + ", getPeriod()="
+				+ getPeriod() + ", getGithub()=" + getGithub() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 }

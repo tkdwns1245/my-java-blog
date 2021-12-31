@@ -8,12 +8,12 @@
 			<div class=" col-3 col-xl-3 card-img-holder">
 				<img src="/resources/project/${project.projectImg}" class="card-img" alt="image">
 			</div>
-			<div class="col-xl-5">
+			<div class="col-xl-9">
 				<div class="card-body">
 					<div class="card-title">
 						<h4>${project.projectName}</h4>
 					</div>
-					<div>
+					<div class="card-introduce">
 						${project.introduce}
 					</div>
 					<div>
@@ -25,9 +25,16 @@
 					<div>
 						<i class="fas fa-wrench"></i>  skills : ${project.skills}
 					</div>
+					<c:if test="${not empty project.projectFile}">
 					<div>
-						<i class="far fa-file"></i>  attachment: <a href="/project/fileDownload?fileName=${project.projectFile}">${fn:split(project.projectFile,'_')[0]}.${fn:split(project.projectFile,'.')[1]}</a>
+						<i class="far fa-file"></i>  attachment : <a href="/project/fileDownload?fileName=${project.projectFile}">${fn:split(project.projectFile,'_')[0]}.${fn:split(project.projectFile,'.')[1]}</a>
 					</div>
+					</c:if>
+					<c:if test="${not empty project.github}">
+					<div>
+						<i class="fab fa-github"></i>  githubLink : <a href="${project.github}">${project.github}</a>
+					</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

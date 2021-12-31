@@ -174,12 +174,14 @@ public class ProjectController {
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
+		String github = mtfRequest.getParameter("github");
 		String contents = mtfRequest.getParameter("contents");
 		String projectName = mtfRequest.getParameter("project_name");
 		String introduce = mtfRequest.getParameter("introduce");
 		ProjectVO pvo = new ProjectVO();
 		pvo.setProjectName(new String(projectName.getBytes("8859_1"), "utf-8"));
 		pvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
+		pvo.setGithub(new String(github.getBytes("8859_1"), "utf-8"));
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
@@ -239,6 +241,7 @@ public class ProjectController {
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
+		String github = mtfRequest.getParameter("github");
 		String contents = mtfRequest.getParameter("contents");
 		String projectName = mtfRequest.getParameter("project_name");
 		String introduce = mtfRequest.getParameter("introduce");
@@ -246,6 +249,7 @@ public class ProjectController {
 		pvo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
 		pvo.setProjectName(new String(projectName.getBytes("8859_1"), "utf-8"));
 		pvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
+		pvo.setGithub(new String(github.getBytes("8859_1"), "utf-8"));
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
@@ -282,8 +286,8 @@ public class ProjectController {
 					logger.info("FILE : " + file.getAbsolutePath());
 					logger.info("SIZE : " + mpf2.get(i).getSize() + "bytes");
 					logger.info("---------------File Upload End ---------------");
+					mpf2.get(i).transferTo(file);
 				}
-				mpf2.get(i).transferTo(file);
 			}
 			projectService.editProject(pvo);
 			result.put("result", "SUCCESS");

@@ -7,7 +7,7 @@
 			<div class=" col-3 col-xl-3 card-img-holder">
 				<img src="/resources/study/${study.titleImg}" class="card-img" alt="image">
 			</div>
-			<div class="col-xl-5">
+			<div class="col-xl-9">
 				<div class="card-body">
 					<div class="card-title">
 						<h4>${study.title}</span>
