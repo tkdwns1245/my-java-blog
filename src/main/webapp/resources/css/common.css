@@ -51,7 +51,9 @@
     bottom: 0;
     right: 100px;
     margin: auto;
+    
 }
+
 .resume-profile-img-container{
 	width: 150px;
     height: 150px;
@@ -82,10 +84,25 @@
     border-radius: 70%;
     vertical-align: middle;
     margin: auto;
+    transition:transform 0.5s ease-in-out;
+    transform:translate(0, 0px);
+}
+.menu-profile-img-container:hover{
+	transform:translate(0, -30px);
+}
+.menu-profile-label-container{
+	text-align:center;
+	opacity: 0;
+	font-size: 1.5rem;
+    font-family: ubuntu-Bold;
+	transition:opacity 1s ease-in-out;
+}
+.menu-profile-label{
+	color:#ffffff;
 }
 .menu-img-wrapper{
 	margin-top:80px;
-	margin-bottom:50px;
+	margin-bottom:20px;
 }
 .menu-container .menu-list .menu-item{
 	margin-top:25px;
@@ -303,6 +320,7 @@ padding: 1rem 1rem;
     visibility: hidden;
     transition: all 0.4s ease-in-out;
 }
+
 .link-mask:hover{
 	background-color:rgba(21,29,35,0.5);
 }

@@ -11,6 +11,9 @@
 			<div class="menu-profile-img-container">
 				<a href="/home"><img class="profile-img" src="/resources/img/ssj_character.png"></a>
 			</div>
+			<div class="menu-profile-label-container">
+				<span class="menu-profile-label">SSJ's Place</span>
+			</div>
 		</div>
 		<div class="menu-wrapper">
 			<ul class="menu-list">
@@ -34,3 +37,13 @@
 		</div>
 	</div> -->
 </div>
+<script>
+$(document).on("mouseover",".menu-profile-img-container",function () {
+    $('.menu-profile-label-container').css("visibility","visible");
+    $('.menu-profile-label-container').css("opacity",1);
+});
+$(document).on("mouseout",".menu-profile-img-container",function () {
+	$('.menu-profile-label-container').css("opacity",0);
+	$('.menu-profile-label-container').css("transition","opacity 0.5s ease-in-out");
+});
+</script>
