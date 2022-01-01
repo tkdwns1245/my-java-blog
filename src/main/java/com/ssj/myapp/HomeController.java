@@ -67,7 +67,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model
 			,@RequestParam(required = false, defaultValue = "1") int skillsPage
 			, @RequestParam(required = false, defaultValue = "1") int skillsRange) {

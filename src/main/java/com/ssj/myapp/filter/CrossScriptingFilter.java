@@ -1,18 +1,23 @@
 package com.ssj.myapp.filter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.http.HttpStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-public class CrossScriptingFilter extends OncePerRequestFilter{
+import com.ssj.myapp.exception.BadParameterException;
 
+public class CrossScriptingFilter extends OncePerRequestFilter{
+	private static final Logger logger = LoggerFactory.getLogger(CrossScriptingFilter.class);
+	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -22,9 +27,13 @@ public class CrossScriptingFilter extends OncePerRequestFilter{
 			 }else {
 				 filterChain.doFilter(new RequestWrapper((HttpServletRequest) request), response);
 			 }
-	        } catch (Exception e) {
+	        }catch(BadParameterException e) {
+        		logger.error("BadParameterException",e);
+	        	response.sendError(900,"finded illegal word!");
+	        }catch (Exception e) {
+	        	logger.error("exception",e);
 	            response.sendError(900,"finded illegal word!");
-	    }
+	        }
 	}
 
 

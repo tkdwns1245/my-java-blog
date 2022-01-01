@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+import com.ssj.myapp.exception.BadParameterException;
+
 public final class RequestWrapper extends HttpServletRequestWrapper {
 	
 	private Map<String, String[]> parameterMap = null;
@@ -19,7 +21,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
         parameterMap = new HashMap<String, String[]> (servletRequest.getParameterMap());
     }
  
-    public String[] getParameterValues(String parameter) {
+    public String[] getParameterValues(String parameter){
  
       String[] values = super.getParameterValues(parameter);
       if (values==null)  {
@@ -30,7 +32,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
     	  if (cleanXSS(values[i])) {
     		  continue;
           }else {
-          	throw new RuntimeException();
+          	throw new BadParameterException("find illegal word : " + values[i]);
           }
        }
       return values;
@@ -47,7 +49,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
       	  if (cleanXSS(values[i])) {
       		  continue;
             }else {
-            	throw new RuntimeException();
+            	throw new BadParameterException("find illegal word : " + values[i]);
             }
          }
         return values;
@@ -64,7 +66,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
       	  if (cleanXSS(values[i])) {
       		  continue;
             }else {
-            	throw new RuntimeException();
+            	throw new BadParameterException("find illegal word : " + values[i]);
             }
          }
         return values;
@@ -80,7 +82,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
           	  if (cleanXSS(parameterMap.get(key)[i])) {
           		  continue;
                 }else {
-                	throw new RuntimeException();
+                	throw new BadParameterException("find illegal word : " + parameterMap.get(key)[i]);
                 }
              }
         }
@@ -95,7 +97,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
           if (cleanXSS(value)) {
               return value;
           }else {
-          	throw new RuntimeException();
+        	  throw new BadParameterException("find illegal word : " + value);
           }
     }
  
@@ -107,17 +109,12 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
         if (cleanXSS(value)) {
             return value;
         }else {
-        	throw new RuntimeException();
+        	throw new BadParameterException("find illegal word : " + value);
         }
     }
  
     private Boolean cleanXSS(String value) {
                 //You'll need to remove the spaces from the html entities below
-    	String safe_value = Jsoup.clean(value, Whitelist.basic());
-		if(safe_value == null) {
-			return false;
-		}else {
-			return true;
-		}
+    	return  Jsoup.isValid(value, Whitelist.basic());
     }
 }
