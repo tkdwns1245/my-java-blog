@@ -179,14 +179,14 @@ public class ProjectController {
 		String projectName = mtfRequest.getParameter("project_name");
 		String introduce = mtfRequest.getParameter("introduce");
 		ProjectVO pvo = new ProjectVO();
-		pvo.setProjectName(new String(projectName.getBytes("8859_1"), "utf-8"));
-		pvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
-		pvo.setGithub(new String(github.getBytes("8859_1"), "utf-8"));
+		pvo.setProjectName(projectName);
+		pvo.setIntroduce(introduce);
+		pvo.setGithub(github);
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
 		pvo.setToDate(java.sql.Date.valueOf(mtfRequest.getParameter("to")));
-		pvo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		pvo.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("project_img");
@@ -247,14 +247,14 @@ public class ProjectController {
 		String introduce = mtfRequest.getParameter("introduce");
 		ProjectVO pvo = new ProjectVO();
 		pvo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
-		pvo.setProjectName(new String(projectName.getBytes("8859_1"), "utf-8"));
-		pvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
-		pvo.setGithub(new String(github.getBytes("8859_1"), "utf-8"));
+		pvo.setProjectName(projectName);
+		pvo.setIntroduce(introduce);
+		pvo.setGithub(github);
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
 		pvo.setToDate(java.sql.Date.valueOf(mtfRequest.getParameter("to")));
-		pvo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		pvo.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("project_img");

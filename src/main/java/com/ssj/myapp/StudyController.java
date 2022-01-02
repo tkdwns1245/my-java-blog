@@ -179,10 +179,10 @@ public class StudyController {
 		String introduce = mtfRequest.getParameter("introduce");
 		String category = mtfRequest.getParameter("category");
 		StudyVO svo = new StudyVO();
-		svo.setTitle(new String(title.getBytes("8859_1"), "utf-8"));
-		svo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
-		svo.setCategory(new String(category.getBytes("8859_1"), "utf-8"));
-		svo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		svo.setTitle(title);
+		svo.setIntroduce(introduce);
+		svo.setCategory(category);
+		svo.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");
@@ -260,10 +260,10 @@ public class StudyController {
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
-		String contents = new String(mtfRequest.getParameter("contents").getBytes("8859_1"), "utf-8");
-		String title = new String(mtfRequest.getParameter("title").getBytes("8859_1"), "utf-8");
-		String introduce = new String(mtfRequest.getParameter("introduce").getBytes("8859_1"), "utf-8");
-		String category = new String(mtfRequest.getParameter("category").getBytes("8859_1"), "utf-8");
+		String contents = mtfRequest.getParameter("contents");
+		String title = mtfRequest.getParameter("title");
+		String introduce = mtfRequest.getParameter("introduce");
+		String category = mtfRequest.getParameter("category");
 		StudyVO svo = new StudyVO();
 		svo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
 		svo.setTitle(title);

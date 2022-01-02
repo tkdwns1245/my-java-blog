@@ -174,10 +174,10 @@ public class LifeController {
 		String introduce = mtfRequest.getParameter("introduce");
 		String category = mtfRequest.getParameter("category");
 		LifeVO lvo = new LifeVO();
-		lvo.setTitle(new String(title.getBytes("8859_1"), "utf-8"));
-		lvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
-		lvo.setCategory(new String(category.getBytes("8859_1"), "utf-8"));
-		lvo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		lvo.setTitle(title);
+		lvo.setIntroduce(introduce);
+		lvo.setCategory(category);
+		lvo.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");
@@ -258,10 +258,10 @@ public class LifeController {
 		String category = mtfRequest.getParameter("category");
 		LifeVO lvo = new LifeVO();
 		lvo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
-		lvo.setTitle(new String(title.getBytes("8859_1"), "utf-8"));
-		lvo.setIntroduce(new String(introduce.getBytes("8859_1"), "utf-8"));
-		lvo.setCategory(new String(category.getBytes("8859_1"), "utf-8"));
-		lvo.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		lvo.setTitle(title);
+		lvo.setIntroduce(introduce);
+		lvo.setCategory(category);
+		lvo.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");
