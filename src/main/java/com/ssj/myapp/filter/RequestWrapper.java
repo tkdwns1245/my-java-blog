@@ -118,27 +118,43 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
     	Whitelist myReportEnabledWhitelist = new MyReportEnabledWhitelist();
     	
     	// ** Basic whitelist (from Jsoup)
-    	myReportEnabledWhitelist.addTags("div","a", "b", "blockquote", "br", "cite", "code", "dd", "dl", "dt", "em", "i", "li", "ol", "p", "pre", "q", "small", "span",
-                    "strike", "strong", "sub", "sup", "u", "ul","img","h1","h2","h3","h4","h5") //
+    	myReportEnabledWhitelist.addTags(
+                "a", "b", "blockquote", "br", "caption", "cite", "code", "col",
+                "colgroup", "dd", "div", "dl", "dt", "em", "h1", "h2", "h3", "h4", "h5", "h6",
+                "i", "img", "li", "ol", "p", "pre", "q", "small", "span", "strike", "strong",
+                "sub", "sup", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "u",
+                "ul","body")
 
-        .addAttributes("a", "href") //
-        .addAttributes("blockquote", "cite") //
-        .addAttributes("q", "cite") //
-        .addAttributes("img", "align", "alt", "height", "src", "title", "width","style")
-        .addAttributes(":all","style")
-        .addAttributes(":all","src")
-        .addProtocols("img", "src", "http", "https")
-        .addProtocols("a", "href", "ftp", "http", "https", "mailto") //
-        .addProtocols("blockquote", "cite", "http", "https") //
-        .addProtocols("cite", "cite", "http", "https") //
-
+        .addAttributes("a", "href", "title")
+        .addAttributes("blockquote", "cite")
+        .addAttributes("col", "span", "width")
+        .addAttributes(":all", "style")
+        .addAttributes(":all", "src")
+        .addAttributes(":all", "target")
+        .addAttributes("colgroup", "span", "width")
+        .addAttributes("img", "align", "alt", "height", "src", "title", "width")
+        .addAttributes("ol", "start", "type")
+        .addAttributes("q", "cite")
+        .addAttributes("table", "summary", "width")
+        .addAttributes("td", "abbr", "axis", "colspan", "rowspan", "width")
+        .addAttributes(
+                "th", "abbr", "axis", "colspan", "rowspan", "scope",
+                "width")
+        .addAttributes("ul", "type")
+        
         .addEnforcedAttribute("a", "rel", "nofollow") //
 
-        // ** Customizations
-        .addTags("body") //
-        .addProtocols("a", "href", "tel", "device") //
+        .addProtocols("a", "href", "ftp", "http", "https", "mailto")
+        .addProtocols("blockquote", "cite", "http", "https")
+        .addProtocols("cite", "cite", "http", "https")
+        .addProtocols("img", "src", "http", "https")
+        .addProtocols("q", "cite", "http", "https")
+        .addTags("img")
+        .addAttributes("img", "align", "alt", "height", "src", "title", "width")
+        .addProtocols("img", "src", "http", "https")
         .removeProtocols("img", "src", "http", "https")
     	.removeProtocols("a", "href", "ftp", "http", "https", "mailto");
+        ;
 
                 //You'll need to remove the spaces from the html entities below
     	return  Jsoup.isValid(value, myReportEnabledWhitelist);

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+import java.util.regex.Matcher;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -36,11 +37,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.ProjectService;
-import com.ssj.myapp.vo.CategoryVO;
 import com.ssj.myapp.vo.Pagination;
 import com.ssj.myapp.vo.ProjectVO;
-import com.ssj.myapp.vo.SearchFilter;
-import com.ssj.myapp.vo.StudyVO;
 
 /**
  * Handles requests for the application home page.
@@ -170,7 +168,8 @@ public class ProjectController {
 		Date date = new Date();
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		String PATH = resourcesPath+"\\project\\";
+		String PATH = resourcesPath+"/project/";
+		PATH = PATH.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
@@ -207,12 +206,12 @@ public class ProjectController {
 			}
 			List<MultipartFile> mpf2 = mtfRequest.getFiles("project_file");
 			for(int i = 0; i < mpf2.size(); i++) {
-				File file = new File(PATH + "file\\" + mpf2.get(i).getOriginalFilename());
+				File file = new File(PATH + "file/" + mpf2.get(i).getOriginalFilename());
 				fileFullName = mpf2.get(i).getOriginalFilename();
 				fileName = FilenameUtils.getBaseName(mpf2.get(i).getOriginalFilename());
 				if(!fileName.equals("")) {
 					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
-					file = new File(PATH + "file\\" + fileName + "_" + fileUploadTime + "." + fileType);
+					file = new File(PATH + "file/" + fileName + "_" + fileUploadTime + "." + fileType);
 					pvo.setProjectImg(fileName + "_" + fileUploadTime + "." + fileType);
 					logger.info("---------------File Upload Start -------------");
 					logger.info("FILE : " + file.getAbsolutePath());
@@ -237,7 +236,8 @@ public class ProjectController {
 		Date date = new Date();
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		String PATH = resourcesPath+"\\project\\";
+		String PATH = resourcesPath+"/project/";
+		PATH = PATH.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
@@ -275,12 +275,12 @@ public class ProjectController {
 			}
 			List<MultipartFile> mpf2 = mtfRequest.getFiles("project_file");
 			for(int i = 0; i < mpf2.size(); i++) {
-				File file = new File(PATH + "file\\" + mpf2.get(i).getOriginalFilename());
+				File file = new File(PATH + "file/" + mpf2.get(i).getOriginalFilename());
 				fileFullName = mpf2.get(i).getOriginalFilename();
 				fileName = FilenameUtils.getBaseName(mpf2.get(i).getOriginalFilename());
 				if(!fileName.equals("")) {
 					fileType = fileFullName.substring(fileFullName.lastIndexOf(".")+1, fileFullName.length());
-					file = new File(PATH + "file\\" + fileName + "_" + fileUploadTime + "." + fileType);
+					file = new File(PATH + "file/" + fileName + "_" + fileUploadTime + "." + fileType);
 					pvo.setProjectFile(fileName + "_" + fileUploadTime + "." + fileType);
 					logger.info("---------------File Upload Start -------------");
 					logger.info("FILE : " + file.getAbsolutePath());
@@ -322,7 +322,8 @@ public class ProjectController {
 	public HashMap<String, Object> uploadSummernoteImageFile(MultipartHttpServletRequest mtfRequest) {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		String fileRoot = resourcesPath+"\\project\\";	//저장될 외부 파일 경로
+		String fileRoot = resourcesPath+"/project/";	//저장될 외부 파일 경로
+		fileRoot = fileRoot.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		MultipartFile multipartFile = mtfRequest.getFile("file");
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
@@ -349,11 +350,13 @@ public class ProjectController {
 	public void fileDownloadGET(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 		// 프로젝트 폴더의 temp.jpg 파일 로드
 		String fileName = request.getParameter("fileName");
-		File file = new File(resourcesPath+"\\project\\file\\" + fileName);
+		String PATH = resourcesPath+"/project/file/";	//저장될 외부 파일 경로
+		PATH = PATH.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
+		File file = new File(PATH + fileName);
 		// 클라이언트에서 아래의 이름으로 파일이 받아진다.
-		String[] splitedFileName = fileName.split("\\_");
-		String[] splitedFileName2 = fileName.split("\\.");
-		String newFileName = splitedFileName[0] + "\\." + splitedFileName2[1];
+		String[] splitedFileName = fileName.split("/_");
+		String[] splitedFileName2 = fileName.split("/.");
+		String newFileName = splitedFileName[0] + "/." + splitedFileName2[1];
 		String encodedNewFileName = new String(newFileName.getBytes("UTF-8"), "ISO-8859-1");
 
 	    try{

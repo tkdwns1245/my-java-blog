@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+import java.util.regex.Matcher;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -135,7 +136,8 @@ public class LifeController {
 	public HashMap<String, Object> uploadSummernoteImageFile(MultipartHttpServletRequest mtfRequest) {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		String fileRoot = resourcesPath+"\\life\\";	//저장될 외부 파일 경로
+		String fileRoot = resourcesPath+"/life/";	//저장될 외부 파일 경로
+		fileRoot = fileRoot.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		MultipartFile multipartFile = mtfRequest.getFile("file");
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
@@ -165,7 +167,8 @@ public class LifeController {
 		Date date = new Date();
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		String PATH = resourcesPath+"\\life\\";
+		String PATH = resourcesPath+"/life/";
+		PATH = PATH.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
@@ -248,7 +251,8 @@ public class LifeController {
 		Date date = new Date();
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		String PATH = resourcesPath+"\\life\\";
+		String PATH = resourcesPath+"/life/";
+		PATH = PATH.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
