@@ -354,17 +354,16 @@ public class ProjectController {
 		PATH = PATH.replaceAll("/", Matcher.quoteReplacement(File.separator)); //os별 파일 구분자 변경
 		File file = new File(PATH + fileName);
 		// 클라이언트에서 아래의 이름으로 파일이 받아진다.
-		String[] splitedFileName = fileName.split("/_");
-		String[] splitedFileName2 = fileName.split("/.");
-		String newFileName = splitedFileName[0] + "/." + splitedFileName2[1];
-		String encodedNewFileName = new String(newFileName.getBytes("UTF-8"), "ISO-8859-1");
+		String[] splitedFileName = fileName.split("\\_");
+		String[] splitedFileName2 = fileName.split("\\.");
+		String newFileName = splitedFileName[0] + "\\." + splitedFileName2[1];
 
 	    try{
 	        FileInputStream fis = new FileInputStream(file);
 	        BufferedInputStream bis = new BufferedInputStream(fis);
 	        OutputStream out = response.getOutputStream();
 	    	// 응답이 파일 타입이라는 것을 명시
-	        response.addHeader("Content-Disposition", "attachment;filename=\""+encodedNewFileName+"\"");
+	        response.addHeader("Content-Disposition", "attachment;filename=\""+newFileName+"\"");
 	        // 응답 크기 명시
 	        response.setContentLength((int)file.length());
 

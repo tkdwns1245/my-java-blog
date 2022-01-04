@@ -130,6 +130,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
         .addAttributes("col", "span", "width")
         .addAttributes(":all", "style")
         .addAttributes(":all", "src")
+        .addAttributes(":all", "class")
         .addAttributes(":all", "target")
         .addAttributes("colgroup", "span", "width")
         .addAttributes("img", "align", "alt", "height", "src", "title", "width")

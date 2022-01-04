@@ -17,7 +17,7 @@
 	<div class="input-area row">
 		<div class="col-2">members</div>
 		<div class="col-10">
-			 <input type="number" name="members" class="form-control" value="${project.num}">
+			 <input type="number" name="members" class="form-control" value="${project.members}">
 		</div>
 	</div>
 	<div class="input-area row">
@@ -143,7 +143,7 @@ $(document).ready(function () {
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/uploadSummernoteImageFile",
+			url : "/project/uploadSummernoteImageFile",
 			contentType : false,
 			enctype: 'multipart/form-data',
 			processData : false,
