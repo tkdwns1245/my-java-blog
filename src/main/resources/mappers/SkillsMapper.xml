@@ -26,6 +26,10 @@
 		ORDER BY num
 		LIMIT #{startList}, #{listSize}
 	</select>
+	<select id="getSkillsListAll" resultType="skillVO">
+		SELECT * FROM SKILLS
+		ORDER BY num
+	</select>
 	<select id="getSkillsListCnt" resultType="int">
 	 	SELECT count(*) as listCnt
 	 	FROM SKILLS

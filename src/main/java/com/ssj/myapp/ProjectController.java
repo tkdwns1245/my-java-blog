@@ -37,8 +37,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.ProjectService;
+import com.ssj.myapp.service.SkillsService;
 import com.ssj.myapp.vo.Pagination;
 import com.ssj.myapp.vo.ProjectVO;
+import com.ssj.myapp.vo.SkillVO;
 
 /**
  * Handles requests for the application home page.
@@ -51,6 +53,8 @@ public class ProjectController {
 	private String resourcesPath;
 	@Inject
 	ProjectService projectService;
+	@Inject
+	SkillsService skillsService;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -116,7 +120,15 @@ public class ProjectController {
 	@RequestMapping(value = "/project/writeProject", method = RequestMethod.GET)
 	public ModelAndView projectWriteGet(Locale locale, Model model) {
 		logger.info("This is Project.", locale);
+		List<SkillVO> skillsList = new ArrayList<SkillVO>();
+		try {
+			skillsList = skillsService.selectSkillsListAll();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("skillsList",skillsList);
 		mav.setViewName("project/writeProject.page");
 		return mav;
 	}
@@ -147,8 +159,10 @@ public class ProjectController {
 		ProjectVO pvo = new ProjectVO();
 		ProjectVO project = new ProjectVO();
 		pvo.setNum(num);
+		List<SkillVO> skillsList = new ArrayList<SkillVO>();
 		try {
 			project = projectService.getProjectDetail(pvo);
+			skillsList = skillsService.selectSkillsListAll();
 			long diff;
 			diff = project.getToDate().getTime() - project.getFromDate().getTime();
 			project.setPeriod(diff / 1000 / 60 / 60 / 24);
@@ -156,6 +170,7 @@ public class ProjectController {
 			e.printStackTrace();
 		}
 		model.addAttribute("project",project);
+		model.addAttribute("skillsList",skillsList);
 		logger.info("This is ProjectEdit.", locale);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("project/editProject.page");

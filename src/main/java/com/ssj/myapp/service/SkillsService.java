@@ -10,6 +10,7 @@ public interface SkillsService {
 	public void editSkills(SkillVO vo) throws Exception;
 	public void deleteSkills(int num) throws Exception;
 	public List<SkillVO> selectSkillsList(Pagination p) throws Exception;
+	public List<SkillVO> selectSkillsListAll() throws Exception;
 	public int getSkillsListCnt() throws Exception;
 	public SkillVO getSkillsDetail(SkillVO vo) throws Exception;
 }

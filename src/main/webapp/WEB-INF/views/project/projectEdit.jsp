@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <div class="body-contents-wrapper">
 	<form id="frm" enctype="multipart/form-data" method="POST" accept-charset="UTF-8">
 	<input type="hidden" name="num" value="${project.num}"/>
@@ -36,14 +37,9 @@
 		<div class="col-2">skills</div>
 		<div class="col-10">
 			 <select type="select"  class="selectpicker" id="skills">
-			 <option>Java</option>
-			 <option>Php</option>
-			 <option>Python</option>
-			 <option>Node.js</option>
-			 <option>Javascript</option>
-			 <option>Android</option>
-			 <option>Html</option>
-			 <option>Css</option>
+			 <c:forEach var="skill" items="${skillsList}" varStatus="status">
+			 <option>${skill.skillName}</option>
+			 </c:forEach>
 			 </select>
 		</div>
 	</div>

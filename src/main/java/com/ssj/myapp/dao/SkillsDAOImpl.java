@@ -44,5 +44,10 @@ public class SkillsDAOImpl implements SkillsDAO {
 	public void deleteSkills(int num) {
 		sqlSession.delete("skills.deleteSkills",num);
 	}
+
+	@Override
+	public List<SkillVO> selectSkillsListAll() {
+		return sqlSession.selectList("skills.getSkillsListAll");
+	}
 	
 }

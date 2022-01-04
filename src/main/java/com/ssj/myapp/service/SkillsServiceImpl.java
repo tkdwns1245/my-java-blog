@@ -67,5 +67,10 @@ public class SkillsServiceImpl implements SkillsService {
 	public void deleteSkills(int num) throws Exception {
 		skillsDao.deleteSkills(num);
 	}
+
+	@Override
+	public List<SkillVO> selectSkillsListAll() throws Exception {
+		return skillsDao.selectSkillsListAll();
+	}
 	
 }

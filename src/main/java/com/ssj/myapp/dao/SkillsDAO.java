@@ -10,6 +10,7 @@ public interface SkillsDAO {
 	public void updateSkills(SkillVO vo);
 	public void deleteSkills(int num);
 	public List<SkillVO> selectSkillsList(Pagination p);
+	public List<SkillVO> selectSkillsListAll();
 	public int getSkillsListCnt();
 	public SkillVO getSkillsDetail(SkillVO vo);
 }
