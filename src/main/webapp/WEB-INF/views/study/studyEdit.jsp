@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<div class="body-contents-wrapper">
+<div class="body-contents-wrapper" >
 	<form id="frm" enctype="multipart/form-data" method="POST" accept-charset="UTF-8">
 	<input type="hidden" name="num" value="${study.num}"/>
 	<div class="input-area row">
@@ -58,6 +58,18 @@ $(document).ready(function () {
       focus: true,                  
       lang: "ko-KR",					
       placeholder: '내용을 입력해주세요.',
+      prettifyHtml: false,
+      toolbar: [
+    	    // [groupName, [list of button]]
+    	    ['style', ['bold', 'italic', 'underline', 'clear']],
+    	    ['font', ['strikethrough', 'superscript', 'subscript']],
+    	    ['fontsize', ['fontsize']],
+    	    ['color', ['color']],
+    	    ['para', ['ul', 'ol', 'paragraph']],
+    	    ["insert",["link","picture","video","hr"]],
+    	    ['highlight', ['highlight']],
+    	    ['height', ['height']]
+    	  ],
       fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36',
         '50', '72'],
       callbacks: {	//여기 부분이 이미지를 첨부하는 부분
@@ -73,7 +85,7 @@ $(document).ready(function () {
 					}
 				}
 			}
-		}
+		},
     });
     function uploadSummernoteImageFile(file, editor) {
 		data = new FormData();
@@ -115,7 +127,6 @@ $(document).ready(function () {
     		contentType: false,
     		cache: false,
     		success: function (result){
-    			console.log(result);
     			if(result.result == "SUCCESS"){
     				alert("success edit article!");
     				window.location.href = "/study/studyList";

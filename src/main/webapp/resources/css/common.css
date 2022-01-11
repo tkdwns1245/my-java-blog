@@ -443,6 +443,9 @@ padding: 1rem 1rem;
 	margin-bottom: 50px;
 	text-align:center;
 }
+.detail-contents{
+	word-break:break-all;
+}
 .project-detail-contents-title:hover{
 	color:#666f77
 }
