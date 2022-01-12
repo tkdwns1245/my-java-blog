@@ -68,7 +68,8 @@ $(document).ready(function () {
     	    ['para', ['ul', 'ol', 'paragraph']],
     	    ["insert",["link","picture","video","hr"]],
     	    ['highlight', ['highlight']],
-    	    ['height', ['height']]
+    	    ['height', ['height']],
+    	    ['view', ['fullscreen', 'codeview', 'help']]
     	  ],
       fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36',
         '50', '72'],

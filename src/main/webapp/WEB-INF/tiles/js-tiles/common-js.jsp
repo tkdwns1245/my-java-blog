@@ -6,14 +6,17 @@
 <script src="/resources/js/jquery.tmpl.min.js"></script>
 
 <!-- bootstrap script -->
-<script src="/resources/js/bootstrap/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<!-- prettify -->
+<script src="/resources/js/prettify/prettify.js"></script>
 
 <!-- for using summernote  -->
-<script type="text/javascript" src="/resources/js/prettify/prettify.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="/resources/js/summernote/summernote-lite.js"></script>
+<script src="/resources/js/summernote/summernote-bs4.min.js"></script>
 <script src="/resources/js/summernote/lang/summernote-ko-KR.js"></script>
-<script src="/resources/js/summernote/summernote-ext-highlight.js"></script>
+	<!-- github : heyanlong/summernote-ext-highlight -->
+<script src="/resources/js/summernote/plugins/summernote-ext-highlight.js"></script>
 
 <!-- else -->
 <script src="https://kit.fontawesome.com/adf1f846d3.js" crossorigin="anonymous"></script>
