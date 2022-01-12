@@ -20,7 +20,7 @@
 		<div class="col-10">
 			 <select type="select"  class="selectpicker" name="category" id="category" value="${study.category}">
 			 <c:forEach var="category" items="${categoryList}" varStatus="status">
-			 	<option>${category.name}</option>
+			 	<option <c:if test="${study.category == category.name}">selected</c:if>>${category.name}</option>
 			 </c:forEach>
 			 </select>
 		</div>
