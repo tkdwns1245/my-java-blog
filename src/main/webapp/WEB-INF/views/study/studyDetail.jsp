@@ -43,6 +43,10 @@
 	</div>
 </div>
 <script>
+
+$(document).ready(function(){
+	/* prettyfy code styling function */
+	PR.prettyPrint();
 	var deleteFunction = function(num){
 		var result = confirm('Are you sure you want to delete?');
 		if(result){
@@ -63,4 +67,6 @@
 			})
 		}
 	}
+})
+	
 </script>

@@ -46,7 +46,8 @@
 </div>
 <script>
 $(document).ready(function () {
-	
+	/* prettyfy code styling function */
+	PR.prettyPrint();
 	$(".custom-file-input").on("change", function() {
 		  var fileName = $(this).val().split("\\").pop();
 		  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
@@ -61,7 +62,7 @@ $(document).ready(function () {
       prettifyHtml: false,
       toolbar: [
     	    // [groupName, [list of button]]
-    	    ['style', ['bold', 'italic', 'underline', 'clear']],
+    	    ['style', ['style','bold', 'italic', 'underline', 'clear']],
     	    ['font', ['strikethrough', 'superscript', 'subscript']],
     	    ['fontsize', ['fontsize']],
     	    ['color', ['color']],
@@ -87,7 +88,8 @@ $(document).ready(function () {
 				}
 			}
 		},
-    });
+    })
+    PR.prettyPrint();  
     function uploadSummernoteImageFile(file, editor) {
 		data = new FormData();
 		data.append("file", file);
