@@ -35,7 +35,7 @@
 	<div class="input-area row">
 		<div class="col-2">contents</div>
 		<div class="col-10">
-			 <textarea id="summernote" name="contents">${study.contents}</textarea>
+			 <textarea id="summernote" name="contents"><c:out value="${study.contents}" /></textarea>
 		</div>
 	</div>
 	</form>
