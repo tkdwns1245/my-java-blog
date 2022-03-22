@@ -71,6 +71,12 @@
 		</div>
 	</div>
 	<div class="input-area row">
+		<div class="col-2">webLink</div>
+		<div class="col-10">
+			 <input type="text" name="weblink" class="form-control">
+		</div>
+	</div>
+	<div class="input-area row">
 		<div class="col-2">contents</div>
 		<div class="col-10">
 			 <textarea id="summernote" name="contents"></textarea>

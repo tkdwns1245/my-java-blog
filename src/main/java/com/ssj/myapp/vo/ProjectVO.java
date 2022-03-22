@@ -16,9 +16,16 @@ public class ProjectVO {
 	private String projectFile;
 	private String contents;
 	private String github;
+	private String webLink;
 	private Timestamp createDate;
 	
 	
+	public String getWebLink() {
+		return webLink;
+	}
+	public void setWebLink(String webLink) {
+		this.webLink = webLink;
+	}
 	public String getProjectFile() {
 		return projectFile;
 	}

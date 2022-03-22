@@ -189,6 +189,7 @@ public class ProjectController {
 		String fileFullName = "";
 		String fileType = "";
 		String github = mtfRequest.getParameter("github");
+		String webLink = mtfRequest.getParameter("webLink");
 		String contents = mtfRequest.getParameter("contents");
 		String projectName = mtfRequest.getParameter("project_name");
 		String introduce = mtfRequest.getParameter("introduce");
@@ -196,6 +197,7 @@ public class ProjectController {
 		pvo.setProjectName(projectName);
 		pvo.setIntroduce(introduce);
 		pvo.setGithub(github);
+		pvo.setWebLink(webLink);
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));
@@ -257,6 +259,7 @@ public class ProjectController {
 		String fileFullName = "";
 		String fileType = "";
 		String github = mtfRequest.getParameter("github");
+		String webLink = mtfRequest.getParameter("webLink");
 		String contents = mtfRequest.getParameter("contents");
 		String projectName = mtfRequest.getParameter("project_name");
 		String introduce = mtfRequest.getParameter("introduce");
@@ -265,6 +268,7 @@ public class ProjectController {
 		pvo.setProjectName(projectName);
 		pvo.setIntroduce(introduce);
 		pvo.setGithub(github);
+		pvo.setWebLink(webLink);
 		pvo.setMembers(Integer.parseInt(mtfRequest.getParameter("members")));
 		pvo.setSkills(parsingSkillsList(mtfRequest.getParameterValues("skills[]")));
 		pvo.setFromDate(java.sql.Date.valueOf(mtfRequest.getParameter("from")));

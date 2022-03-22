@@ -35,6 +35,11 @@
 						<i class="fab fa-github"></i>  githubLink : <a href="${project.github}">${project.github}</a>
 					</div>
 					</c:if>
+					<c:if test="${not empty project.webLink}">
+					<div>
+						<i class="fa-solid fa-link-simple"></i>  webLink : <a href="${project.webLink}">${project.webLink}</a>
+					</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
