@@ -16,4 +16,5 @@
 <!-- include google-code-prettify -->
 <!-- <link rel="stylesheet" href="/resources/css/prettify/prettify.css"/> -->
 
-    
+<!-- timeline.css -->
+<link rel="stylesheet" type="text/css" href="/resources/css/timeline.min.css" />

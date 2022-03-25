@@ -114,27 +114,127 @@
 				<div class="col-12 mb-4">
 					<h3>Work Experiences</h3>
 				</div>
-				<div class="col-4">
+				<div class="col-12 mb-4">
 					<div>
-						<div class="mb-4 education-name">
-							<h5>Toogram Systems</h5>
+						<div class="timeline" style="height:500px; overflow:auto;">
+						  <div class="timeline__wrap">
+						    <div class="timeline__items">
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <h2>2018</h2>
+						          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
+						            ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus.</p>
+						        </div>
+						      </div>
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <h2>2017</h2>
+						          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus.</p>
+						        </div>
+						      </div>
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <h2>2016</h2>
+						          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus.</p>
+						        </div>
+						      </div>
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <div class="mb-4 education-name">
+										<h5>Toogram Systems</h5>
+									</div>
+									<div class="mb-2 education-content">
+										<ul style="margin:0px; padding:0px;">
+											<li>
+												Python/django web project
+											</li>
+											<li>
+												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
+											</li>
+											<li>
+												Java/spring web project
+											</li>
+										</ul>
+									</div>
+									<div class="mb-2 education-period">
+										2020 ~ 2021
+									</div>
+					      	  	</div>
+						      </div>
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <div class="mb-4 education-name">
+										<h5>Toogram Systems</h5>
+									</div>
+									<div class="mb-2 education-content">
+										<ul style="margin:0px; padding:0px;">
+											<li>
+												Python/django web project
+											</li>
+											<li>
+												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
+											</li>
+											<li>
+												Java/spring web project
+											</li>
+										</ul>
+									</div>
+									<div class="mb-2 education-period">
+										2020 ~ 2021
+									</div>
+					      	  	</div>
+						      </div>
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <div class="mb-4 education-name">
+										<h5>Toogram Systems</h5>
+									</div>
+									<div class="mb-2 education-content">
+										<ul style="margin:0px; padding:0px;">
+											<li>
+												Python/django web project
+											</li>
+											<li>
+												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
+											</li>
+											<li>
+												Java/spring web project
+											</li>
+										</ul>
+									</div>
+									<div class="mb-2 education-period">
+										2020 ~ 2021
+									</div>
+					      	  	</div>
+						      </div>
+						      <div class="timeline__item">
+						        <div class="timeline__content">
+						          <div class="mb-4 education-name">
+										<h5>Toogram Systems</h5>
+									</div>
+									<div class="mb-2 education-content">
+										<ul style="margin:0px; padding:0px;">
+											<li>
+												Python/django web project
+											</li>
+											<li>
+												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
+											</li>
+											<li>
+												Java/spring web project
+											</li>
+										</ul>
+									</div>
+									<div class="mb-2 education-period">
+										2020 ~ 2021
+									</div>
+					      	  	</div>
+						      </div>
+						    </div>
+						  </div>
 						</div>
-						<div class="mb-2 education-content">
-							<ul style="margin:0px; padding:0px;">
-								<li>
-									Python/django web project
-								</li>
-								<li>
-									Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
-								</li>
-								<li>
-									Java/spring web project
-								</li>
-							</ul>
-						</div>
-						<div class="mb-2 education-period">
-							2020 ~ 2021
-						</div>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -245,6 +345,13 @@
 </div>
 </script>
 <script>
+$('.timeline').timeline({
+	verticalStartPosition:'left',
+    startIndex: 3,	
+	mode:'vertical', // or right,
+		
+});
+
 $(document).on("mouseover",".skills-card-item",function () {
     $(this).find('.link-mask').css("visibility","visible");
     $(this).find('.link-mask-text').css("display","block");

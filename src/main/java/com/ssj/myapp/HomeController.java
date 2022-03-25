@@ -279,9 +279,9 @@ public class HomeController {
 		String summary = mtfRequest.getParameter("summary");
 		SkillVO skillVO = new SkillVO();
 		skillVO.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
-		skillVO.setSkillName(new String(skillName.getBytes("8859_1"), "utf-8"));
-		skillVO.setSummary(new String(summary.getBytes("8859_1"), "utf-8"));
-		skillVO.setContents(new String(contents.getBytes("8859_1"), "utf-8"));
+		skillVO.setSkillName(skillName);
+		skillVO.setSummary(summary);
+		skillVO.setContents(contents);
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("skill_icon");

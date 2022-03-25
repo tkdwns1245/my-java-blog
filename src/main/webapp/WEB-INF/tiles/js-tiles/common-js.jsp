@@ -18,6 +18,9 @@
 	<!-- github : heyanlong/summernote-ext-highlight -->
 <script src="/resources/js/summernote/plugins/summernote-ext-highlight.js"></script>
 
+<!-- timeline.js -->
+<script src="/resources/js/timeline.min.js"></script>
+
 <!-- else -->
 <script src="https://kit.fontawesome.com/adf1f846d3.js" crossorigin="anonymous"></script>
 
