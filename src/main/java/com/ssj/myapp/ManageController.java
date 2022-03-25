@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssj.myapp.service.CategoryService;
+import com.ssj.myapp.service.WorkService;
 import com.ssj.myapp.vo.CategoryVO;
+import com.ssj.myapp.vo.WorkVO;
 
 /**
  * Handles requests for the application home page.
@@ -31,6 +33,8 @@ public class ManageController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Inject
 	CategoryService categoryService;
+	@Inject
+	WorkService workService;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -106,7 +110,20 @@ public class ManageController {
 		categoriesMav.setViewName("manage/visitRecord.page");
 		return categoriesMav;
 	}
-	
+	@RequestMapping(value = "/manage/resume/record", method = RequestMethod.GET)
+	public ModelAndView manageResumeRecordGET(Locale locale, Model model) {
+		logger.info("This is resume record page.", locale);
+		ModelAndView worksMav = new ModelAndView();
+		List<WorkVO> workList = new ArrayList<WorkVO>();
+		try {
+			workList = workService.selectWorkList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		worksMav.addObject("workList",workList);
+		worksMav.setViewName("manage/resumeRecord.page");
+		return worksMav;
+	}
 	@RequestMapping(value = "/manage/category/create", method = RequestMethod.POST)
 	public @ResponseBody HashMap<String, Object> createCategoryPost(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 		String name;
@@ -173,6 +190,99 @@ public class ManageController {
 			result.put("result", "ERROR");
 		}
 		
+		return result;
+	}
+	
+	@RequestMapping(value = "/manage/resume/record/create", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> createWorkPost(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		String title;
+		String content;
+		String date;
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		title = request.getParameter("title");
+		content = request.getParameter("content");
+		date = request.getParameter("date");
+		
+		WorkVO tmpWork = new WorkVO();
+		
+		try {
+			tmpWork.setTitle(title);
+			tmpWork.setContent(content);
+			tmpWork.setDate(java.sql.Date.valueOf(date));
+			workService.createWork(tmpWork);
+			result.put("result", "SUCCESS");
+		} catch(Exception e) {
+			e.printStackTrace();
+			result.put("result", "ERROR");
+		}
+		return result;
+	}
+	@RequestMapping(value = "/manage/resume/record/edit", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> editWorkPost(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		String title;
+		String content;
+		String date;
+		int num;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		title = request.getParameter("title");
+		content = request.getParameter("content");
+		date = request.getParameter("date");
+		num = Integer.parseInt(request.getParameter("num"));
+		
+		WorkVO tmpWork = new WorkVO();
+		
+		try {
+			tmpWork.setTitle(title);
+			tmpWork.setContent(content);
+			tmpWork.setDate(java.sql.Date.valueOf(date));
+			tmpWork.setNum(num);
+			workService.updateWork(tmpWork);
+			result.put("result", "SUCCESS");
+		} catch(Exception e) {
+			e.printStackTrace();
+			result.put("result", "ERROR");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/manage/resume/record/delete", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> deleteWorkPost(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		int num;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		num = Integer.parseInt(request.getParameter("num"));
+		if(!request.getParameter("num").equals("")) {
+			try {
+				workService.deleteWork(num);
+				result.put("result", "SUCCESS");
+			} catch(Exception e) {
+				e.printStackTrace();
+				result.put("result", "ERROR");
+			}
+		}else {
+			result.put("result", "ERROR");
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/manage/resume/record/getWorkByNum", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> getWorkByNumPOST(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		int num;
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		num = Integer.parseInt(request.getParameter("num"));
+		
+		WorkVO tmpWork = new WorkVO();
+		WorkVO workVO = new WorkVO();
+		try {
+			tmpWork.setNum(num);
+			workVO = workService.selectWorkByNum(num);
+			result.put("result", "SUCCESS");
+			result.put("data",workVO);
+		} catch(Exception e) {
+			e.printStackTrace();
+			result.put("result", "ERROR");
+		}
 		return result;
 	}
 }

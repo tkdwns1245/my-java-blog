@@ -37,6 +37,9 @@
 								<li class="nav-item">
 									<a class="nav-link" href="/manage/record/visit">Record</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/manage/resume/record">Resume</a>
+								</li>
 							</ul>
 						</div>
 					</nav>

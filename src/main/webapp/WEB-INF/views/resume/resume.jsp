@@ -119,122 +119,22 @@
 						<div class="timeline" style="height:500px; overflow:auto;">
 						  <div class="timeline__wrap">
 						    <div class="timeline__items">
+						    <c:forEach var="work" items="${workList}" >
 						      <div class="timeline__item">
 						        <div class="timeline__content">
-						          <h2>2018</h2>
-						          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-						            ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus.</p>
+						          <h2>${work.date}</h2>
+						          <div class="mb-4 education-name">
+									<h5>${work.title}</h5>
+								  </div>
+								  <div class="mb-2 education-content">
+									${work.content}
+								  </div>
 						        </div>
 						      </div>
-						      <div class="timeline__item">
-						        <div class="timeline__content">
-						          <h2>2017</h2>
-						          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus.</p>
-						        </div>
-						      </div>
-						      <div class="timeline__item">
-						        <div class="timeline__content">
-						          <h2>2016</h2>
-						          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus.</p>
-						        </div>
-						      </div>
-						      <div class="timeline__item">
-						        <div class="timeline__content">
-						          <div class="mb-4 education-name">
-										<h5>Toogram Systems</h5>
-									</div>
-									<div class="mb-2 education-content">
-										<ul style="margin:0px; padding:0px;">
-											<li>
-												Python/django web project
-											</li>
-											<li>
-												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
-											</li>
-											<li>
-												Java/spring web project
-											</li>
-										</ul>
-									</div>
-									<div class="mb-2 education-period">
-										2020 ~ 2021
-									</div>
-					      	  	</div>
-						      </div>
-						      <div class="timeline__item">
-						        <div class="timeline__content">
-						          <div class="mb-4 education-name">
-										<h5>Toogram Systems</h5>
-									</div>
-									<div class="mb-2 education-content">
-										<ul style="margin:0px; padding:0px;">
-											<li>
-												Python/django web project
-											</li>
-											<li>
-												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
-											</li>
-											<li>
-												Java/spring web project
-											</li>
-										</ul>
-									</div>
-									<div class="mb-2 education-period">
-										2020 ~ 2021
-									</div>
-					      	  	</div>
-						      </div>
-						      <div class="timeline__item">
-						        <div class="timeline__content">
-						          <div class="mb-4 education-name">
-										<h5>Toogram Systems</h5>
-									</div>
-									<div class="mb-2 education-content">
-										<ul style="margin:0px; padding:0px;">
-											<li>
-												Python/django web project
-											</li>
-											<li>
-												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
-											</li>
-											<li>
-												Java/spring web project
-											</li>
-										</ul>
-									</div>
-									<div class="mb-2 education-period">
-										2020 ~ 2021
-									</div>
-					      	  	</div>
-						      </div>
-						      <div class="timeline__item">
-						        <div class="timeline__content">
-						          <div class="mb-4 education-name">
-										<h5>Toogram Systems</h5>
-									</div>
-									<div class="mb-2 education-content">
-										<ul style="margin:0px; padding:0px;">
-											<li>
-												Python/django web project
-											</li>
-											<li>
-												Maintanance big data echo system(zeppelin,spark,hadoop,kafka,mesos)
-											</li>
-											<li>
-												Java/spring web project
-											</li>
-										</ul>
-									</div>
-									<div class="mb-2 education-period">
-										2020 ~ 2021
-									</div>
-					      	  	</div>
-						      </div>
+						      </c:forEach>
 						    </div>
 						  </div>
 						</div>
-						
-						
 					</div>
 				</div>
 			</div>

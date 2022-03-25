@@ -74,6 +74,9 @@
     <definition name="manage/visitRecord.page" extends="manage_base">
     	 <put-attribute name="contents" value="/WEB-INF/views/manage/record/visit_record.jsp" />
     </definition>
+    <definition name="manage/resumeRecord.page" extends="manage_base">
+    	 <put-attribute name="contents" value="/WEB-INF/views/manage/resume/resume_record.jsp" />
+    </definition>
     <definition name="*/*.page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>

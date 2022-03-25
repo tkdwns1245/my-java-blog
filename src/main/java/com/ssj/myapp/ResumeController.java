@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssj.myapp.service.SkillsService;
+import com.ssj.myapp.service.WorkService;
 import com.ssj.myapp.vo.Pagination;
-import com.ssj.myapp.vo.RecentPostVO;
 import com.ssj.myapp.vo.SkillVO;
+import com.ssj.myapp.vo.WorkVO;
 
 /**
  * Handles requests for the application home page.
@@ -28,6 +29,8 @@ import com.ssj.myapp.vo.SkillVO;
 public class ResumeController {
 	@Inject
 	SkillsService skillsService;
+	@Inject
+	WorkService workService;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -40,6 +43,8 @@ public class ResumeController {
 		logger.info("This is Resume.", locale);
 		int skillsListCnt;
 		List<SkillVO> skillsList = new ArrayList<SkillVO>();
+		List<WorkVO> workList = new ArrayList<WorkVO>();
+		
 		Pagination pagination = new Pagination();
 		try {
 			skillsListCnt= skillsService.getSkillsListCnt();
@@ -51,6 +56,12 @@ public class ResumeController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		try {
+			workList = workService.selectWorkList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
@@ -58,6 +69,7 @@ public class ResumeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("skillsList", skillsList );
+		model.addAttribute("workList", workList );
 		model.addAttribute("pagination",pagination);
 		return "/resume/resume.page";
 	}

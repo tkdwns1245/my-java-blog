@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="work">
+  <insert id="insert" >
+    INSERT INTO WORK (
+    	title,
+    	content,
+    	date
+    ) VALUES (
+    	#{title},
+    	#{content},
+    	#{date}
+    )
+    <selectKey keyProperty="num" resultType="Integer">
+    SELECT LAST_INSERT_ID()
+  	</selectKey>
+    </insert>
+    <select id="getWorkList" resultType="workVO">
+		SELECT * FROM WORK ORDER BY date DESC;
+	</select>
+	<select id="getWorkByNum" parameterType="Integer" resultType="workVO">
+		SELECT * FROM WORK
+		WHERE num = #{num};
+	</select>
+	<update id="updateWork" parameterType="workVO">
+		UPDATE WORK 
+	  	SET
+	    	title = #{title},
+	    	content = #{content},
+	    	date = #{date}
+		WHERE num = #{num}
+	</update>
+	<delete id="deleteWork" parameterType="Integer">
+		DELETE
+		FROM WORK
+		WHERE num = #{num}
+	</delete>
+</mapper>
