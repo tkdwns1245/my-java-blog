@@ -10,8 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/prettify/tomorrow-night.css" />
 
 <!-- custom css -->
-<link href="/resources/css/common.css" rel="stylesheet">
-<link href="/resources/css/manage.css" rel="stylesheet">
+<link href="/resources/css/styles.css" rel="stylesheet">
 
 <!-- include google-code-prettify -->
 <!-- <link rel="stylesheet" href="/resources/css/prettify/prettify.css"/> -->

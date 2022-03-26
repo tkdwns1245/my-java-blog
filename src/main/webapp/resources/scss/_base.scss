@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@font-face {
+  font-family: ubuntu-title;
+  src: url('/resources/fonts/Ubuntu-Title.ttf');
+}
+@font-face {
+	font-family : ubuntu-Bold;
+	src:url('/resources/fonts/Ubuntu-Bold.ttf');
+}
+@font-face {
+	font-family : ubuntu-regular;
+	src:url('/resources/fonts/Ubuntu-Regular.ttf');
+}
+@font-face {
+	font-family : nunito;
+	src:url('/resources/fonts/Nunito-VariableFont_wght.ttf');
+}
+
+
+.btn-primary{
+	background-color:#666f77;
+	border-color:#666f77;
+	color: #fff !important;
+}
+.btn-primary:hover{
+	background-color:#151d23;
+	border-color:#151d23;
+	color:#fff;
+}
+.btn-danger{
+	background-color:#AA4343;
+	border-color:#AA4343;
+	color: #fff !important;
+}
+.btn-danger:hover{
+	background-color:#7A1C1C;
+	border-color:#7A1C1C;
+	color:#fff;
+}

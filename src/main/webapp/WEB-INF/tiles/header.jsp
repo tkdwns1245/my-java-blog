@@ -2,23 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-<div class="top-bar-wrapper">
-	<div class="header-word">
-		<span class="header-motto">Thinking and Do!</span>
-		<div class="header-introduce">
-	Hi, I'm Sang Jun Son
-	I'm Web Developer and I'm dreamming to be a good frontend engineer
-	This is my development blog
-	Please check my post and portfolio
-	Thank you!
+<div class="header-wrapper">
+	<div class="container">
+		<div class="header-content">
+			<span class="header-motto">Thinking and Do!</span>
+			<div class="header-introduce">
+				<div class="header-profile-img-wrapper">
+					<img class="header-profile-img" src="/resources/img/profile_img02.jpg">
+				</div>
+				<div class="introduce-write-wrapper">
+					<p>Hi, I'm Sang Jun Son</p>
+					<p>I'm Web Developer and I'm dreamming to be a good frontend engineer</p>
+					<p>This is my development blog</p>
+					<p>Please check my post and portfolio</p>
+					<p>Thank you!</p>
+				</div>
+				<div class="header-btn-container">
+					<a class="btn btn-primary" href="/resume"><i class="fas fa-user-tie fa-xs"></i> View Resume</a>
+					<a class="btn btn-primary" href="/project/projectList"><i class="fas fa-users fa-xs"></i> View Project</a>
+				</div>
+			</div>
 		</div>
-		<div class="home-btn-area">
-			<a class="btn btn-primary" href="/resume"><i class="fas fa-user-tie fa-xs"></i> View Resume</a>
-			<a class="btn btn-primary" href="/project/projectList"><i class="fas fa-users fa-xs"></i> View Project</a>
-		</div>
-	</div>
-	<div class="profile-img-container">
-		<img class="profile-img" src="/resources/img/profile_img.jpg">
 	</div>
 </div>
 

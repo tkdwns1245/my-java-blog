@@ -155,9 +155,15 @@
     padding: 3rem;
 }
 
-.top-bar-wrapper{
+.header-wrapper{
     height: 100%;
-    top: 0;
+    display:flex;
+    justify-content: center;
+}
+.header-content{
+	width:1400px;
+	max-width:1400px;
+	top: 0;
     right: 0;
     transition: top 0.2s ease-in-out;
     z-index: 50;
@@ -184,9 +190,6 @@
     color: #7a7b7d;
     background-color: #ffffff;
     position: absolute;
-}
-.profile_area{
-    
 }
 
 .header-word{

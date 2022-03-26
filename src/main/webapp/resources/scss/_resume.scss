@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/*resume content box*/
+.resume-profile-img-container{
+	width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 70%;
+    vertical-align: middle;
+    float:left;
+    right: 100px;
+    margin: auto;
+}
+.resume-profile-img {
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+    display: block;
+}
+.resume-wrapper{
+	border: 1px solid rgba(0,0,0,0.025);
+	box-shadow: 0 1rem 3rem rgba(0,0,0,0.18);
+	max-width:1140px;
+	padding:3rem;
+}
