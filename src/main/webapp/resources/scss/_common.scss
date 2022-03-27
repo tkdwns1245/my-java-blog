@@ -64,8 +64,9 @@
 
 .profile-img {
     display:block;
-	width:150px;
-	height:150px;
+    object-fit: cover;
+	width:100%;
+	height:100%;
 }
 .header-motto{
 	font-size:3rem;

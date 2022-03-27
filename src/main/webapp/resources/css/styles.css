@@ -97,8 +97,9 @@
 
 .profile-img {
   display: block;
-  width: 150px;
-  height: 150px; }
+  object-fit: cover;
+  width: 100%;
+  height: 100%; }
 
 .header-motto {
   font-size: 3rem;
@@ -448,9 +449,6 @@
 .life-card-item {
   height: 450px; }
 
-.life-card-content {
-  height: 100%; }
-
 .life-card .card-img-holder {
   height: 200px;
   overflow: hidden;
@@ -489,6 +487,9 @@
   .link-mask {
     display: none; } }
 @media (max-width: 767.98px) {
+  #navigation .navbar-nav {
+    padding-left: 30px; }
+
   .header-motto {
     font-size: 2rem; }
 
@@ -499,6 +500,7 @@
     margin-top: 10px; }
 
   .header-profile-img-wrapper {
+    margin-bottom: 20px;
     float: none; }
 
   .main-wrapper .main {

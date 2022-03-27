@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>\
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="body-contents-wrapper">
@@ -30,12 +30,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="life-wrapper row" style="float: none; margin:100 auto;" id="lifeList">
-		<div class="card-wrapper row" style="float: left; margin:100 auto;">
+	<div class="life-wrapper row no-gutters col-12" style="float: none; margin:100 auto;" id="lifeList">
+		<div class="post-container row no-gutters col-12" style="margin:100 auto;">
 			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="0" end="3">
-			<div class="life-card-item col-md-3 mb-5 col-3">
+			<div class="life-card-item col-6 col-lg-3 mb-5">
 				<div class="life-card">
-					<div class="row life-card-content">
+					<div class="life-card-content row no-gutters">
 						<div class=" col-12 col-xl-12 card-img-holder">
 							<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 						</div>
@@ -62,11 +62,11 @@
 			</div>
 			</c:forEach>
 		</div>
-		<div class="card-wrapper row" style="float: left; margin:100 auto;">
+		<div class="post-wrapper row no-gutters col-12" style="float: left; margin:100 auto;">
 			<c:forEach var="life" items="${lifeList}" varStatus="status" begin="4" end="7">
-				<div class="life-card-item col-md-3 mb-5 col-3">
+				<div class="life-card-item col-6 col-lg-3 mb-5">
 					<div class="life-card">
-						<div class="row life-card-content">
+						<div class="row life-card-content no-gutters">
 							<div class=" col-12 col-xl-12 card-img-holder">
 								<img src="/resources/life/${life.titleImg}" class="card-img" alt="image">
 							</div>
