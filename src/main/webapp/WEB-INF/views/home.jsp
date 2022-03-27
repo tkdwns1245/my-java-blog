@@ -5,17 +5,17 @@
 <div class="body-contents-wrapper">
 	<div class="content-wrapper" >
 		<div class="skills-area">
-			<div class="title-area">
+			<div class="list-title-wrapper">
 				<div>
 					<i class="fas fa-wrench fa-lg"></i><h2 style="display:inline; margin-left:10px;">Skills</h2>
 				</div>
 			</div>
 			<div class="skills-card-area" id="skillsList">
-				<div class="card-wrapper row" style="float: none; margin:100 auto;" id="upper_card_wrapper">
+				<div class="card-wrapper row no-gutters" style="float: none; margin:100 auto;" id="upper_card_wrapper">
 				<c:forEach var="skill" items="${skillsList}" varStatus="status" begin="0" end="3">
-				<div class="skills-card-item col-md-3 mb-5 col-3">
+				<div class="skills-card-item col-6 col-lg-3 mb-5">
 					<div class="skills-card" style="text-align:center">
-						<div class="row">
+						<div class="row no-gutters">
 							<div class=" col-12 col-xl-12 skills-card-img-holder" >
 							<img class="skill-icon" src="/resources/skills/${skill.skillIcon}">
 							</div>
@@ -39,11 +39,11 @@
 				</div>
 				</c:forEach>
 				</div>
-				<div class="card-wrapper row" style="float: none; margin:100 auto;" id="lowwer_card_wrapper">
+				<div class="card-wrapper row no-gutters" style="float: none; margin:100 auto;" id="lowwer_card_wrapper">
 				<c:forEach var="skill" items="${skillsList}" varStatus="status" begin="4" end="7">
-				<div class="skills-card-item col-md-3 mb-5 col-3">
+				<div class="skills-card-item col-6 col-lg-3 mb-5">
 					<div class="skills-card" style="text-align:center">
-						<div class="row">
+						<div class="row no-gutters">
 							<div class=" col-12 col-xl-12 skills-card-img-holder" >
 							<img class="skill-icon" src="/resources/skills/${skill.skillIcon}">
 							</div>
@@ -88,43 +88,43 @@
 			</s:authorize>
 		</div>
 		<hr>
-		<div class="recent-post-area">
-			<div class="title-area">
+		<div class="recent-post-wrapper">
+			<div class="list-title-wrapper">
 				<div>
 					<i class="fas fa-pen fa-lg"></i><h2 style="display:inline; margin-left:10px;">Recent Post</h2>
 				</div>
 			</div>
-			<div class="recent-post-area row" style="float: none; margin:100 auto;" id="lifeList">
-				<div class="card-wrapper row" style="float: left; margin:100 auto;">
-				<c:forEach var="recentPost" items="${recentPostList}" begin="0" end="3" varStatus="status">
-				<div class="life-card-item col-md-3 mb-5 col-3">
-					<div class="life-card">
-						<div class="row">
-							<div class=" col-12 col-xl-12 card-img-holder">
-								<img src="/resources/${recentPost.type}/${recentPost.postImg}" class="card-img" alt="image" >
-							</div>
-							<div class="col-xl-12">
-								<div class="card-body">
-									<div class="card-title">
-										<span>${recentPost.postName}</span>
-									</div>
-									<div class="card-summary">
-										${recentPost.introduce}
-									</div>
-									<div class="post-date">
-										${fn:split(recentPost.createDate,':')[0]}:${fn:split(recentPost.createDate,':')[1]}
+			<div class="post-wrapper">
+				<div class="recent-post-container row no-gutters" style="float: none; margin:100 auto;">
+					<c:forEach var="recentPost" items="${recentPostList}" begin="0" end="3" varStatus="status">
+					<div class="life-card-item col-6 col-lg-3 mb-5">
+						<div class="life-card">
+							<div class="row no-gutters">
+								<div class=" col-12 col-xl-12 card-img-holder">
+									<img src="/resources/${recentPost.type}/${recentPost.postImg}" class="card-img" alt="image" >
+								</div>
+								<div class="col-xl-12">
+									<div class="card-body">
+										<div class="card-title">
+											<span>${recentPost.postName}</span>
+										</div>
+										<div class="card-summary">
+											${recentPost.introduce}
+										</div>
+										<div class="post-date">
+											${fn:split(recentPost.createDate,':')[0]}:${fn:split(recentPost.createDate,':')[1]}
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="link-mask row" style="margin-left:0px; margin-right:0px;">
-							<div class="link-mask-text" style="float: none; margin:auto auto;">
-								<a class="btn btn-primary" href="/${recentPost.type}/${recentPost.type}Detail?num=${recentPost.num}">View Posts</a>
+							<div class="link-mask row" style="margin-left:0px; margin-right:0px;">
+								<div class="link-mask-text" style="float: none; margin:auto auto;">
+									<a class="btn btn-primary" href="/${recentPost.type}/${recentPost.type}Detail?num=${recentPost.num}">View Posts</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				</c:forEach>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

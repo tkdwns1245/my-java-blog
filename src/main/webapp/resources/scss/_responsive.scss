@@ -19,6 +19,9 @@
 	.menu-wrapper .navbar {
 	    padding: 1rem;
     }
+    .link-mask{
+    	display:none;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -26,6 +29,43 @@
 		font-size:2rem;
 	}
 	.header-introduce{
-	padding-left:0rem;
+		padding-left:0rem;
+	}
+	.header-btn-container{
+		.btn + .btn{
+			margin-top:10px;
+		}
+	}
+	.header-profile-img-wrapper{
+		float:none;
+	}
+	
+	.main-wrapper .main{
+		padding:1.5rem;
+	}
+	.skills-card-summary{
+		overflow:scroll;
+	}
+	.life-card{
+		overflow:scroll;
+		width:150px;
+	}
+	.card-title{
+		height:50px;
+		overflow:scroll;
+	}
+	.card-summary{
+		height:70px;
+		overflow:scroll;
+	}
+	.footer-wrap{
+		display:flex;
+		flex-direction:column;
+	}
+	.footer-item{
+		text-align:center !important;
+	}
+	.footer-item + .footer-item{
+		margin-top:10px;
 	}
 }

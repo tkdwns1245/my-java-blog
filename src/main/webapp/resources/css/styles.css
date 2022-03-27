@@ -30,6 +30,13 @@
   border-color: #7A1C1C;
   color: #fff; }
 
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0; }
+  .row.no-gutters > [class^="col-"], .row.no-gutters > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0; }
+
 /*************main box*************/
 .main-wrapper .main {
   padding: 3rem; }
@@ -244,8 +251,11 @@
   color: #ffffff; }
 
 .card-title {
-  margin-bottom: 30px;
+  height: auto;
   font-size: 1rem; }
+
+.card-body {
+  height: 200px; }
 
 .card-introduce {
   margin-bottom: 30px; }
@@ -256,6 +266,13 @@
   color: #666f77;
   overflow: hidden;
   height: 100px; }
+
+.post-date {
+  position: absolute;
+  text-align: center;
+  margin-left: -1rem;
+  width: 100%;
+  bottom: 20px; }
 
 .detail-card {
   margin-top: 100px;
@@ -328,11 +345,11 @@
 .title-wrapper:hover {
   color: #666f77; }
 
-.title-area {
+.list-title-wrapper {
   margin-top: 100px;
   margin-bottom: 70px; }
 
-.title-area:hover {
+.list-title-wrapper:hover {
   color: #666f77; }
 
 .skills-area {
@@ -444,7 +461,8 @@
   background: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.025);
   position: relative;
-  height: 100%; }
+  height: auto;
+  width: 250px; }
 
 .life-card-item {
   display: inline-block; }
@@ -466,12 +484,49 @@
     margin-left: 0; }
 
   .menu-wrapper .navbar {
-    padding: 1rem; } }
+    padding: 1rem; }
+
+  .link-mask {
+    display: none; } }
 @media (max-width: 767.98px) {
   .header-motto {
     font-size: 2rem; }
 
   .header-introduce {
-    padding-left: 0rem; } }
+    padding-left: 0rem; }
+
+  .header-btn-container .btn + .btn {
+    margin-top: 10px; }
+
+  .header-profile-img-wrapper {
+    float: none; }
+
+  .main-wrapper .main {
+    padding: 1.5rem; }
+
+  .skills-card-summary {
+    overflow: scroll; }
+
+  .life-card {
+    overflow: scroll;
+    width: 150px; }
+
+  .card-title {
+    height: 50px;
+    overflow: scroll; }
+
+  .card-summary {
+    height: 70px;
+    overflow: scroll; }
+
+  .footer-wrap {
+    display: flex;
+    flex-direction: column; }
+
+  .footer-item {
+    text-align: center !important; }
+
+  .footer-item + .footer-item {
+    margin-top: 10px; } }
 
 /*# sourceMappingURL=styles.css.map */

@@ -228,8 +228,11 @@ padding: 1rem 1rem;
 	color:#ffffff;
 }
 .card-title{
-	margin-bottom:30px;
+	height:auto;
 	font-size:1rem;
+}
+.card-body{
+	height:200px;
 }
 .card-introduce{
 	margin-bottom:30px;
@@ -240,6 +243,13 @@ padding: 1rem 1rem;
 	color:#666f77;
 	overflow:hidden;
 	height:100px;
+}
+.post-date{
+	position:absolute;
+	text-align:center;
+	margin-left: -1rem;
+	width:100%;
+	bottom: 20px;
 }
 .detail-card{
 	margin-top:100px;
