@@ -23,9 +23,9 @@ public class CrossScriptingFilter extends OncePerRequestFilter{
 			throws ServletException, IOException {
 		 try {
 			 if(request instanceof MultipartHttpServletRequest) {
-	            filterChain.doFilter(new RequestWrapper((MultipartHttpServletRequest) request), response);
+	            filterChain.doFilter(new XSSRequestWrapper((MultipartHttpServletRequest) request), response);
 			 }else {
-				 filterChain.doFilter(new RequestWrapper((HttpServletRequest) request), response);
+				 filterChain.doFilter(new XSSRequestWrapper((HttpServletRequest) request), response);
 			 }
 	        }catch(BadParameterException e) {
         		logger.error("BadParameterException",e);
