@@ -8,7 +8,7 @@
 			<span class="header-motto">Thinking and Do!</span>
 			<div class="header-introduce">
 				<div class="header-profile-img-wrapper">
-					<img class="header-profile-img" src="/resources/img/profile_img02.jpg">
+					<img class="header-profile-img" src="/resources/img/profile_img04.jpg">
 				</div>
 				<div class="introduce-write-wrapper">
 					<p>Hi, I'm Sang Jun Son</p>

@@ -72,4 +72,14 @@
 	.footer-item + .footer-item{
 		margin-top:10px;
 	}
+	.resume-certificate-container{
+		margin-left:0px;
+	}
+	.resume-interest-container{
+		margin-left:0px;
+	}
+	
+	.timeline:not(.timeline--horizontal) .timeline__items:before{
+		left:6% !important;
+	}
 }

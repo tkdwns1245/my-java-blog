@@ -6,8 +6,8 @@
 	</div>
 	<div class="content-wrapper" style="float: none; margin:100 auto;">
 		<div class="resume-wrapper">
-			<div class="resume-profile-wrapper row mb-5" >
-				<div class="col-5 border-right">
+			<div class="row mb-5" >
+				<div class="resume-profile-wrapper col-12 col-lg-5 border-right">
 					<div class="resume-profile-img-container" style="float:left;margin-right:30px;">
 						<img class="resume-profile-img" src="/resources/img/resume_profile_img.jpg">
 					</div>
@@ -26,8 +26,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-5 border-right">
-					<div style="margin-left:30px;">
+				<div class="resume-certificate-wrapper col-12 col-lg-5 border-right">
+					<div class="resume-certificate-container">
 						<div class="mb-4">
 							<h3>Certificate</h3>
 						</div>
@@ -38,8 +38,8 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-2">
-					<div style="margin-left:30px;">
+				<div class="resume-interest-wrapper col-12 col-lg-5 ">
+					<div class="resume-interest-container">
 						<div class="mb-4">
 							<h3>Interest</h3>
 						</div>
@@ -62,7 +62,7 @@
 				<div class="col-12 mb-4">
 					<h3>Education</h3>
 				</div>
-				<div class="col-4">
+				<div class="col-12 col-lg-4">
 					<div>
 						<div class="mb-4 education-name">
 							<h5>DongRae HighSchool</h5>
@@ -75,7 +75,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-12 col-lg-4">
 					<div>
 						<div class="mb-4 education-name">
 							<h5>Pukyong National University</h5>
@@ -95,7 +95,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-12 col-lg-4">
 					<div>
 						<div class="mb-4 education-name">
 							<h5>KG ITBANK</h5>
@@ -144,11 +144,11 @@
 					<h3>Skills</h3>
 				</div>
 				<div class="skills-card-area" id="skillsList">
-				<div class="card-wrapper row" style="float: none; margin:100 auto;" id="upper_card_wrapper">
+				<div class="card-wrapper row no-gutters" style="float: none; margin:100 auto;" id="upper_card_wrapper">
 				<c:forEach var="skill" items="${skillsList}" varStatus="status" begin="0" end="3">
-				<div class="skills-card-item col-md-3 mb-5 col-3">
+				<div class="skills-card-item col-6 col-lg-3 mb-5">
 					<div class="skills-card" style="text-align:center">
-						<div class="row">
+						<div class="row no-gutters">
 							<div class=" col-12 col-xl-12 skills-card-img-holder" >
 							<img class="skill-icon" src="/resources/skills/${skill.skillIcon}">
 							</div>
@@ -172,11 +172,11 @@
 				</div>
 				</c:forEach>
 				</div>
-				<div class="card-wrapper row" style="float: none; margin:100 auto;" id="lowwer_card_wrapper">
+				<div class="card-wrapper row no-gutters" style="float: none; margin:100 auto;" id="lowwer_card_wrapper">
 				<c:forEach var="skill" items="${skillsList}" varStatus="status" begin="4" end="7">
-				<div class="skills-card-item col-md-3 mb-5 col-3">
+				<div class="skills-card-item col-6 col-lg-3 mb-5">
 					<div class="skills-card" style="text-align:center">
-						<div class="row">
+						<div class="row no-gutters">
 							<div class=" col-12 col-xl-12 skills-card-img-holder" >
 							<img class="skill-icon" src="/resources/skills/${skill.skillIcon}">
 							</div>
@@ -219,9 +219,9 @@
 	</div>
 </div>
 <script type="text/x-jquery-tmpl" id="skill-item">
-<div class="skills-card-item col-md-3 mb-5 col-3">
+<div class="skills-card-item col-6 col-lg-3 mb-5">
 	<div class="skills-card" style="text-align:center">
-		<div class="row">
+		<div class="row no-gutters">
 			<div class=" col-12 col-xl-12 skills-card-img-holder" >
 			<img class="skill-icon" src="/resources/skills/\${skillIcon}">
 			</div>

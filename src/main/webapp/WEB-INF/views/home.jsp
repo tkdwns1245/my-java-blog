@@ -132,9 +132,9 @@
 </div>
 
 <script type="text/x-jquery-tmpl" id="skill-item">
-<div class="skills-card-item col-md-3 mb-5 col-3">
+<div class="skills-card-item col-6 col-lg-3 mb-5">
 	<div class="skills-card" style="text-align:center">
-		<div class="row">
+		<div class="row no-gutters">
 			<div class=" col-12 col-xl-12 skills-card-img-holder" >
 			<img class="skill-icon" src="/resources/skills/\${skillIcon}">
 			</div>

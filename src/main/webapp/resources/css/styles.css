@@ -93,7 +93,7 @@
 .header-profile-img {
   display: block;
   width: 150px;
-  height: 180px; }
+  height: 200px; }
 
 .profile-img {
   display: block;
@@ -407,6 +407,12 @@
   max-width: 1140px;
   padding: 3rem; }
 
+.resume-certificate-container {
+  margin-left: 30px; }
+
+.resume-interest-container {
+  margin-left: 30px; }
+
 /*project content box*/
 .project-card .card-img-holder {
   height: 100%;
@@ -529,6 +535,15 @@
     text-align: center !important; }
 
   .footer-item + .footer-item {
-    margin-top: 10px; } }
+    margin-top: 10px; }
+
+  .resume-certificate-container {
+    margin-left: 0px; }
+
+  .resume-interest-container {
+    margin-left: 0px; }
+
+  .timeline:not(.timeline--horizontal) .timeline__items:before {
+    left: 6% !important; } }
 
 /*# sourceMappingURL=styles.css.map */
