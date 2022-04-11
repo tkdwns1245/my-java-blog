@@ -47,26 +47,26 @@
 $(document).ready(function(){
 	/* prettyfy code styling function */
 	PR.prettyPrint();
-	var deleteFunction = function(num){
-		var result = confirm('Are you sure you want to delete?');
-		if(result){
-			$.ajax({
-				type: "POST",
-				url: '/study/deleteStudy',
-				data: {"num" : num},
-				success: function (result){
-					console.log(result);
-					if(result.result == "SUCCESS"){
-						alert("success delete article!");
-						window.location.href = "/study/studyList";
-					}
-				},
-				error: function(e){
-					console.log(e);
-				}
-			})
-		}
-	}
-})
 	
+})
+var deleteFunction = function(num){
+	var result = confirm('Are you sure you want to delete?');
+	if(result){
+		$.ajax({
+			type: "POST",
+			url: '/study/deleteStudy',
+			data: {"num" : num},
+			success: function (result){
+				console.log(result);
+				if(result.result == "SUCCESS"){
+					alert("success delete article!");
+					window.location.href = "/study/studyList";
+				}
+			},
+			error: function(e){
+				console.log(e);
+			}
+		})
+	}
+}
 </script>
