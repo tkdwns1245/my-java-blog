@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<s:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin" />
 <div class="body-contents-wrapper">
 	<div class="title-wrapper">
 		<h1>Study</h2>
@@ -32,12 +33,18 @@
 	</div>
 	<div class="study-wrapper row" style="float: none; margin:100 auto;" id="studyList">
 		<c:forEach var="study" items="${studyList}" varStatus="status">
+		<c:if test="${study.isShow or isAdmin}">
 		<div class="card-item col-md-10 mb-5">
 			<div class="study-card">
 				<div class="row study-card-content">
 					<div class=" col-12 col-xl-3 card-img-holder">
 						<img src="/resources/study/${study.titleImg}" class="card-img" alt="image">
 					</div>
+					<c:if test="${study.isShow eq 'false'}">
+					<div class=" col-12 col-xl-3 card-img-holder-mask">
+						<p class="none-show-text">비공개</p>
+					</div>
+					</c:if>
 					<div class="col-xl-9">
 						<div class="card-body">
 							<div class="card-title">
@@ -59,6 +66,7 @@
 				</div>
 			</div>
 		</div>
+		</c:if>
 		</c:forEach>
 	</div>
 	<div id="paginationBox" style="text-align:center;">
@@ -87,6 +95,11 @@
 			<div class=" col-12 col-xl-3 card-img-holder">
 				<img src="/resources/study/\${titleImg}" class="card-img" alt="image">
 			</div>
+			{{if isShow == 'false'}}
+			<div class=" col-12 col-xl-3 card-img-holder-mask">
+				<p class="none-show-text">비공개</p>
+			</div>
+			{{/if}}
 			<div class="col-xl-9">
 				<div class="card-body">
 					<div class="card-title">
@@ -170,6 +183,7 @@ var setStudyList = function(category,keyword,page,range){
 				for(var i =0; i <result.data.length; i++){
 					var createDate = dateFormat(result.data[i].createDate);
 					result.data[i].createDate = createDate;
+					if(result.data[i].isShow === 'true' || result.authority == 'ROLE_ADMIN')
 					$("#studyList").append($("#study-item").tmpl(result.data[i]));
 				}
 				

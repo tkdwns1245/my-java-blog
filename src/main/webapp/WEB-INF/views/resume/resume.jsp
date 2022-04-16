@@ -38,7 +38,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="resume-interest-wrapper col-12 col-lg-5 ">
+				<div class="resume-interest-wrapper col-12 col-lg-2 ">
 					<div class="resume-interest-container">
 						<div class="mb-4">
 							<h3>Interest</h3>

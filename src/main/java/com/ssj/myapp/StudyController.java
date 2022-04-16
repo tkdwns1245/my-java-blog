@@ -112,6 +112,9 @@ public class StudyController {
 			//Pagination 객체생성
 			pagination.pageInfo(page, range, listCnt);
 			studyList = studyService.selectStudyListByFilter(pagination,sf);
+			if (request.isUserInRole("ROLE_ADMIN")) {
+				result.put("authority","ROLE_ADMIN");
+		    }
 			result.put("responseCode", "success");
 			result.put("data", studyList);
 			result.put("pagination",pagination);
@@ -177,6 +180,7 @@ public class StudyController {
 		String fileName = "";
 		String fileFullName = "";
 		String fileType = "";
+		String isShow = mtfRequest.getParameter("isShow");
 		String contents = mtfRequest.getParameter("contents");
 		String title = mtfRequest.getParameter("title");
 		String introduce = mtfRequest.getParameter("introduce");
@@ -186,6 +190,11 @@ public class StudyController {
 		svo.setIntroduce(introduce);
 		svo.setCategory(category);
 		svo.setContents(contents);
+		if(isShow != null) {
+			svo.setIsShow("true");
+		}else {
+			svo.setIsShow("false");
+		}
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");
@@ -267,6 +276,7 @@ public class StudyController {
 		String contents = mtfRequest.getParameter("contents");
 		String title = mtfRequest.getParameter("title");
 		String introduce = mtfRequest.getParameter("introduce");
+		String isShow = mtfRequest.getParameter("isShow");
 		String category = mtfRequest.getParameter("category");
 		StudyVO svo = new StudyVO();
 		svo.setNum(Integer.parseInt(mtfRequest.getParameter("num")));
@@ -274,6 +284,11 @@ public class StudyController {
 		svo.setIntroduce(introduce);
 		svo.setCategory(category);
 		svo.setContents(contents);
+		if(isShow != null) {
+			svo.setIsShow("true");
+		}else {
+			svo.setIsShow("false");
+		}
 		String fileUploadTime = sdf.format(date);
 		try {
 			List<MultipartFile> mpf = mtfRequest.getFiles("title_img");

@@ -10,7 +10,14 @@ public class StudyVO {
 	private String titleImg;
 	private String contents;
 	private Timestamp createDate;
+	private String isShow;
 	
+	public String getIsShow() {
+		return isShow;
+	}
+	public void setIsShow(String isShow) {
+		this.isShow = isShow;
+	}
 	public int getNum() {
 		return num;
 	}

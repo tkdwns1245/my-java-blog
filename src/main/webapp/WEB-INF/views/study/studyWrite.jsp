@@ -16,6 +16,12 @@
 		</div>
 	</div>
 	<div class="input-area row">
+		<div class="col-2">isShow</div>
+		<div class="col-10">
+			 <input type="checkbox" name="isShow" value="true">
+		</div>
+	</div>
+	<div class="input-area row">
 		<div class="col-2">category</div>
 		<div class="col-10">
 			 <select type="select"  class="selectpicker" name="category" id="category">

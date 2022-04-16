@@ -441,6 +441,18 @@
   overflow: hidden;
   vertical-align: middle; }
 
+.study-card .card-img-holder-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 1.5rem;
+  height: 100%;
+  vertical-align: middle;
+  background-color: rgba(21, 29, 35, 0.5); }
+
+.study-card .card-img-holder-mask .none-show-text {
+  font-color: white; }
+
 .study-card {
   border-radius: 0;
   background: #fafafa;
